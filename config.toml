@@ -1,0 +1,92 @@
+baseURL = "https://uwa-channels.github.io"
+title = "Underwater Acoustic Channels"
+theme = ["docsy"]
+
+enableRobotsTXT = false
+enableGitInfo = false
+
+contentDir = "content"
+
+pygmentsCodeFences = true
+pygmentsUseClasses = false
+pygmentsUseClassic = false
+pygmentsStyle = "tango"
+
+[permalinks]
+blog = "/:section/:year/:month/:day/:slug/"
+
+[imaging]
+resampleFilter = "CatmullRom"
+quality = 75
+anchor = "smart"
+
+[languages]
+[languages.en]
+title = "Underwater Acoustic Channels"
+languageName ="English"
+weight = 1
+
+[menu]
+  [[menu.main]]
+  name = "Github"
+  weight = 1000
+  post = " <i class='fab fa-github pr-2'></i>"
+  url = "https://github.com/uwa-channels/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+      style = "tango"
+      guessSyntax = "true"
+
+
+[outputs]
+section = ["HTML", "print"]
+
+[params]
+copyright = "Underwater Acoustic Channels Group"
+version_menu = "Releases"
+archived_version = false
+version = "1.0"
+github_repo = ""
+offlineSearch = false
+prism_syntax_highlighting = false
+
+[params.search.algolia]
+enabled = true
+
+[params.ui]
+sidebar_menu_compact = false
+breadcrumb_disable = false
+sidebar_search_disable = false
+navbar_logo = true
+footer_about_enable = false
+showLightDarkModeMenu = true
+
+[params.katex]
+enable = true
+html_dom_element = "document.body"
+
+[params.katex.options]
+throwOnError = true
+struct = false
+
+[[params.katex.options.delimiters]]
+  left = "$$"
+  right = "$$"
+  display = true
+[[params.katex.options.delimiters]]
+  left = "$"
+  right = "$"
+  display = false
+[[params.katex.options.delimiters]]
+  left = "\\("
+  right = "\\)"
+  display = false
+[[params.katex.options.delimiters]]
+  left = "\\["
+  right = '\\]'
+  display = true
+
