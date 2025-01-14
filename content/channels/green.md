@@ -2,12 +2,12 @@
 title: "Green"
 subtitle: 
 date: 2025-01-14
-weight: 1
+weight: 4
 description: >
 ---
 
 * Experiment:
-  * Location: Norway
+  * Location: Norway, <mark> south of Bergen
   * Date recorded: November 2024
   * Center frequency: 6 kHz, 11.52 kHz, and 28 kHz 
   * Bandwidth: 4.5 kHz, 5.62 kHz, and 9 kHz
