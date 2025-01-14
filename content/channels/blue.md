@@ -16,8 +16,6 @@ description: >
   * Tx/Rx/water depth [m]: 30-60/50/100
   * Mobility: varying, up to 1.5 m/s
   * Receiving array: vertical, 12 elements, 12 cm spacing (numbered top to bottom)
- 
-
 * Parameters:
   * Sampling rate in delay: 2R
   * Total delay coverage: up to 25 ms
