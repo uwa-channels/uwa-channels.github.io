@@ -7,7 +7,7 @@ description: >
 ---
 
 * Experiment:
-  * Location: North Atlantic, south of Martha's Vineyard Island.
+  * Location: North Atlantic, off the coast of Rhode Island.
   * Date recorded: June 2010
   * Center frequency: 13 kHz
   * Bandwidth: 5 kHz
