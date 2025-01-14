@@ -7,7 +7,7 @@ description: >
 ---
 
 * Experiment:
-  * Location: 40N, 70W
+  * Location: North Atlantic, south of Martha's Vineyard Island.
   * Date recorded: June 2010
   * Center frequency: 13 kHz
   * Bandwidth: 5 kHz
@@ -20,8 +20,8 @@ description: >
 
 * Parameters:
   * Sampling rate in delay: 2R
-  * Total delay coverage: up to 20 ms
+  * Total delay coverage: up to 25 ms
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
-  * Total time coverage: .
+  * Total time coverage: 1 minute.
 
   <!-- * Maximum frequency of a baseband signal passing through the channel: not to exceed 4.89 kHz. --> 
