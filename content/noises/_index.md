@@ -14,5 +14,5 @@ Along with each channel (blue, green, etc.), you will find the noise model corre
 
 The library also contains a generic noise model, which represents the Gaussian component of the ambient noise. This noise exhibits log-linear decay in frequency (nominally 17 dB/decade), and is assumed to be uncorrelated in space. The power of the noise within a given bandwidth can be adjusted by the user.
 
-Download the noise statistics files [here](), then go to [Github](), download and run `generate_noise.m`.
+Download the noise statistics files [here](https://www.dropbox.com/scl/fo/3gyt4cgw47jfx716v0epd/AIqYaL5S2RxGylREu3sn-vY?rlkey=w2mvoklkm42zrrf6k6lwlzcxu&st=u3u6b5r9&dl=0).
 
