@@ -7,7 +7,7 @@ description: >
 ---
 
 * Experiment:
-  * Location: North Atlantic, off the coast of Rhode Island.
+  * Location: North Atlantic, off the coast of Rhode Island
   * Date recorded: June 2010
   * Center frequency: 13 kHz
   * Bandwidth: 5 kHz
@@ -20,6 +20,4 @@ description: >
   * Sampling rate in delay: 2R
   * Total delay coverage: up to 25 ms
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
-  * Total time coverage: 1 minute.
-
-  <!-- * Maximum frequency of a baseband signal passing through the channel: not to exceed 4.89 kHz. --> 
+  * Total time coverage: 1 minute
