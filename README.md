@@ -1,1 +1,1 @@
-Navigate to [https://uwa-channels.github.io](uwa-channels.github.io) for the documentation.
+Navigate to [https://uwa-channels.github.io](https://uwa-channels.github.io) for the documentation.
