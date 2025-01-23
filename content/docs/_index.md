@@ -12,7 +12,7 @@ The channels stored in this library can be used in two ways: (1) a channel can b
 
 ## Applying a channel to an arbitrary signal 
 
-* To pass a signal of your choice through a channel, generate the desired signal in passband, respecting the bandwidth and sampling rate limits of the chosen channel (see “parameters” entry under the [channel](/channels) tab).
+* To pass a signal of your choice through a channel, generate the desired signal in passband, respecting the bandwidth and the sampling rate limits of the chosen channel (see “parameters” entry under the [channel](/channels) tab).
 * State the sampling frequency of your passband signal.
 * Run `replay.m` on the signal. 
 * Specify the noise power, and add the output of `generate_noise.m` to the output of `replay.m`. 
