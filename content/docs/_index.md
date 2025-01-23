@@ -26,5 +26,7 @@ The channels are specified for a certain acoustic bandwidth that was used during
 
 ## Visualizing a channel
 * To visualize a channel as a collection of impulse responses evolving over time, you will need to decompress the channel impulse responses via `unpack.m`.
-* This will produce a new channel matrix which is decompressed and contains all the physical effects of delay drifting. The new matrix can be generated at an arbitrary sampling rate in time, provided it is no greater than the sampling rate in delay. Note that this process requires a computer with at least x,y,x.  
+* This will produce a new channel matrix which is decompressed and contains all the physical effects of delay drifting. The new matrix can be generated at an arbitrary sampling rate in time, provided it is no greater than the sampling rate in delay. 
+
+* A simple example of this process is given in `xxx.m`. Before running the example code, please read the corresponding `readme` file. 
 
