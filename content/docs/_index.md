@@ -8,7 +8,7 @@ description: >
 
 ---
 
-The channels stored in this library can be used in two ways: (1) a channel can be applied directly to a user-generated signal, or (2) it can be decompressed for visualizing. Ready-to-use code for performing these functions is avaialble under the GitHub tab. The code is provided in **MATLAB**, **Python** and **Julia**.
+The channels stored in this library can be used in two ways: (1) a channel can be applied directly to a user-generated signal, or (2) it can be decompressed for visualizing. Ready-to-use code for performing these functions is avaialble under the GitHub tab. The replay code is provided in **MATLAB**, **Python** and **Julia**.
 
 ## Applying a channel to an arbitrary signal 
 
