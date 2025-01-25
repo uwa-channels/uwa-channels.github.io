@@ -15,8 +15,7 @@ description: >
   * Distance: 3 km and 7 km
   * Tx/Rx/water depth [m]: 50/50/100
   * Mobility: static
-  * Receiving array 1: vertical, 24 elements, 5 cm spacing (numbered top to bottom)
-  * Receiving array 2: vertical, 24 elements, 20 cm spacing (numbered top to bottom)
+  * Receiving array: vertical, 24 elements, 20 cm spacing (numbered top to bottom)
 * Parameters:
   * Sampling rate in delay: 2R
   * Total delay coverage: up to 35 ms
