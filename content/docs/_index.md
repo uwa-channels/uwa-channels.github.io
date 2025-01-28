@@ -18,7 +18,7 @@ The channels stored in this library can be used in two ways: (1) a channel can b
 * Specify the noise power, and add the output of `generate_noise` to the output of `replay`. 
 * This will produce a noisy passband received signal.
 
-A simple example of this process are given in [MATLAB](https://github.com/uwa-channels/replay/blob/main/example.m) and [Python](https://github.com/uwa-channels/replay_python/blob/main/example.py). Before running the example code, please read the corresponding [`readme`](https://github.com/uwa-channels/replay) file.
+A simple example of this process is given in [MATLAB](https://github.com/uwa-channels/replay/blob/main/example.m) and [Python](https://github.com/uwa-channels/replay_python/blob/main/example.py). Before running the example code, please read the corresponding [`readme`](https://github.com/uwa-channels/replay) file.
 
 {{% alert title="Important note" color="warning" %}}
 The channels are specified for a certain acoustic bandwidth that was used during the experiment. When working with a channel, please understand that only that bandwidth is visible. If you are designing a signal that you will pass through a channel, the bandwidth of your signal must fit within the stated limit.  Note that you do **not** need to decompress the channel first to replay the signal.
