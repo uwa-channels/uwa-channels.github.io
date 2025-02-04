@@ -13,7 +13,7 @@ description: >
   * Bandwidth: 9.6 kHz
   * Symbol rate: R = 9.6 kHz
   * Distance: 100 m
-  * Tx/Rx/water depth: 6 m/3 m/8 m
+  * Tx/Rx/water depth: 6 m/3 m/20 m
   * Mobility: drift
   * Receiving array: vertical, 3 elements, 0.8 m spacing (numbered top to bottom)
 * Parameters:
