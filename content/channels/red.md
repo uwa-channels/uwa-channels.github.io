@@ -11,7 +11,7 @@ description: >
   * Date recorded: November 2024
   * Center frequency: 25 kHz
   * Bandwidth: 9.6 kHz
-  * Symbol rate: R = 9.6 Hz
+  * Symbol rate: R = 9.6 kHz
   * Distance: 100 m
   * Tx/Rx/water depth [m]: 6/3/8
   * Mobility: drift
