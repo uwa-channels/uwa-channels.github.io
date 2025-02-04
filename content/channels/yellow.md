@@ -13,9 +13,9 @@ description: >
   * Bandwidth: 6.25 kHz
   * Symbol rate: R = 6.25 kHz
   * Distance: 3 km and 7 km
-  * Tx/Rx/water depth [m]: 50/50/100
+  * Tx/Rx/water depth: 50 m/50 m/100 m
   * Mobility: static
-  * Receiving array: vertical, 24 elements, 20 cm spacing (numbered top to bottom)
+  * Receiving array: vertical, 24 elements, 5 cm and 20 cm spacing (numbered bottom to top)
 * Parameters:
   * Sampling rate in delay: 2R
   * Total delay coverage: up to 35 ms
