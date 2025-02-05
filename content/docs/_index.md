@@ -28,7 +28,7 @@ The channels are specified for a certain acoustic bandwidth that was used during
 
 ## Visualizing a channel
 
-To visualize a channel as a collection of impulse responses evolving over time, you will need to decompress the channel impulse responses via unpacking. This will produce a new channel matrix which is decompressed (it is larger than the stored original) and contains all the physical effects of delay drifting. The new matrix can be generated at arbitrary sampling rates in time, provided it is no greater than the sampling rate in delay.
+To visualize a channel as a collection of impulse responses evolving over time, you will need to decompress the channel impulse responses via `unpack.m`. This will produce a new channel matrix which is decompressed (it is larger than the stored original) and contains all the physical effects of delay drifting. The new matrix can be generated at arbitrary sampling rates in time, provided it is no greater than the sampling rate in delay.
 
 A simple example of this process is given in [`unpack.m`](https://github.com/uwa-channels/unpack/blob/main/unpack.m). Before running the example code, please read the corresponding [`readme`](https://github.com/uwa-channels/unpack) file. Note that decompressing and visualizing a channel requires considerable computer memory.
 
