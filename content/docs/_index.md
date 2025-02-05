@@ -15,10 +15,12 @@ The channels stored in this library can be used in two ways: (1) a channel can b
 * To pass a signal of your choice through a channel, generate the desired signal in passband, respecting the bandwidth and the sampling rate limits of the chosen channel (see “parameters” entry under the [channel](/channels) tab).
 * State the sampling frequency of your passband signal.
 * Run `replay` on the signal. 
-* Specify the noise power, and add the output of `generate_noise` to the output of `replay`. 
+* Specify the noise power, and add the output of `generate_noise` to the output of `replay` at a desired signal-to-noise ratio.
 * This will produce a noisy passband received signal.
 
-A simple example of this process is given in [**MATLAB**](https://github.com/uwa-channels/replay/blob/main/example.m), [**Python**](https://github.com/uwa-channels/replay_python/blob/main/example.py), and [**Julia**](https://github.com/org-arl/UnderwaterAcoustics.jl). Before running the example code, please read the corresponding `readme` file.
+A simple example of this process is given in [**MATLAB**](https://github.com/uwa-channels/replay/blob/main/example.m) and [**Python**](https://github.com/uwa-channels/replay_python/blob/main/example.py). Before running the example code, please read the corresponding `readme` file.
+
+For `Julia`, please visit [**UnderwaterAcoustics.jl**](https://github.com/org-arl/UnderwaterAcoustics.jl).
 
 {{% alert title="Important note" color="warning" %}}
 The channels are specified for a certain acoustic bandwidth that was used during the experiment. When working with a channel, please understand that only that bandwidth is visible. If you are designing a signal that you will pass through a channel, the bandwidth of your signal must fit within the stated limit.  Note that you do **not** need to decompress the channel first to replay the signal.
