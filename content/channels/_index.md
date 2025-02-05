@@ -21,7 +21,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
 | Purple | North Atlantic     | Oct. 2008 | 12.5                   | 6.5               | 0.06          | 11/10/15              | Moored               | Cross/Vertical/Vertical | 32/16/12           | 5/5/12               |
 | Yellow | Hawaii             | Jun. 2011 | 13                     | 6.25              | 3/7           | 50/50/100             | Moored               | Vertical/Vertical       | 24/24              | 5/20                 |
 | Green  | Norway, West Coast | Nov. 2024 | 6/11.52/28             | 4.5/5.625/9       | 0.27          | 20/43/60              | Moored               | N/A                     | N/A                | N/A                  |
-| Red    | Singapore          | Nov. 2024 | 25                     | 9.6               | 0.1           | 6/3/20                | Drifting             | Vertical                | 3                  | 0.8                  |
+| Red    | Singapore          | Nov. 2024 | 25                     | 9.6               | 0.1           | 6/3/20                | Drifting             | Vertical                | 3                  | 80                   |
 
 
 ![](SpilhausBathymetry.jpg)
