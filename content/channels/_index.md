@@ -19,16 +19,16 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
 <table><thead>
   <tr>
     <th></th>
-    <th>Location</th>
-    <th>Date</th>
-    <th>Tx/Rx/water depth [m]</th>
-    <th>Mobility</th>
-    <th>Distance [km]</th>
-    <th>Center Frequency [kHz]</th>
-    <th>Symbol Rate [kHz]</th>
-    <th>Array Configuration</th>
-    <th>Number of Elements</th>
-    <th>Element Spacing [cm]</th>
+    <th><font size="3"> Location </font> </th>
+    <th><font size="3"> Date </font> </th>
+    <th><font size="3"> Tx/Rx/water depth [m] </font> </th>
+    <th><font size="3"> Mobility </font> </th>
+    <th><font size="3"> Distance [km] </font> </th>
+    <th><font size="3"> Center Frequency [kHz] </font> </th>
+    <th><font size="3"> Symbol Rate [kHz] </font> </th>
+    <th><font size="3"> Array Configuration </font> </th>
+    <th><font size="3"> Number of Elements </font> </th>
+    <th><font size="3"> Element Spacing [cm] </font> </th>
   </tr></thead>
 <tbody>
   <tr>
