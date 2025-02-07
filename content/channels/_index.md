@@ -47,7 +47,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>Mobile, up to 1.5m/s</td>
     <td>3-7</td>
     <td>13</td>
-    <td>10^7/2048</td>
+    <td>4.9</td>
     <td>Vertical</td>
     <td>12</td>
     <td>12</td>
