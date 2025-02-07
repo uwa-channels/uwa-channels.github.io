@@ -63,7 +63,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>9.6</td>
     <td>Vertical</td>
     <td>3</td>
-    <td>80</td>
+    <td>0.8</td>
   </tr>
   <tr>
     <td rowspan="2"><a href="yellow" style="color: #EDB120">Yellow</a></td>
@@ -72,14 +72,18 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td rowspan="2">50/50/100</td>
     <td rowspan="2">Moored</td>
     <td>3</td>
-    <td rowspan="2">13</td>
-    <td rowspan="2">6.25</td>
-    <td rowspan="2">Vertical</td>
-    <td rowspan="2">24</td>
+    <td>13</td>
+    <td>6.25</td>
+    <td>Vertical</td>
+    <td>24</td>
     <td>5</td>
   </tr>
   <tr>
     <td>7</td>
+    <td>13</td>
+    <td>6.25</td>
+    <td>Vertical</td>
+    <td>24</td>
     <td>20</td>
   </tr>
   <tr>
@@ -89,20 +93,25 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td rowspan="3">11/10/15</td>
     <td rowspan="3">Moored</td>
     <td>0.06</td>
-    <td rowspan="3">12.5</td>
-    <td rowspan="3">6.5</td>
+    <td>12.5</td>
+    <td>6.5</td>
     <td>Cross</td>
     <td>32</td>
     <td>3.75</td>
   </tr>
   <tr>
     <td>0.2</td>
-    <td rowspan="2">Vertical</td>
+    <td>12.5</td>
+    <td>6.5</td>
+    <td>Vertical</td>
     <td>16</td>
     <td>5</td>
   </tr>
   <tr>
     <td>1</td>
+    <td>12.5</td>
+    <td>6.5</td>
+    <td>Vertical</td>
     <td>12</td>
     <td>12</td>
   </tr>
@@ -112,21 +121,21 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td rowspan="3">Nov. 2024</td>
     <td rowspan="3">20/43/60</td>
     <td rowspan="3">Moored</td>
-    <td rowspan="3">0.27</td>
+    <td>0.27</td>
     <td>6</td>
     <td>4.5</td>
     <td colspan="3" rowspan="3">N/A</td>
   </tr>
   <tr>
+    <td>0.27</td>
     <td>11.52</td>
     <td>5.625</td>
   </tr>
   <tr>
+    <td>0.27</td>
     <td>28</td>
     <td>9<br></td>
   </tr>
 </tbody></table>
-
-The sampling rate in delay is twice the symbol rate, $R$, and the sampling rate in time is $R/100$.
 
 ![](SpilhausBathymetry.jpg)
