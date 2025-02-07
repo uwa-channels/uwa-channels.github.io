@@ -2,7 +2,7 @@
 title: "Purple"
 subtitle: 
 date: 2024-11-15
-weight: 2
+weight: 4
 description: >
 ---
 
