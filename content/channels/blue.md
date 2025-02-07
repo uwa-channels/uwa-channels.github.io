@@ -7,7 +7,7 @@ description: >
 ---
 
 * Experiment:
-  * Location: North Atlantic, off the coast of Rhode Island
+  * Location: 40.2N, 70.5W
   * Date recorded: June 2010
   * Center frequency: 13 kHz
   * Bandwidth: 5 kHz

@@ -7,7 +7,7 @@ description: >
 ---
 
 * Experiment:
-  * Location: Hawaii
+  * Location: 22.1N, 159.8W
   * Date recorded: June 2011
   * Center frequency: 13 kHz
   * Bandwidth: 6.25 kHz

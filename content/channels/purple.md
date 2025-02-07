@@ -7,7 +7,7 @@ description: >
 ---
 
 * Experiment:
-  * Location: Northern Atlantic, south of Martha's Vineyard
+  * Location: 41.2N, 70.3W
   * Date recorded: October 2008
   * Center frequency: 12.5 kHz
   * Bandwidth: 6.5 kHz
