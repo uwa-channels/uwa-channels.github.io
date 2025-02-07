@@ -63,7 +63,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>9.6</td>
     <td>Vertical</td>
     <td>3</td>
-    <td>0.8</td>
+    <td>80</td>
   </tr>
   <tr>
     <td rowspan="2"><a href="yellow" style="color: #EDB120">Yellow</a></td>
