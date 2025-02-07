@@ -18,6 +18,6 @@ description: >
   * Receiving array: none
 * Parameters:
   * Sampling rate in delay: 2R
-  * Total delay coverage: up to 55 ms
+  * Total delay coverage: up to 80 ms
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
   * Total time coverage: 1 minute
