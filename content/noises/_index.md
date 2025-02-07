@@ -1,6 +1,6 @@
 ---
-title: "Noises"
-linkTitle: "Noises"
+title: "Noise"
+linkTitle: "Noise"
 weight: 2
 menu:
   main:
