@@ -33,7 +33,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <th>Mobility</th>
     <th>Distance [km]</th>
     <th>Center Frequency [kHz]</th>
-    <th>Symbol Rate [kHz]</th>
+    <th>Bandwidth [kHz]</th>
     <th>Array Configuration</th>
     <th>Number of Elements</th>
     <th>Element Spacing [cm]</th>
