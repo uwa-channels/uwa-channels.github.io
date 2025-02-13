@@ -7,7 +7,7 @@ description: >
 ---
 
 * Experiment:
-  * Location: Norway, West Coast
+  * Location: 60N, 5.3E
   * Date recorded: November 2024
   * Center frequency: 6 kHz, 11.52 kHz, and 28 kHz 
   * Bandwidth: 4.5 kHz, 5.625 kHz, and 9 kHz
