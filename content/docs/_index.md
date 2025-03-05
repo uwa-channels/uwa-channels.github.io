@@ -34,7 +34,7 @@ w = generate_noise(output, fs, array_index, noise, 2)
 {{< /tab >}}
 {{< /tabpane >}}
 
-A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/replay_matlab/blob/main/example.m) and [`Python`](https://github.com/uwa-channels/replay_python/blob/main/example.py). Before running the example code, please read the corresponding `README` file. For `Julia` support, please visit [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl).
+A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/replay_matlab/blob/main/example.m) and [`Python`](https://github.com/uwa-channels/replay_python/blob/main/examples/example.py). Before running the example code, please read the corresponding `README` file. For `Julia` support, please visit [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl).
 
 {{% alert title="Important note" color="warning" %}}
 The channels are specified for a certain acoustic bandwidth that was used during the experiment. When working with a channel, please understand that only that bandwidth is visible. If you are designing a signal that you will pass through a channel, the bandwidth of your signal must fit within the stated limit.  Note that you do **not** need to decompress the channel first to replay the signal.
