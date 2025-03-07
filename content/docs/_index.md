@@ -23,21 +23,23 @@ The channels stored in this library can be used in two ways: (1) a channel can b
 {{< tab header="MATLAB/Octave" lang="matlab" >}}
 channel = load('blue_1.mat');
 noise = load('blue_1_noise.mat');
-output = replay(input, fs, array_index, channel);
-w = generate_noise(output, fs, array_index, noise, 2);
+y = replay(input, fs, array_index, channel);
+w = generate_noise(size(y), fs);
+r = y + 0.05 * w;
 {{< /tab >}}
 {{< tab header="Python" lang="python" >}}
 channel = h5py.File("blue_1.mat", "r")
 noise = h5py.File("blue_1_noise.mat", "r")
-output = replay(input, fs, array_index, channel)
-w = generate_noise(output, fs, array_index, noise, 2)
+y = replay(input, fs, array_index, channel);
+w = generate_noise(size(y), fs);
+r = y + 0.05 * w;
 {{< /tab >}}
 {{< /tabpane >}}
 
-A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/replay_matlab/blob/main/example.m) and [`Python`](https://github.com/uwa-channels/replay_python/blob/main/examples/example.py). Before running the example code, please read the corresponding `README` file. For `Julia` support, please visit [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl).
+A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/replay_matlab/blob/main/examples/example_replay.m) and [`Python`](https://github.com/uwa-channels/replay_python/blob/main/examples/example_replay.py). Before running the example code, please read the corresponding `README` file.
 
 {{% alert title="Important note" color="warning" %}}
-The channels are specified for a certain acoustic bandwidth that was used during the experiment. When working with a channel, please understand that only that bandwidth is visible. If you are designing a signal that you will pass through a channel, the bandwidth of your signal must fit within the stated limit.  Note that you do **not** need to decompress the channel first to replay the signal.
+The channels are specified for a certain acoustic bandwidth that was used during the experiment. When working with a channel, please understand that only that bandwidth is visible. If you are designing a signal that you will pass through a channel, the bandwidth of your signal must fit within the stated limit. Note that you do **not** need to decompress the channel first to replay the signal.
 {{% /alert %}}
 
 ## Visualizing a channel
