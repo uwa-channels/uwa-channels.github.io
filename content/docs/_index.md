@@ -8,7 +8,7 @@ description: >
 
 ---
 
-The channels stored in this library can be used in two ways: (1) a channel can be applied directly to a user-generated signal, or (2) it can be decompressed for visualizing. Ready-to-use code for performing these functions is available under [GitHub]([https://github.com/uwa-channels](https://github.com/uwa-channels)). You can also download the MATLAB package [here](https://github.com/uwa-channels/matlab/archive/refs/heads/main.zip).
+The channels stored in this library can be used in two ways: (1) a channel can be applied directly to a user-generated signal, or (2) it can be decompressed for visualizing. Ready-to-use code for performing these functions is available under [GitHub](https://github.com/uwa-channels). You can also download the MATLAB package [here](https://github.com/uwa-channels/matlab/archive/refs/heads/main.zip).
 
 ## Applying a channel to an arbitrary signal 
 
