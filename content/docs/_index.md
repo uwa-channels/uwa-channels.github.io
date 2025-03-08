@@ -46,7 +46,7 @@ The channels are specified for a certain acoustic bandwidth that was used during
 
 To visualize a channel as a collection of impulse responses evolving over time, you will need to decompress the channel impulse responses via `unpack.m`. This will produce a new channel matrix that is decompressed (it is larger than the stored original) and contains all the physical effects of delay drifting. The new matrix can be generated at arbitrary sampling rates in time, provided it is no greater than the sampling rate in delay.
 
-A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/matlab/blob/main/examples/example_unpack.m) and [`Python`](https://github.com/uwa-channels/python/blob/main/examples/example_unpack.py). Before running the example code, please read the corresponding `README` file. For `Julia` support, please visit [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl).
+A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/matlab/blob/main/examples/example_unpack.m) and [`Python`](https://github.com/uwa-channels/python/blob/main/examples/example_unpack.py). Before running the example code, please read the corresponding `README` file.
 
 {{% alert title="Important note" color="warning" %}}
 Decompressing and visualizing a channel requires considerable computer memory.
