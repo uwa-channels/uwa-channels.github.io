@@ -48,7 +48,3 @@ To visualize a channel as a collection of impulse responses evolving over time, 
 
 A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/matlab/blob/main/examples/example_unpack.m) and [`Python`](https://github.com/uwa-channels/python/blob/main/examples/example_unpack.py). Before running the example code, please read the corresponding `README` file.
 
-{{% alert title="Important note" color="warning" %}}
-Decompressing and visualizing a channel requires considerable computer memory.
-{{% /alert %}}
-
