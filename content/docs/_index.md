@@ -15,7 +15,7 @@ The channels stored in this library can be used in two ways: (1) a channel can b
 * To pass a signal of your choice through a channel, generate the desired signal in passband, respecting the bandwidth and the sampling rate limits of the chosen channel (see the [channel](/channels) tab).
 * State the sampling frequency of your passband signal.
 * Run `replay` on the signal. 
-* Specify the noise power, and add the output of `generate_noise` to the output of `replay` at a desired signal-to-noise ratio.
+* Specify the noise power, and add the output of `noisegen` to the output of `replay` at a desired signal-to-noise ratio.
 * This will produce a noisy passband received signal.
 
 {{< tabpane >}}
@@ -24,14 +24,14 @@ The channels stored in this library can be used in two ways: (1) a channel can b
 channel = load('blue_1.mat');
 noise = load('blue_1_noise.mat');
 y = replay(input, fs, array_index, channel);
-w = generate_noise(size(y), fs);
+w = noisegen(size(y), fs);
 r = y + 0.05 * w;
 {{< /tab >}}
 {{< tab header="Python" lang="python" >}}
 channel = h5py.File("blue_1.mat", "r")
 noise = h5py.File("blue_1_noise.mat", "r")
 y = replay(input, fs, array_index, channel);
-w = generate_noise(size(y), fs);
+w = noisegen(size(y), fs);
 r = y + 0.05 * w;
 {{< /tab >}}
 {{< /tabpane >}}
