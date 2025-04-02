@@ -31,7 +31,7 @@ r = y + 0.05 * w;
 channel = h5py.File("blue_1.mat", "r")
 noise = h5py.File("blue_1_noise.mat", "r")
 y = replay(input, fs, array_index, channel);
-w = noisegen(size(y), fs);
+w = noisegen(y.shape, fs);
 r = y + 0.05 * w;
 {{< /tab >}}
 {{< /tabpane >}}
