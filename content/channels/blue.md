@@ -11,7 +11,7 @@ description: >
   * Date recorded: June 2010
   * Center frequency: 13 kHz
   * Bandwidth: 5 kHz
-  * Symbol rate: R = 10^7/2048 Hz (approximately 4.8 kHz)
+  * Symbol rate: R = 10^7/2048 Hz (approximately 4.9 kHz)
   * Distance: 3 km - 7 km
   * Tx/Rx/water depth: 30-60 m/50 m/100 m
   * Mobility: varying, up to 1.5 m/s
