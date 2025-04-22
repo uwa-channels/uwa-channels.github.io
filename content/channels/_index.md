@@ -104,7 +104,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>12.5</td>
     <td>6.5</td>
     <td>Vertical</td>
-    <td>16</td>
+    <td>24</td>
     <td>5</td>
   </tr>
   <tr>

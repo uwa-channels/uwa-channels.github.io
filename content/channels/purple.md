@@ -16,7 +16,7 @@ description: >
   * Tx/Rx/water depth: 11 m/10 m/15 m
   * Mobility: static
   * Receiving array 1: cross, 16 elements each leg, 5 cm spacing (numbered top to bottom, then left to right) 
-  * Receiving array 2: vertical, 16 elements, 5 cm spacing (numbered top to bottom)
+  * Receiving array 2: vertical, 24 elements, 5 cm spacing (numbered top to bottom)
   * Receiving array 3: vertical, 12 elements, 12 cm spacing (numbered top to bottom)
 * Parameters:
   * Sampling rate in delay: 2R
