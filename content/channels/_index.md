@@ -29,14 +29,14 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <th></th>
     <th>Location</th>
     <th>Date</th>
-    <th>Tx/Rx/water depth [m]</th>
+    <th>$d_{T}$/$d_{R}$/$d_{w}$ [m]</th>
     <th>Mobility</th>
-    <th>Distance [km]</th>
-    <th>Center Frequency [kHz]</th>
-    <th>Bandwidth [kHz]</th>
-    <th>Array Configuration</th>
-    <th>Number of Elements</th>
-    <th>Element Spacing [cm]</th>
+    <th>$d$ [km]</th>
+    <th>$f_c$ [kHz]</th>
+    <th>$R$ [kHz]</th>
+    <th>Array</th>
+    <th>$M$</th>
+    <th>$\ell$ [m]</th>
   </tr></thead>
 <tbody>
   <tr>
@@ -44,10 +44,10 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>North Atlantic</td>
     <td>Jun. 2010</td>
     <td>30-60/50/100</td>
-    <td>Mobile, up to 1.5m/s</td>
+    <td>Up to 1.5m/s</td>
     <td>3-7</td>
     <td>13</td>
-    <td>4.9</td>
+    <td>$10^7/2048$</td>
     <td>Vertical</td>
     <td>12</td>
     <td>12</td>
@@ -63,7 +63,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>9.6</td>
     <td>Vertical</td>
     <td>3</td>
-    <td>80</td>
+    <td>0.8</td>
   </tr>
   <tr>
     <td rowspan="2"><a href="yellow" style="color: #EDB120">Yellow</a></td>
@@ -72,18 +72,14 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td rowspan="2">50/50/100</td>
     <td rowspan="2">Moored</td>
     <td>3</td>
-    <td>13</td>
-    <td>6.25</td>
-    <td>Vertical</td>
-    <td>24</td>
+    <td rowspan="2">13</td>
+    <td rowspan="2">6.25</td>
+    <td rowspan="2">Vertical</td>
+    <td rowspan="2">24</td>
     <td>5</td>
   </tr>
   <tr>
     <td>7</td>
-    <td>13</td>
-    <td>6.25</td>
-    <td>Vertical</td>
-    <td>24</td>
     <td>20</td>
   </tr>
   <tr>
@@ -93,48 +89,59 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td rowspan="3">11/10/15</td>
     <td rowspan="3">Moored</td>
     <td>0.06</td>
-    <td>12.5</td>
-    <td>6.5</td>
+    <td rowspan="3">12.5</td>
+    <td rowspan="3">6.5</td>
     <td>Cross</td>
     <td>32</td>
     <td>3.75</td>
   </tr>
   <tr>
     <td>0.2</td>
-    <td>12.5</td>
-    <td>6.5</td>
     <td>Vertical</td>
     <td>24</td>
     <td>5</td>
   </tr>
   <tr>
     <td>1</td>
-    <td>12.5</td>
-    <td>6.5</td>
     <td>Vertical</td>
     <td>12</td>
     <td>12</td>
   </tr>
   <tr>
     <td rowspan="3"><a href="green" style="color: #77AC30">Green</a></td>
-    <td rowspan="3">Norway, West Coast</td>
+    <td rowspan="3">Norway</td>
     <td rowspan="3">Nov. 2024</td>
     <td rowspan="3">20/43/60</td>
     <td rowspan="3">Moored</td>
-    <td>0.27</td>
+    <td rowspan="3">0.27</td>
     <td>6</td>
     <td>4.5</td>
     <td colspan="3" rowspan="3">N/A</td>
   </tr>
   <tr>
-    <td>0.27</td>
     <td>11.52</td>
     <td>5.625</td>
   </tr>
   <tr>
-    <td>0.27</td>
     <td>28</td>
-    <td>9<br></td>
+    <td>9</td>
+  </tr>
+  <tr>
+    <td rowspan="3"><a href="sky" style="color: #4DBFEF">Sky</a></td>
+    <td rowspan="2">Earth</td>
+    <td rowspan="2">Jan. 1990</td>
+    <td rowspan="2">175/?/x</td>
+    <td rowspan="2">Mobile</td>
+    <td>5513</td>
+    <td rowspan="2">57</td>
+    <td rowspan="2">11.4</td>
+    <td colspan="3">N/A</td>
+  </tr>
+  <tr>
+    <td>9192</td>
+    <td>Vertical</td>
+    <td>4</td>
+    <td>?</td>
   </tr>
 </tbody></table>
 
