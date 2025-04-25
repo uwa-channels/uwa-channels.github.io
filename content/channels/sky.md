@@ -7,8 +7,8 @@ description: >
 ---
 
 * Experiment:
-  * Location: From Heard Island and McDonald Islands to the world
-  * Date recorded: Janurary 1991
+  * Location: from Heard Island and McDonald Islands to the world
+  * Date recorded: January 1991
   * Center frequency: 57 Hz 
   * Bandwidth: 11.4 Hz
   * Symbol rate: R = 11.4 Hz
