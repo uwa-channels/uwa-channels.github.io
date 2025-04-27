@@ -22,6 +22,8 @@ description: >
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
   * Total time coverage: 1 hour
 
+![HIFTmapMawsonAnt](https://github.com/user-attachments/assets/e8db9fb1-e876-4a94-936e-bacd2f79665e)
+
 {{% alert title="Acknowledgement" %}}  
 The Underwater Acoustic Channels Group gratefully acknowledges the contribution of the original Heard Island Feasibility Test team. For more information, please refer to the documentation page [here](https://staff.washington.edu/dushaw/heard/index.shtml). The original link to download expired, but you may download all six CDs from [here](https://oalib-acoustics.org/experiments-data/).
 {{% /alert %}}
