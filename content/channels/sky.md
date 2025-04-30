@@ -1,5 +1,5 @@
 ---
-title: "Sky"
+title: "Skyblue"
 subtitle: 
 date: 2025-04-24
 weight: 6

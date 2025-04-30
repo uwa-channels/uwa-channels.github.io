@@ -127,7 +127,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>9</td>
   </tr>
   <tr>
-    <td rowspan="3"><a href="sky" style="color: #4DBFEF">Sky</a></td>
+    <td rowspan="3"><a href="sky" style="color: #4DBFEF">Skyblue</a></td>
     <td rowspan="2">Earth</td>
     <td rowspan="2">Jan. 1990</td>
     <td rowspan="2">175/?/x</td>
