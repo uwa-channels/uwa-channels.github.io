@@ -127,7 +127,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>9</td>
   </tr>
   <tr>
-    <td rowspan="3"><a href="sky" style="color: #4DBFEF">Skyblue</a></td>
+    <td rowspan="2"><a href="sky" style="color: #4DBFEF">Skyblue</a></td>
     <td rowspan="2">Earth</td>
     <td rowspan="2">Jan. 1990</td>
     <td rowspan="2">175/?/x</td>
@@ -142,6 +142,32 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>Vertical</td>
     <td>4</td>
     <td>?</td>
+  </tr>
+   <tr>
+    <td rowspan="1"><a href="namikaze" style="color: #A12C3A">Namikaze</a></td>
+    <td>Kochi Prefecture, Japan</td>
+    <td>Jul. 2022</td>
+    <td>176/146/x</td>
+    <td>Static</td>
+    <td>14</td>
+    <td>6</td>
+    <td>4</td>
+    <td>Vertical</td>
+    <td>24</td>
+    <td>x</td>
+  </tr>
+  <tr>
+    <td rowspan="3"><a href="abyssal" style="color: #254038">Abyssal</a></td>
+    <td>Mariana Trench</td>
+    <td>Oct. 2024</td>
+    <td>6/8718/8720</td>
+    <td>Static</td>
+    <td>8.72</td>
+    <td>18</td>
+    <td>12.5</td>
+    <td>Circular</td>
+    <td>8</td>
+    <td>x</td>
   </tr>
 </tbody></table>
 
