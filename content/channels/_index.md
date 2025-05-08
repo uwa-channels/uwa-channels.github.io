@@ -148,7 +148,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>Kochi Prefecture, Japan</td>
     <td>Jul. 2022</td>
     <td>176/146/x</td>
-    <td>Static</td>
+    <td>Moored</td>
     <td>14</td>
     <td>6</td>
     <td>4</td>
@@ -161,7 +161,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>Mariana Trench</td>
     <td>Oct. 2024</td>
     <td>6/8718/8720</td>
-    <td>Static</td>
+    <td>Moored</td>
     <td>8.72</td>
     <td>18</td>
     <td>12.5</td>
