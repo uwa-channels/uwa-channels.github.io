@@ -14,7 +14,7 @@ description: >
   * Symbol rate: R = 12.5 kHz
   * Distance: 8.7 km (vertical)
   * Tx/Rx/water depth: 6 m/8718 m/8720 m.
-  * Mobility: static
+  * Mobility: moored
   * Receiving array: circular.
 * Parameters:
   * Sampling rate in delay: 2R
