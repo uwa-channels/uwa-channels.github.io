@@ -17,10 +17,8 @@ pip install -i https://test.pypi.org/simple/ uwa-replay
 ## Applying a channel to an arbitrary signal 
 
 * To pass a signal of your choice through a channel, generate the desired signal in passband, respecting the bandwidth and the sampling rate limits of the chosen channel (see the [channel](/channels) tab).
-* State the sampling frequency of your passband signal.
 * Run `replay` on the signal. 
 * Specify the noise power, and add the output of `noisegen` to the output of `replay` at a desired signal-to-noise ratio.
-* This will produce a noisy passband received signal.
 
 {{< tabpane >}}
 {{< tab header="Replay and generate noise" disabled=true />}}
