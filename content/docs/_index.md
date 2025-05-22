@@ -31,8 +31,8 @@ r = y + 0.05 * w;
 {{< /tab >}}
 {{< tab header="Python" lang="python" >}}
 from uwa_replay import replay, noisegen
-channel = h5py.load("blue_1.mat")
-noise = h5py.load("blue_1_noise.mat")
+channel = h5py.File("blue_1.mat", "r")
+noise = h5py.File("blue_1_noise.mat", "r")
 y = replay(input, fs, array_index, channel)
 w = noisegen(y.shape, fs, array_index, noise)
 r = y + 0.05 * w
