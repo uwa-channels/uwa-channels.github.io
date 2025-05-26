@@ -51,11 +51,8 @@ version_menu = "Releases"
 archived_version = false
 version = "1.0"
 github_repo = "https://github.com/uwa-channels/uwa-channels.github.io"
-offlineSearch = false
+offlineSearch = true
 prism_syntax_highlighting = false
-
-[params.search.algolia]
-enabled = true
 
 [params.ui]
 sidebar_menu_compact = false
