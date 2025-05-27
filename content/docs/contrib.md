@@ -11,8 +11,8 @@ cascade:
 
 The `uwa-channels`-compatible `.mat` files must be saved with the following flags:
 
-* `-v7.3` to support large variables and `HDF5` file format.
-* `-nocompression` to accelerate loading speed.
+* `-v7.3`: Supports large variables and the HDF5 file format.
+* `-nocompression`: Accelerates loading speed.
 
 ### Required Fields
 
@@ -20,66 +20,54 @@ Each `.mat` file must include the following variables:
 
 #### **`h_hat`**
 
-* Type: Multi-dimensional numeric tensor.
-* Dimensions: `[delay, receiver, time]`
-* Units:
-
-  * Delay axis: seconds
-  * Time axis: seconds
-  * Amplitude: complex baseband impulse response (unitless)
-* Description: The estimated time-varying channel impulse response (TVIR).
+* **Type**: Multi-dimensional numeric tensor (single or double precision). Arbitrarily scaled.
+* **Dimensions**: `[delay, receiver, time]`
+* **Description**: The estimated time-varying channel impulse response (TVIR).
 
 #### **`params`**
 
-A MATLAB structure with the following scalar fields:
+A MATLAB structure containing the following scalar fields:
 
-* `fs_delay` (Hz): Sampling rate along the *delay* axis. Determines the time resolution of the impulse response.
-* `fs_time` (Hz): Sampling rate along the *time* axis. Determines how often the impulse response is sampled.
-* `fc` (Hz): Center frequency of the signal used during channel estimation.
+* `fs_delay` (Hz): Sampling rate of `h_hat` along the *delay* axis.
+* `fs_time` (Hz): Sampling rate of `h_hat` along the *time* axis.
+* `fc` (Hz): The probing waveform was basebanded with respect to `fc` prior to the TVIR estimation; `fc` typically corresponds to the center frequency of the probing waveform. 
 
 #### **`version`**
 
-* Type: Numeric scalar.
-* Description: Dataset format version number.
+* **Type**: Numeric scalar
+* **Description**: Dataset format version number.
 
 ### Optional Fields
 
 #### **`theta_hat`**
 
-* Type: Numeric matrix of size `[receiver, time]`
-* Units: Radians (interpreted as phase rotation angles)
-* Sampling Rate: Must match `params.fs_delay`
-* Duration Constraint: The third dimension of `h_hat` and the time dimension of `theta_hat` must span the same time duration, i.e.,
-  ```
-  size(theta_hat, 2) / params.fs_delay == size(h_hat, 3) / params.fs_time
-  ``` 
-* Description: For each hydrophone (receiver), `theta_hat` represents a time-varying *resampling factor* to be applied to the signal during or after convolution. The baseband received signal $v(t)$ is modeled as
-   $$v(t) = \sum_n d(n) h(t - nT) e^{j \theta(t)} + z(t)$$
-   where $d(n)$ is the data symbol, $h(t)$ is the time-varying impulse response, $T$ is the symbol duration, and $\theta(t)$ is the phase correction term at time $t$.
+* **Type**: Numeric matrix of size `[receiver, time]` (single or double precision).
+* **Sampling Rate**: Must match `params.fs_time`
+* **Duration Constraint**: The time duration of `theta_hat` must match the third dimension of `h_hat`, i.e., `size(theta_hat, 2) * params.fs_time == size(h_hat, 3) *  params.fs_delay`.
+* **Description**: For each hydrophone (receiver), `theta_hat` represents the output of a digital phase-locked loop operating independently per channel. It can be interpreted as a time-varying *resampling factor* to be applied to the signal during *and* after convolution in the `replay` process.
 
 #### **`f_resamp`**
 
-* Type: Scalar (double precision)
-* Units: Unitless resampling factor
-* Description: A *time-invariant* resampling factor applied to the output signal. This is typically the *inverse* of a resampling operation applied to remove the nominal Doppler frequency offset before channel estimation. It will be applied after the time-varying convolution.
+* **Type**: Scalar (single or double precision)
+* **Units**: Unitless resampling factor
+* **Description**: A *time-invariant* resampling factor applied to the output signal after convolution. This is typically the *inverse* of a resampling operation used to remove nominal Doppler offsets during channel estimation. It is applied *after* the time-varying convolution.
 
 #### **`meta`**
 
-The `meta` structure is optional but encouraged for documenting dataset context. The following fields are supported:
+The `meta` structure is optional but encouraged for documenting dataset context. The suggested fields include:
 
 * `meta.experiment_name` (string): Name of the experiment.
-* `meta.experiment_info` (string or struct): Descriptive details or notes about the experiment setup.
-* `meta.array_info` (string or struct): Information about the hydrophone array (geometry, number of elements, etc.).
-* `meta.authorship` (string or struct): Information about the data contributors and affiliations.
+* `meta.experiment_info` (string or struct): Descriptive details about the experimental setup.
+* `meta.array_info` (string or struct): Information about the hydrophone array (e.g., geometry, number of elements).
+* `meta.authorship` (string or struct): Data contributor names and affiliations.
 
-Users are free to add *any number of additional fields* to `meta` as needed to capture experiment-specific metadata.
+Users are free to add *any number of additional fields* to `meta` to record experiment-specific metadata.
 
 ### Dataset Configurations
 
 The following configurations are currently supported:
 
-* `h_hat` only: Supported, but not used in official datasets.
-* `h_hat` and `theta_hat`: Used in *blue*, *red*, *green*, *purple*, *yellow*, *abyssal*, and *namikaze* datasets.
-* `h_hat` and `f_resamp`: Used in *Watermark* datasets.
-* `h_hat`, `theta_hat`, and `f_resamp`: Used in the *Sky* dataset.
-
+* `h_hat` only — supported but not used in official datasets.
+* `h_hat` and `theta_hat` — used in the *blue*, *red*, *green*, *purple*, *yellow*, *abyssal*, and *namikaze* datasets.
+* `h_hat` and `f_resamp` — used in *Watermark* datasets.
+* `h_hat`, `theta_hat`, and `f_resamp` — used in the *Sky* dataset.
