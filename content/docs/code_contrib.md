@@ -147,7 +147,7 @@ fix(io): handle empty .mat files (issue #42)
 
 ## Coding Standards
 
-### MATLAB, follow the [MathWorks Style Guidelines](https://github.com/eeberhard/matlab_style_guide):
+### MATLAB, follow the [MATLAB Style Guide](https://github.com/eeberhard/matlab_style_guide):
 
 - 4-space indentation; `camelCase` for functions, `PascalCase` for classes
 - Each function/class in its own `.m` file
@@ -180,6 +180,6 @@ Merged PRs are reflected in `CHANGELOG.md`, with entries auto-generated from com
 
 ## Acknowledgments
 
-This guide was inspired by the excellent [`UnderwaterAcoustics.jl` contributing guide](https://github.com/org-arl/UnderwaterAcoustics.jl/blob/master/CONTRIBUTING.md), as well as the contribution guidelines from `NumPy`, `SciPy`, and MathWorks.
+This guide was inspired by the excellent [`UnderwaterAcoustics.jl` contributing guide](https://github.com/org-arl/UnderwaterAcoustics.jl/blob/master/CONTRIBUTING.md), as well as the contribution guidelines from `NumPy`, `SciPy`, and `MATLAB Style Guide`.
 
 *Happy hacking -- may your channels be peaceful and your SNR high!*
