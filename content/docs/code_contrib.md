@@ -1,14 +1,11 @@
-______________________________________________________________________
-
+---
 title: "Code Contribution Guide"
 linkTitle: "Code Contribution Guide"
 weight: 2
 description: >
 cascade:
-
-- type: "docs"
-
-______________________________________________________________________
+  - type: "docs"
+---
 
 ## Contributing to **UWA-Channels** (MATLAB & Python)
 

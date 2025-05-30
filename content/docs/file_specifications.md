@@ -1,6 +1,6 @@
 ---
-title: "MAT-file format specifications"
-linkTitle: "MAT-file format specifications"
+title: "Channel file format specifications"
+linkTitle: "Channel file format specifications"
 weight: 1
 description: >
 cascade:
