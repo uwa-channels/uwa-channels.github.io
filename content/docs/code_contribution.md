@@ -112,8 +112,8 @@ General Q&A, design ideas, and roadmap conversations belong in [**GitHub Discuss
 1. **Fork** the repository and clone your fork.
 2. **Create a branch** from `main`, named like `topic-short-description` (lowercase, hyphen-separated).
 3. **Develop locally**:
-   - **Python** — run `PYTHONPATH=src pytest` frequently.
    - **MATLAB** — run `runtests('tests')` and address Code Analyzer (MLint) warnings.
+   - **Python** — run `PYTHONPATH=src pytest` frequently.
 4. **Write tests** for new features or bug fixes.
 5. **Document** your changes:
    - Use NumPy-style docstrings in Python functions and classes.
@@ -147,14 +147,13 @@ fix(io): handle empty .mat files (issue #42)
 
 ## Coding Standards
 
-### MATLAB
+### MATLAB, follow the [MathWorks Style Guidelines](https://github.com/eeberhard/matlab_style_guide):
 
-- Follow the [MathWorks Style Guidelines](https://github.com/eeberhard/matlab_style_guide):
-  - 4-space indentation; `camelCase` for functions, `PascalCase` for classes
-  - Each function/class in its own `.m` file
-  - Use `arguments` blocks for input validation where possible
-  - Add unit tests under `tests/testPkgName/` using MATLAB Unit Test
-  - Vectorize where possible; comment non-obvious logic
+- 4-space indentation; `camelCase` for functions, `PascalCase` for classes
+- Each function/class in its own `.m` file
+- Use `arguments` blocks for input validation where possible
+- Add unit tests under `tests/testPkgName/` using MATLAB Unit Test
+- Vectorize where possible; comment non-obvious logic
 
 ### Python
 
@@ -181,6 +180,6 @@ Merged PRs are reflected in `CHANGELOG.md`, with entries auto-generated from com
 
 ## Acknowledgments
 
-This guide was inspired by the excellent [UnderwaterAcoustics.jl CONTRIBUTING](https://github.com/org-arl/UnderwaterAcoustics.jl/blob/master/CONTRIBUTING.md), as well as the contribution guidelines from `NumPy`, `SciPy`, and MathWorks.
+This guide was inspired by the excellent [`UnderwaterAcoustics.jl` contributing guide](https://github.com/org-arl/UnderwaterAcoustics.jl/blob/master/CONTRIBUTING.md), as well as the contribution guidelines from `NumPy`, `SciPy`, and MathWorks.
 
 *Happy hacking -- may your channels be peaceful and your SNR high!*
