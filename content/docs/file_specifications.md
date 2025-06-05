@@ -42,7 +42,7 @@ A MATLAB structure containing the following scalar fields:
 #### **`theta_hat`**
 
 * **Type**: Numeric matrix of size `[receiver, time]` (single or double precision).
-* **Sampling Rate**: Must match `params.fs_time`
+* **Sampling Rate**: Must match `params.fs_delay`
 * **Duration Constraint**: The time duration of `theta_hat` must match the third dimension of `h_hat`, i.e., `size(theta_hat, 2) * params.fs_time == size(h_hat, 3) *  params.fs_delay`.
 * **Description**: For each hydrophone (receiver), theta_hat represents a time-varying *resampling factor* $R(t)$ to be applied to the output signal in conjunction with $h(t,\tau)$:
 $$ R(t) = 1 - \frac{1}{2 \pi f_c} \frac{\text{d} \hat{\theta}(t)}{\text{d} t} $$
