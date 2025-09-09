@@ -90,7 +90,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td rowspan="3">Moored</td>
     <td>0.06</td>
     <td rowspan="3">12.5</td>
-    <td rowspan="3">6.5</td>
+    <td rowspan="3">$10^7/1536$</td>
     <td>Cross</td>
     <td>32</td>
     <td>3.75</td>
