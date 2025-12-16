@@ -134,7 +134,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td rowspan="2">Mobile</td>
     <td>5513</td>
     <td rowspan="2">0.057</td>
-    <td rowspan="2">11.4</td>
+    <td rowspan="2">0.0114</td>
     <td colspan="3">N/A</td>
   </tr>
   <tr>
