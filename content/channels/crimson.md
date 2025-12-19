@@ -1,5 +1,5 @@
 ---
-title: "Abyssal"
+title: "Crimson"
 subtitle: 
 date: 2025-05-05
 weight: 8

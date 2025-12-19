@@ -144,7 +144,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>?</td>
   </tr>
    <tr>
-    <td rowspan="1"><a href="namikaze" style="color: #A12C3A">Namikaze</a></td>
+    <td rowspan="1"><a href="magenta" style="color: #FF00FF">Magenta</a></td>
     <td>Kochi Prefecture, Japan</td>
     <td>Jul. 2022</td>
     <td>176/146/x</td>
@@ -157,7 +157,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>x</td>
   </tr>
   <tr>
-    <td rowspan="3"><a href="abyssal" style="color: #254038">Abyssal</a></td>
+    <td rowspan="3"><a href="crimson" style="color: #990000">Crimson</a></td>
     <td>Mariana Trench</td>
     <td>Oct. 2024</td>
     <td>6/8718/8720</td>
