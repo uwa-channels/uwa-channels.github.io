@@ -66,21 +66,32 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>80</td>
   </tr>
   <tr>
-    <td rowspan="2"><a href="yellow" style="color: #EDB120">Yellow</a></td>
-    <td rowspan="2">Hawaii</td>
-    <td rowspan="2">Jun. 2011</td>
-    <td rowspan="2">50/50/100</td>
-    <td rowspan="2">Moored</td>
+    <td rowspan="4"><a href="yellow" style="color: #EDB120">Yellow</a></td>
+    <td rowspan="4">Hawaii</td>
+    <td rowspan="4">Jun. 2011</td>
+    <td rowspan="4">50/50/100</td>
+    <td rowspan="4">Moored</td>
     <td>3</td>
-    <td rowspan="2">13</td>
-    <td rowspan="2">6.25</td>
-    <td rowspan="2">Vertical</td>
-    <td rowspan="2">24</td>
+    <td rowspan="4">13</td>
+    <td rowspan="4">6.25</td>
+    <td rowspan="4">Vertical</td>
+    <td>24</td>
     <td>5</td>
   </tr>
   <tr>
     <td>7</td>
+    <td>24</td>
     <td>20</td>
+  </tr>
+  <tr>
+    <td>?</td>
+    <td>16</td>
+    <td>3.75</td>
+  </tr>
+  <tr>
+    <td>?</td>
+    <td>16</td>
+    <td>3.75</td>
   </tr>
   <tr>
     <td rowspan="3"><a href="purple" style="color: #7E2F8E">Purple</a></td>
@@ -127,25 +138,21 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>9</td>
   </tr>
   <tr>
-    <td rowspan="2"><a href="sky" style="color: #4DBFEF">Skyblue</a></td>
-    <td rowspan="2">Earth</td>
-    <td rowspan="2">Jan. 1990</td>
-    <td rowspan="2">175/?/x</td>
-    <td rowspan="2">Mobile</td>
-    <td>5513</td>
-    <td rowspan="2">0.057</td>
-    <td rowspan="2">0.0114</td>
-    <td colspan="3">N/A</td>
+    <td><a href="black" style="color: #000000">Black</a></td>
+    <td>Mariana Trench</td>
+    <td>Oct. 2024</td>
+    <td>6/8718/8720</td>
+    <td>Moored</td>
+    <td>8.72</td>
+    <td>18</td>
+    <td>12.5</td>
+    <td>Circular</td>
+    <td>8</td>
+    <td>x</td>
   </tr>
   <tr>
-    <td>9192</td>
-    <td>Vertical</td>
-    <td>4</td>
-    <td>?</td>
-  </tr>
-   <tr>
-    <td rowspan="1"><a href="magenta" style="color: #FF00FF">Magenta</a></td>
-    <td>Kochi Prefecture, Japan</td>
+    <td><a href="pink" style="color: #E377C2">Pink</a></td>
+    <td>Japan</td>
     <td>Jul. 2022</td>
     <td>176/146/x</td>
     <td>Moored</td>
@@ -157,17 +164,17 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>x</td>
   </tr>
   <tr>
-    <td rowspan="3"><a href="crimson" style="color: #990000">Crimson</a></td>
-    <td>Mariana Trench</td>
-    <td>Oct. 2024</td>
-    <td>6/8718/8720</td>
-    <td>Moored</td>
-    <td>8.72</td>
-    <td>18</td>
-    <td>12.5</td>
-    <td>Circular</td>
-    <td>8</td>
-    <td>x</td>
+    <td><a href="brown" style="color: #8C564B">Brown</a></td>
+    <td>California/Hawaii</td>
+    <td>Nov. 1994</td>
+    <td>652/900/x</td>
+    <td>Mobile</td>
+    <td>3250</td>
+    <td>0.075</td>
+    <td>0.0375</td>
+    <td>Vertical</td>
+    <td>20</td>
+    <td>3500</td>
   </tr>
 </tbody></table>
 

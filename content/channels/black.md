@@ -1,5 +1,5 @@
 ---
-title: "Crimson"
+title: "Black"
 subtitle: 
 date: 2025-05-05
 weight: 8

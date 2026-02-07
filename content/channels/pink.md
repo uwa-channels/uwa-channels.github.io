@@ -1,5 +1,5 @@
 ---
-title: "Magenta"
+title: "Pink"
 subtitle: 
 date: 2025-05-05
 weight: 7
