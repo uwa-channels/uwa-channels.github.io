@@ -178,4 +178,4 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
   </tr>
 </tbody></table>
 
-![](SpilhausBathymetry.jpg)
+![](map.png)
