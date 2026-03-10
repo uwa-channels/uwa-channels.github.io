@@ -11,7 +11,7 @@ description: >
 The channels stored in this library can be used in two ways: (1) a channel can be applied directly to a user-generated signal, or (2) it can be decompressed for visualizing. Ready-to-use code for performing these functions is available under [GitHub](https://github.com/uwa-channels). You can also download the MATLAB package [here](https://github.com/uwa-channels/matlab/archive/refs/heads/main.zip). To install the Python package,
 
 ```bash
-pip install -i https://test.pypi.org/simple/ uwa-replay
+pip install uwa-channels
 ```
 
 ## Applying a channel to an arbitrary signal 
@@ -30,7 +30,8 @@ w = noisegen(size(y), fs, array_index, noise);
 r = y + 0.05 * w;
 {{< /tab >}}
 {{< tab header="Python" lang="python" >}}
-from uwa_replay import replay, noisegen
+import h5py
+from uwa_channels import replay, noisegen
 channel = h5py.File("blue_1.mat", "r")
 noise = h5py.File("blue_1_noise.mat", "r")
 y = replay(input, fs, array_index, channel)
