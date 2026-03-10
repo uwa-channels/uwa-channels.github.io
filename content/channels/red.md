@@ -18,6 +18,6 @@ description: >
   * Receiving array: vertical, 3 elements, 0.8 m spacing (numbered top to bottom)
 * Parameters:
   * Sampling rate in delay: 2R
-  * Total delay coverage: up to 15 ms
+  * Total delay coverage: up to 40 ms
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
   * Total time coverage: 50 seconds
