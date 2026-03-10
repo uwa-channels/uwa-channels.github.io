@@ -18,9 +18,9 @@ description: >
   * Receiving array: circular.
 * Parameters:
   * Sampling rate in delay: 2R
-  * Total delay coverage: up to 5 ms
+  * Total delay coverage: up to 7 ms
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
-  * Total time coverage: 40 seconds.
+  * Total time coverage: 36 seconds.
 
 {{% alert title="Acknowledgement" %}}  
 The Underwater Acoustic Channels Group gratefully acknowledges the The Underwater Acoustic Channels Group gratefully acknowledges the Japan Agency for Marine-Earth Science and Technology (JAMSTEC) for their efforts for providing the data.
