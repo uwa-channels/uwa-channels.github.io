@@ -56,9 +56,9 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td><a href="red" style="color: #D95319">Red</a></td>
     <td>Singapore</td>
     <td>Nov. 2024</td>
-    <td>6/3/8-15</td>
+    <td>6/4.6/8-15</td>
     <td>Drifting</td>
-    <td>0.1-0.25</td>
+    <td>0.1-0.4</td>
     <td>25</td>
     <td>9.6</td>
     <td>Vertical</td>
