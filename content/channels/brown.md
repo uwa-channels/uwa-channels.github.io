@@ -14,7 +14,7 @@ description: >
   * Distance: 3250 km
   * Tx/Rx/water depth: 652/900/x
   * Mobility: mobile
-  * Receiving array: 20-element vertical array, 35 m spacing, 900–1600 m depth
+  * Receiving array: 20-element vertical array, 35 m spacing, 900 m – 1600 m depth
 * Parameters:
   * Sampling rate in delay: 2R
   * Total delay coverage: up to 8 seconds
