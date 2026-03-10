@@ -1,3 +1,12 @@
+---
+title: "Channel file format specifications"
+linkTitle: "Channel file format specifications"
+weight: 1
+description: >
+cascade:
+  - type: "docs"
+---
+
 # UWA-Channels MAT File Format Specification
 
 The `uwa-channels`-compatible `.mat` files **must** be saved with the following flags:
