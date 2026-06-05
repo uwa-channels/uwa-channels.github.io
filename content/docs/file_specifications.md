@@ -45,7 +45,11 @@ A structure with the following scalar fields:
 
 ## Phase / Delay Tracking Fields
 
-Exactly one of `theta_hat` or `phi_hat` must be present.
+If none of `theta_hat`, `phi_hat`, or `f_resamp` is present, the replay engine will not apply any form of Doppler correction.
+
+If one of `theta_hat`, `phi_hat`, or `f_resamp` is present, the replay engine apply that particular Doppler correction.
+
+If two or three of `theta_hat`, `phi_hat`, and `f_resamp` is present, the replay engine will apply all Doppler corrections in succession.
 
 ### `theta_hat` (phase tracking only)
 
