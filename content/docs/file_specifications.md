@@ -53,17 +53,6 @@ If both `theta_hat` and `phi_hat` are present, 'theta_hat' will be ignored by th
 
 `f_resamp` will be applied regardless of the presence of `theta_hat` and `phi_hat`.
 
-### `theta_hat` (phase tracking only)
-
-* **Type**: Numeric matrix, size `[receiver, time]`
-* **Units**: Radians
-* **Sampling rate**: `params.fs_delay`
-* **Description**: Time-varying phase correction. In this mode, `h_hat` contains the *drifting* impulse response (delay drift is embedded in the taps). Only the phase is tracked separately. The baseband received signal is modeled as:
-
-$$v(t) = \sum_n d(n)\, h(t, t - nT)\, e^{j\theta(t)} + z(t)$$
-
-where $d(n)$ is the data symbol, $h(t, \tau)$ is the time-varying impulse response with drifting taps, $T$ is the symbol duration, and $\theta(t)$ is the tracked phase.
-
 ### `phi_hat` (delay tracking)
 
 * **Type**: Numeric matrix, size `[receiver, time]`
@@ -75,6 +64,16 @@ $$\Delta\tau(t) = \frac{\hat\varphi(t)}{2\pi f_c}$$
 
 The unpacking procedure reinserts both the phase (via multiplication by $e^{j\hat\varphi(t)}$) and the delay drift (via interpolation).
 
+### `theta_hat` (phase tracking only)
+
+* **Type**: Numeric matrix, size `[receiver, time]`
+* **Units**: Radians
+* **Sampling rate**: `params.fs_delay`
+* **Description**: Time-varying phase correction. In this mode, `h_hat` contains the *drifting* impulse response (delay drift is embedded in the taps). Only the phase is tracked separately. The baseband received signal is modeled as:
+
+$$v(t) = \sum_n d(n)\, h(t, t - nT)\, e^{j\theta(t)} + z(t)$$
+
+where $d(n)$ is the data symbol, $h(t, \tau)$ is the time-varying impulse response with drifting taps, $T$ is the symbol duration, and $\theta(t)$ is the tracked phase.
 ### Duration constraint
 
 The time dimension of `theta_hat` or `phi_hat` and the third dimension of `h_hat` must span the same duration:
