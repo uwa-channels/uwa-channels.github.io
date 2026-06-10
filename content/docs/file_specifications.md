@@ -49,7 +49,7 @@ If none of `phi_hat`, `theta_hat`, or `f_resamp` is present, the replay engine w
 
 If one of `phi_hat_hat`, `theta_hat`, or `f_resamp` is present, the replay engine apply that particular Doppler correction.
 
-If both `phi_hat` and `theta_hat` are present, 'theta_hat' will be ignored by the replay engine.
+If both `phi_hat` and `theta_hat` are present, `theta_hat` will be ignored by the replay engine.
 
 `f_resamp` will be applied regardless of the presence of `theta_hat` and `phi_hat`.
 
