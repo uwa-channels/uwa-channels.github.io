@@ -66,6 +66,8 @@ version = "1.0"
 github_repo = "https://github.com/uwa-channels/uwa-channels.github.io"
 offlineSearch = true
 prism_syntax_highlighting = false
+description = "An open-access library of underwater acoustic channel impulse responses and noise models recorded during at-sea experiments, with a replay interface for simulating communication signals."
+images = ["featured-background.png"]
 
 [params.ui]
 sidebar_menu_compact = false

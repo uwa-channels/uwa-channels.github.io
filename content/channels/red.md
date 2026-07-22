@@ -4,6 +4,7 @@ subtitle:
 date: 2025-01-14
 weight: 2
 description: >
+  A 25 kHz drifting-boat channel recorded near Singapore in November 2024, over a 100-400 m range with a 3-element vertical array and impulsive ambient noise.
 ---
 
 * Experiment:

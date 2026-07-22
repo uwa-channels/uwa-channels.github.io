@@ -4,6 +4,7 @@ subtitle:
 date: 2024-11-14
 weight: 3
 description: >
+  A 13 kHz channel from the KAM'11 experiment off Kauai, Hawaii, recorded over 3 and 7 km ranges using four vertical receiving arrays.
 ---
 
 * Experiment:

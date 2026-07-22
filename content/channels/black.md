@@ -4,6 +4,7 @@ subtitle:
 date: 2025-05-05
 weight: 6
 description: >
+  A vertical, 18 kHz channel recorded over the Mariana Trench in October 2024, linking a near-surface planar array to a transmitter 8718 m below.
 ---
 
 * Experiment:

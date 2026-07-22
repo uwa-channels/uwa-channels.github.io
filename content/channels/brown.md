@@ -4,6 +4,7 @@ subtitle:
 date: 2025-04-24
 weight: 8
 description: >
+  A 75 Hz trans-Pacific channel from the 1994 ATOC project, spanning 3250 km between a moored deep-water source and a 20-element vertical receiving array.
 ---
 * Experiment:
   * Location: from southern California to east of Hawaii

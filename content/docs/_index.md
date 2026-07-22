@@ -5,6 +5,7 @@ menu:
   main:
     weight: 3
 description: >
+  Instructions for downloading the channel library, replaying a signal through a channel, adding site-specific noise, and visualizing a decompressed channel.
 
 ---
 

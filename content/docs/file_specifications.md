@@ -3,6 +3,7 @@ title: "Channel file format specifications"
 linkTitle: "Channel file format specifications"
 weight: 1
 description: >
+  Specification of the required and optional fields in the channel and noise .mat files, including the impulse response, phase/delay tracking, and metadata formats.
 cascade:
   - type: "docs"
 ---

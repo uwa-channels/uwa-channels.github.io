@@ -4,6 +4,7 @@ subtitle:
 date: 2025-01-14
 weight: 5
 description: >
+  A 6 kHz single-hydrophone channel from a Norwegian fjord (Norway'24), providing time-diversity data from repeated transmissions over a 270 m range.
 ---
 
 * Experiment:

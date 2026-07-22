@@ -4,6 +4,7 @@ subtitle:
 date: 2025-05-05
 weight: 7
 description: >
+  A 6 kHz, 14 km channel recorded off Kochi Prefecture, Japan in 2022, covering flat, up-slope, and down-slope bathymetry with a 24-element vertical array.
 ---
 
 * Experiment:

@@ -3,6 +3,7 @@ title: "Code Contribution Guide"
 linkTitle: "Code Contribution Guide"
 weight: 2
 description: >
+  A guide for contributing to the MATLAB and Python implementations of the channel replay library, covering setup, coding standards, and pull requests.
 cascade:
   - type: "docs"
 ---

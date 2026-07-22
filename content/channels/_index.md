@@ -7,13 +7,14 @@ menu:
   main:
     weight: 1
 description: >
+  Eight color-labeled underwater acoustic channels recorded across sites worldwide, spanning shallow and deep water, short and long range, and fixed and mobile platforms.
 cascade:
   - type: "docs"
 ---
 
 The channels contained in this library come from various experiments. The experiments differ by geographical location, transmission distance, water depth, transmitter/receiver mobility, acoustic bandwidth and the size of the recording array. The channels are color-labeled, and a detailed description of relevant parameters is given below for each. To download the channels, click here:
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21287414.svg)](https://doi.org/10.5281/zenodo.21287414)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21287414.svg)](https://doi.org/10.5281/zenodo.21287414) ([https://doi.org/10.5281/zenodo.21287414](https://doi.org/10.5281/zenodo.21287414))
 
 Each channel is estimated from the experimental data and stored in a matrix ${\bf C}$ of complex-baseband impulse responses evolving over time. If a recording array is available, there is one such matrix for each array element. Each row of this matrix represents an instantaneous channel response as a function of delay. Different rows correspond to different, equi-spaced instants in time. Any motion-induced delay drifting is suppressed in the channel matrix to enable compression for efficient storage. A separate vector $\theta$ is provided which contains the uncompressed time-varying channel phase that is directly related to the delay. To fully reconstruct the channel, the matrix ${\bf C}$ needs to be uncompressed, and the phase/delay needs to be imparted to re-introduce phase shifting and delay drifting. Details of this process, along with the ready-to-use code, are given in the [User’s Guide](/docs).
 
@@ -31,14 +32,14 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <th></th>
     <th>Location</th>
     <th>Date</th>
-    <th>$d_{T}$/$d_{R}$/$d_{w}$ [m]</th>
+    <th>d<sub>T</sub>/d<sub>R</sub>/d<sub>w</sub> [m]</th>
     <th>Mobility</th>
-    <th>$d$ [km]</th>
-    <th>$f_c$ [kHz]</th>
-    <th>$R$ [ksym/s]</th>
+    <th>d [km]</th>
+    <th>f<sub>c</sub> [kHz]</th>
+    <th>R [ksym/s]</th>
     <th>Array</th>
-    <th>$M$</th>
-    <th>$\ell$ [m]</th>
+    <th>M</th>
+    <th>&#8467; [m]</th>
   </tr></thead>
 <tbody>
   <tr>
@@ -49,7 +50,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>Mobile</td>
     <td>3-7</td>
     <td>13</td>
-    <td>$10^4/2048$</td>
+    <td>10<sup>4</sup>/2048</td>
     <td>Vertical</td>
     <td>12</td>
     <td>0.12</td>
@@ -104,7 +105,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td rowspan="3">Moored</td>
     <td>0.06</td>
     <td rowspan="3">12.5</td>
-    <td rowspan="3">$10^4/1536$</td>
+    <td rowspan="3">10<sup>4</sup>/1536</td>
     <td>Cross</td>
     <td>32</td>
     <td>0.0375</td>
@@ -174,6 +175,6 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>35</td>
   </tr>
 </tbody></table>
-<p style="font-size: 13px; margin-top: 8px;">For the <a href="green" style="color: #77AC30">Green</a> channel, $M$ denotes the number of time-diversity channels formed from repeated transmissions on a single hydrophone, and $\ell$ denotes the inter-transmission interval.</p>
+<p style="font-size: 13px; margin-top: 8px;">For the <a href="green" style="color: #77AC30">Green</a> channel, M denotes the number of time-diversity channels formed from repeated transmissions on a single hydrophone, and &#8467; denotes the inter-transmission interval.</p>
 
 ![](map.png)

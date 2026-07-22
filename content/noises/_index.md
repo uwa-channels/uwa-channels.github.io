@@ -6,6 +6,7 @@ menu:
   main:
     weight: 1
 description: >
+  Site-specific ambient noise models accompanying each channel, covering colored Gaussian noise and, for the Red channel, impulsive alpha-stable noise.
 cascade:
   - type: "docs"
 ---

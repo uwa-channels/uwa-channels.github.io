@@ -4,6 +4,7 @@ subtitle:
 date: 2024-08-18
 weight: 1
 description: >
+  A 13 kHz mobile channel from the North Atlantic (MACE'10), recorded over a 3-7 km range with a moving transmitter and a 12-element vertical array.
 ---
 
 * Experiment:
@@ -11,7 +12,7 @@ description: >
   * Date recorded: June 2010
   * Center frequency: 13 kHz
   * Bandwidth: 5 kHz
-  * Symbol rate: R = $10^7/2048$ Hz (approximately 4.9 kHz)
+  * Symbol rate: R = 4.9 kHz
   * Distance: 3 km - 7 km
   * Tx/Rx/water depth: 30-60 m/50 m/100 m
   * Mobility: varying, up to 1.5 m/s
