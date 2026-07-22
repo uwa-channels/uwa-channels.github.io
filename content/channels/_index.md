@@ -12,7 +12,7 @@ cascade:
   - type: "docs"
 ---
 
-The channels contained in this library come from various experiments. The experiments differ by geographical location, transmission distance, water depth, transmitter/receiver mobility, acoustic bandwidth and the size of the recording array. The channels are color-labeled, and a detailed description of relevant parameters is given below for each. To download the channels, click here:
+The channels contained in this library come from various experiments. The experiments differ by geographical location, transmission distance, water depth, transmitter/receiver mobility, acoustic bandwidth, and the size of the recording array. The channels are color-labeled, and a detailed description of relevant parameters is given below for each. To download the channels, click here:
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21287414.svg)](https://doi.org/10.5281/zenodo.21287414) ([https://doi.org/10.5281/zenodo.21287414](https://doi.org/10.5281/zenodo.21287414))
 

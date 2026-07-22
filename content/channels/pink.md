@@ -25,4 +25,4 @@ description: >
 
 > [!PRIMARY] Acknowledgement
 >
-> The Underwater Acoustic Channels Group gratefully acknowledges the Japan Agency for Marine-Earth Science and Technology (JAMSTEC) for their efforts for providing the data.
+> The Underwater Acoustic Channels Group gratefully acknowledges the Japan Agency for Marine-Earth Science and Technology (JAMSTEC) for their efforts in providing the data.

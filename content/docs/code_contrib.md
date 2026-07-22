@@ -108,7 +108,8 @@ General Q&A, design ideas, and roadmap conversations belong in [**GitHub Discuss
 | `high-priority` / `low-priority` | Relative urgency       |
 | `good first issue`               | Suitable for newcomers |
 | `breaking-change`                | API/behavior change    |
-| Milestone assigned               | Planned for release    |
+
+Issues planned for release are tracked with a GitHub milestone rather than a label.
 
 ## Workflow for Code & Documentation Changes
 
@@ -185,4 +186,4 @@ Merged PRs are reflected in `CHANGELOG.md`, with entries auto-generated from com
 
 This guide was inspired by the excellent [`UnderwaterAcoustics.jl` contributing guide](https://github.com/org-arl/UnderwaterAcoustics.jl/blob/master/CONTRIBUTING.md), as well as the contribution guidelines from `NumPy`, `SciPy`, and `MATLAB Style Guide`.
 
-*Happy hacking -- may your channels be peaceful and your SNR high!*
+*Happy hacking — may your channels be peaceful and your SNR high!*

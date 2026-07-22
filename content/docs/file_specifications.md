@@ -46,13 +46,11 @@ A structure with the following scalar fields:
 
 ## Phase / Delay Tracking Fields
 
-If none of `phi_hat`, `theta_hat`, or `f_resamp` is present, the replay engine will not apply any form of Doppler correction.
+`phi_hat`, `theta_hat`, and `f_resamp` may coexist; the replay engine applies them according to the following precedence:
 
-If one of `phi_hat`, `theta_hat`, or `f_resamp` is present, the replay engine will apply that particular Doppler correction.
-
-If both `phi_hat` and `theta_hat` are present, `theta_hat` will be ignored by the replay engine.
-
-`f_resamp` will be applied regardless of the presence of `theta_hat` and `phi_hat`.
+* If none of the three is present, no Doppler correction is applied.
+* Otherwise, `phi_hat` takes precedence over `theta_hat`: if `phi_hat` is present, it is used and `theta_hat` (if also present) is ignored; if only `theta_hat` is present, it is used instead.
+* `f_resamp`, if present, is applied independently of `phi_hat`/`theta_hat`, regardless of which (if either) of them is present.
 
 ### `phi_hat` (delay tracking)
 
@@ -72,9 +70,10 @@ The unpacking procedure reinserts both the phase (via multiplication by $e^{j\ha
 * **Sampling rate**: `params.fs_delay`
 * **Description**: Time-varying phase correction. In this mode, `h_hat` contains the *drifting* impulse response (delay drift is embedded in the taps). Only the phase is tracked separately. The baseband received signal is modeled as:
 
-$$v(t) = \sum_n d(n)\, h(t, t - nT)\, e^{j\theta(t)} + z(t)$$
+$$v(t) = \sum_n d(n)\, h(t, t - nT)\, e^{j\hat\theta(t)} + z(t)$$
 
-where $d(n)$ is the data symbol, $h(t, \tau)$ is the time-varying impulse response with drifting taps, $T$ is the symbol duration, and $\theta(t)$ is the tracked phase.
+where $d(n)$ is the data symbol, $h(t, \tau)$ is the time-varying impulse response with drifting taps, $T$ is the symbol duration, and $\hat\theta(t)$ is the tracked phase.
+
 ### Duration constraint
 
 The time dimension of `theta_hat` or `phi_hat` and the third dimension of `h_hat` must span the same duration:
@@ -127,7 +126,7 @@ Each noise `.mat` file contains the following fields:
 | `Fs` | scalar | Sampling rate at which noise statistics were measured [Hz]. |
 | `R` | scalar | Signal bandwidth [Hz]. |
 | `alpha` | scalar | Stability index of the SαS distribution (2 = Gaussian, < 2 = impulsive). |
-| `beta` | tensor `[M, M, K]` | Mixing coefficients for spatiotemporal noise coloring. |
+| `beta` | tensor `[M, M, L+1]` | Mixing coefficients for spatiotemporal noise coloring. |
 | `fc` | scalar | Center frequency [Hz]. |
 | `version` | scalar | Noise struct version number. |
 
@@ -135,4 +134,4 @@ The noise generation function `noisegen` uses the mixing equation:
 
 $$\hat{n}_i(nT_s) = \sum_{j=0}^{M-1}\sum_{k=0}^{L}\beta_{ij}(kT_s)\,\eta_j(nT_s - kT_s)$$
 
-where $\eta_j \sim S\alpha S(0, 1, 0)$ are i.i.d. symmetric α-stable innovations. When `alpha = 2`, this reduces to Gaussian noise.
+where $L$ is the maximum discrete time lag with non-negligible covariance (so $\beta_{ij}(kT_s)$ has $L+1$ taps, $k = 0, \ldots, L$), and $\eta_j \sim S\alpha S(0, 1, 0)$ are i.i.d. symmetric α-stable innovations. When `alpha = 2`, this reduces to Gaussian noise.
