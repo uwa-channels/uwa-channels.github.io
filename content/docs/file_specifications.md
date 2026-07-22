@@ -47,7 +47,7 @@ A structure with the following scalar fields:
 
 If none of `phi_hat`, `theta_hat`, or `f_resamp` is present, the replay engine will not apply any form of Doppler correction.
 
-If one of `phi_hat_hat`, `theta_hat`, or `f_resamp` is present, the replay engine apply that particular Doppler correction.
+If one of `phi_hat`, `theta_hat`, or `f_resamp` is present, the replay engine will apply that particular Doppler correction.
 
 If both `phi_hat` and `theta_hat` are present, `theta_hat` will be ignored by the replay engine.
 
@@ -128,7 +128,6 @@ Each noise `.mat` file contains the following fields:
 | `alpha` | scalar | Stability index of the SαS distribution (2 = Gaussian, < 2 = impulsive). |
 | `beta` | tensor `[M, M, K]` | Mixing coefficients for spatiotemporal noise coloring. |
 | `fc` | scalar | Center frequency [Hz]. |
-| `rms_power` | vector `[M, 1]` | Per-channel RMS power scaling. |
 | `version` | scalar | Noise struct version number. |
 
 The noise generation function `noisegen` uses the mixing equation:

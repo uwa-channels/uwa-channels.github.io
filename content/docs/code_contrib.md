@@ -7,7 +7,7 @@ cascade:
   - type: "docs"
 ---
 
-## Contributing to **UWA-Channels** (MATLAB & Python)
+## Contributing to **UWA-Channels** (MATLAB, Python & Julia)
 
 First off — thank you for considering a contribution! Bug reports, feature requests, documentation improvements, and code changes are all welcome.
 
@@ -16,7 +16,9 @@ This guide explains how to contribute effectively to the two companion repositor
 | Repository                                                        | Language         | Main Branch | Folder Layout                      |
 | ----------------------------------------------------------------- | ---------------- | ----------- | ---------------------------------- |
 | [**uwa-channels/matlab**](https://github.com/uwa-channels/matlab) | MATLAB (R2021a+) | `main`      | `src/`, `tests/`, `examples/`      |
-| [**uwa-channels/python**](https://github.com/uwa-channels/python) | Python (≥ 3.10)  | `main`      | `uwa_channels/`, `tests/`, `docs/` |
+| [**uwa-channels/python**](https://github.com/uwa-channels/python) | Python (≥ 3.10)  | `main`      | `src/uwa_channels/`, `tests/`, `examples/` |
+
+The library's `Julia` support is hosted separately, under the [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl) package maintained by the Acoustic Research Laboratory. Please refer to that repository's own contribution guidelines for `Julia`-specific bug reports and pull requests.
 
 ## Getting Started
 
@@ -54,7 +56,7 @@ This guide explains how to contribute effectively to the two companion repositor
   ```bash
   git clone https://github.com/uwa-channels/python.git
   cd python
-  pip install numpy scipy matplotlib h5py pytest pytest-benchmark pre-commit
+  pip install numpy scipy matplotlib h5py pytest pre-commit
   ```
 
   To run example scripts:
@@ -149,16 +151,16 @@ fix(io): handle empty .mat files (issue #42)
 
 ### MATLAB, follow the [MATLAB Style Guide](https://github.com/eeberhard/matlab_style_guide):
 
-- 4-space indentation; `camelCase` for functions, `PascalCase` for classes
+- 4-space indentation; `snake_case` for functions, `PascalCase` for classes
 - Each function/class in its own `.m` file
 - Use `arguments` blocks for input validation where possible
-- Add unit tests under `tests/testPkgName/` using MATLAB Unit Test
+- Add unit tests as flat files directly under `tests/` using MATLAB Unit Test
 - Vectorize where possible; comment non-obvious logic
 
 ### Python
 
-- Formatting is enforced via **Black** and **isort**
-- Static analysis via **Flake8** and **Ruff**
+- Formatting is enforced via **Black** and **Ruff** (Ruff handles import sorting, so a separate isort pass is unnecessary)
+- Static analysis via **Flake8**, **Ruff**, **mypy**, and **Bandit**
 - Use NumPy-style doc strings with LaTeX equations where helpful
 - Keep functions short, prefer clarity to cleverness, and avoid premature optimization
 

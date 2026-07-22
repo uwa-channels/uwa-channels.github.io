@@ -13,9 +13,9 @@ description: >
   * Bandwidth: 12.5 kHz
   * Symbol rate: R = 12.5 kHz
   * Distance: 8.7 km (vertical)
-  * Tx/Rx/water depth: 6 m/8718 m/8720 m.
+  * Tx/Rx/water depth: 8718 m/6 m/8720 m.
   * Mobility: moored
-  * Receiving array: circular.
+  * Receiving array: planar, 8 elements arranged as vertices of two concentric squares (outer square side 264 mm, inner square side 88 mm).
 * Parameters:
   * Sampling rate in delay: 2R
   * Total delay coverage: up to 7 ms
@@ -23,5 +23,5 @@ description: >
   * Total time coverage: 36 seconds.
 
 {{% alert title="Acknowledgement" %}}  
-The Underwater Acoustic Channels Group gratefully acknowledges the The Underwater Acoustic Channels Group gratefully acknowledges the Japan Agency for Marine-Earth Science and Technology (JAMSTEC) for their efforts for providing the data.
+The Underwater Acoustic Channels Group gratefully acknowledges the Japan Agency for Marine-Earth Science and Technology (JAMSTEC) for their efforts for providing the data.
 {{% /alert %}}

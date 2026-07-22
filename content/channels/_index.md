@@ -58,7 +58,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td><a href="red" style="color: #D95319">Red</a></td>
     <td>Singapore</td>
     <td>Nov. 2024</td>
-    <td>6/4.6/8-15</td>
+    <td>6/4.6/8-20</td>
     <td>Drifting</td>
     <td>0.1-0.4</td>
     <td>25</td>
@@ -86,7 +86,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>0.2</td>
   </tr>
   <tr>
-    <td rowspan="2">50/8.7-65/100</td>
+    <td rowspan="2">50/8.6-65/100</td>
     <td>3</td>
     <td>16</td>
     <td>3.75</td>
@@ -138,14 +138,14 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td><a href="black" style="color: #000000">Black</a></td>
     <td>Mariana Trench</td>
     <td>Oct. 2024</td>
-    <td>6/8718/8720</td>
+    <td>8718/6/8720</td>
     <td>Moored</td>
     <td>8.72</td>
     <td>18</td>
     <td>12.5</td>
-    <td>Circular</td>
+    <td>Planar</td>
     <td>8</td>
-    <td>x</td>
+    <td>&ge; 0.088</td>
   </tr>
   <tr>
     <td><a href="pink" style="color: #E377C2">Pink</a></td>
@@ -158,7 +158,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>4</td>
     <td>Vertical</td>
     <td>24</td>
-    <td>x</td>
+    <td>0.9-1.8</td>
   </tr>
   <tr>
     <td><a href="brown" style="color: #8C564B">Brown</a></td>

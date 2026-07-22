@@ -14,6 +14,8 @@ The channels stored in this library can be used in two ways: (1) a channel can b
 pip install uwa-channels
 ```
 
+The library is also supported in `Julia`, hosted under the [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl) package. See that package's documentation for installation and usage instructions.
+
 ## Applying a channel to an arbitrary signal 
 
 * To pass a signal of your choice through a channel, generate the desired signal in passband, respecting the bandwidth and the sampling rate limits of the chosen channel (see the [channel](/channels) tab).

@@ -14,8 +14,8 @@ description: >
   * Symbol rate: R = 6.25 kHz
   * Distance: 3 km and 7 km
   * Tx/Rx/water depth for array 1: 50 m/50 m/100 m
-  * Tx/Rx/water depth for array 2: 50 m/8.7 m - 65 m/100 m
-  * Mobility: static
+  * Tx/Rx/water depth for array 2: 50 m/8.6 m - 65 m/100 m
+  * Mobility: moored
   * Receiving array 1: vertical, 24 elements, 5 cm and 20 cm spacing (numbered bottom to top)
   * Receiving array 2: vertical, 16 elements, 3.75 m spacing
 * Parameters:
