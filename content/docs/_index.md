@@ -28,6 +28,7 @@ The library is also supported in `Julia`, hosted under the [`UnderwaterAcoustics
 {{< tab header="MATLAB/Octave" lang="matlab" >}}
 channel = load('blue_1.mat');
 noise = load('blue_1_noise.mat');
+array_index = [1, 2, 3];
 y = replay(input, fs, array_index, channel);
 w = noisegen(size(y), fs, array_index, noise);
 r = y + 0.05 * w;
@@ -37,6 +38,7 @@ import h5py
 from uwa_channels import replay, noisegen
 channel = h5py.File("blue_1.mat", "r")
 noise = h5py.File("blue_1_noise.mat", "r")
+array_index = [0, 1, 2]
 y = replay(input, fs, array_index, channel)
 w = noisegen(y.shape, fs, array_index, noise)
 r = y + 0.05 * w
