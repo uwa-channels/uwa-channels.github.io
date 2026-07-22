@@ -1,5 +1,5 @@
 baseURL = "https://uwa-channels.github.io"
-title = "Underwater Acoustic Channels"
+title = "Underwater Acoustic Channel Library"
 theme = ["docsy"]
 
 enableRobotsTXT = false
@@ -22,7 +22,7 @@ anchor = "smart"
 
 [languages]
 [languages.en]
-title = "Underwater Acoustic Channels"
+title = "Underwater Acoustic Channel Library"
 languageName ="English"
 weight = 1
 
@@ -76,4 +76,9 @@ sidebar_search_disable = false
 navbar_logo = true
 footer_about_enable = false
 showLightDarkModeMenu = true
+# Navbar background is always primary blue (see $td-navbar-bg-color in
+# assets/scss/_variables_project.scss); use the dark navbar text/link
+# palette everywhere so it stays readable against that blue, not just on
+# the homepage's cover.
+navbar_theme = "dark"
 

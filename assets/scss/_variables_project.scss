@@ -14,6 +14,11 @@ $enable-gradients: true;
 $enable-rounded: true;
 $enable-shadows: true;
 
+// Keep the navbar on brand (primary blue) on every page, instead of
+// following the body background (white in light mode, near-black when the
+// homepage's dark-themed cover navbar kicks in).
+$td-navbar-bg-color: $primary !default;
+
 $blue:    #A7C4BC;
 $indigo:  #6610f2;
 $purple:  #6f42c1;
