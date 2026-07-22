@@ -44,9 +44,9 @@ r = y + 0.05 * w
 
 A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/matlab/blob/main/examples/example_replay.m) and [`Python`](https://github.com/uwa-channels/python/blob/main/examples/example_replay.py). Before running the example code, please read the corresponding `README` file.
 
-{{% alert title="Important note" color="warning" %}}
-The channels are specified for a certain acoustic bandwidth that was used during the experiment. When working with a channel, please understand that only that bandwidth is visible. If you are designing a signal that you will pass through a channel, the bandwidth of your signal must fit within the stated limit. Note that you do **not** need to decompress the channel first to replay the signal.
-{{% /alert %}}
+> [!WARNING] Important note
+>
+> The channels are specified for a certain acoustic bandwidth that was used during the experiment. When working with a channel, please understand that only that bandwidth is visible. If you are designing a signal that you will pass through a channel, the bandwidth of your signal must fit within the stated limit. Note that you do **not** need to decompress the channel first to replay the signal.
 
 ## Visualizing a channel
 

@@ -10,11 +10,21 @@ on:
     branches:
       - main
 
+env:
+  # hugomods/hugo (the previous image) tops out at 0.154.5, which predates
+  # the Hugo template APIs Docsy 0.15.0's llms.txt output depends on. Install
+  # Hugo directly instead so we can track a current release.
+  HUGO_VERSION: "0.164.0"
+  # Docsy's go.mod declares these as Hugo Module (indirect) dependencies, but
+  # this site vendors Docsy as a git submodule rather than via Hugo Modules,
+  # so they must be fetched explicitly. Keep these in sync with
+  # themes/docsy/go.mod whenever the Docsy submodule is bumped.
+  FONT_AWESOME_VERSION: "6.7.2"
+  BOOTSTRAP_VERSION: "v5.3.8"
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: hugomods/hugo:exts-0.154.5
 
     steps:
     - name: Checkout repository
@@ -22,11 +32,20 @@ jobs:
       with:
         submodules: recursive
 
-    - name: Install dependencies
+    - name: Install Hugo
       run: |
-        apk add --no-cache tar
-        cd themes/docsy && npm install && npm i postcss autoprefixer && cd ../..
-  
+        curl -sL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz" | tar -xz hugo
+        sudo mv hugo /usr/local/bin/hugo
+        hugo version
+
+    - name: Vendor Docsy's theme dependencies (Font Awesome, Bootstrap)
+      run: |
+        git clone --depth 1 --branch "$FONT_AWESOME_VERSION" https://github.com/FortAwesome/Font-Awesome.git themes/github.com/FortAwesome/Font-Awesome
+        git clone --depth 1 --branch "$BOOTSTRAP_VERSION" https://github.com/twbs/bootstrap.git themes/github.com/twbs/bootstrap
+
+    - name: Install dependencies
+      run: npm install postcss postcss-cli autoprefixer
+
     - name: Build
       run: hugo --minify --baseURL "https://uwa-channels.github.io"
 

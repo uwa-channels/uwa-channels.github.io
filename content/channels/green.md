@@ -22,6 +22,6 @@ description: >
   * Sampling rate in time: R/1000 for the channel response, 2R for the phase/delay
   * Total time coverage: approximately 55 seconds
 
-{{% alert title="Acknowledgement" %}}  
-The Underwater Acoustic Channels Group gratefully acknowledges the contribution of the Green dataset from SFI Smart Ocean. For more information, please visit the [IEEE Dataport link](https://ieee-dataport.org/open-access/sfi-smart-ocean-dataset-underwater-acoustic-communications).  
-{{% /alert %}}
+> [!PRIMARY] Acknowledgement
+>
+> The Underwater Acoustic Channels Group gratefully acknowledges the contribution of the Green dataset from SFI Smart Ocean. For more information, please visit the [IEEE Dataport link](https://ieee-dataport.org/open-access/sfi-smart-ocean-dataset-underwater-acoustic-communications).

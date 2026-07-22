@@ -21,6 +21,6 @@ description: >
   * Sampling rate in time: R/10 for the channel response, 2R for the phase/delay
   * Total time coverage: 13 minutes
 
-{{% alert title="Acknowledgement" %}}  
-The Underwater Acoustic Channels Group gratefully acknowledges the Acoustic Engineering Test (AET) for providing the AET data. The data were collected as part of the AET of the Acoustic Thermometry of Ocean Climate (ATOC) project. For more information, please refer to Worcester et al., "A test of basin-scale acoustic tomography using a large aperture vertical array at 3250-km range in the eastern North Pacific Ocean," J. Acoust. Soc. Am. 105, 3185–3201 (1999).
-{{% /alert %}}
+> [!PRIMARY] Acknowledgement
+>
+> The Underwater Acoustic Channels Group gratefully acknowledges the Acoustic Engineering Test (AET) for providing the AET data. The data were collected as part of the AET of the Acoustic Thermometry of Ocean Climate (ATOC) project. For more information, please refer to Worcester et al., "A test of basin-scale acoustic tomography using a large aperture vertical array at 3250-km range in the eastern North Pacific Ocean," J. Acoust. Soc. Am. 105, 3185–3201 (1999).

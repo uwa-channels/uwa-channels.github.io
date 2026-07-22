@@ -22,6 +22,6 @@ description: >
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
   * Total time coverage: 55 seconds
 
-{{% alert title="Acknowledgement" %}}  
-The Underwater Acoustic Channels Group gratefully acknowledges the Japan Agency for Marine-Earth Science and Technology (JAMSTEC) for their efforts for providing the data.
-{{% /alert %}}
+> [!PRIMARY] Acknowledgement
+>
+> The Underwater Acoustic Channels Group gratefully acknowledges the Japan Agency for Marine-Earth Science and Technology (JAMSTEC) for their efforts for providing the data.

@@ -33,6 +33,12 @@ weight = 1
   post = " <i class='fab fa-github pr-2'></i>"
   url = "https://github.com/uwa-channels/"
 
+[security]
+  # Hugo's default policy blocks raw HTML content pages (content/_index.html
+  # uses one for the homepage). All content here is our own trusted source,
+  # so allow any content type.
+  allowContent = ['.*']
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
@@ -48,7 +54,9 @@ weight = 1
 
 
 [outputs]
-section = ["HTML", "print"]
+home = ["HTML", "markdown", "LLMS"]
+page = ["HTML", "markdown"]
+section = ["HTML", "print", "markdown"]
 
 [params]
 copyright = "Underwater Acoustic Channels Group"
@@ -66,29 +74,4 @@ sidebar_search_disable = false
 navbar_logo = true
 footer_about_enable = false
 showLightDarkModeMenu = true
-
-[params.katex]
-enable = true
-html_dom_element = "document.body"
-
-[params.katex.options]
-throwOnError = true
-struct = false
-
-[[params.katex.options.delimiters]]
-  left = "$$"
-  right = "$$"
-  display = true
-[[params.katex.options.delimiters]]
-  left = "$"
-  right = "$"
-  display = false
-[[params.katex.options.delimiters]]
-  left = "\\("
-  right = "\\)"
-  display = false
-[[params.katex.options.delimiters]]
-  left = "\\["
-  right = '\\]'
-  display = true
 
