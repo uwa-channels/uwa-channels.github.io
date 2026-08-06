@@ -4,18 +4,20 @@ subtitle:
 date: 2025-04-24
 weight: 8
 description: >
-  A 75 Hz trans-Pacific channel from the 1994 ATOC project, spanning 3250 km between a moored deep-water source and a 20-element vertical receiving array.
+  A 75 Hz trans-Pacific channel from the 1994 ATOC project, spanning 3250 km between a deep-water source off San Diego and a 20-element vertical receiving array east of Hawaii.
 ---
+
 * Experiment:
-  * Location: from southern California to east of Hawaii
+  * Location: eastern North Pacific, from off San Diego, California, to east of Hawaii
   * Date recorded: November 1994
   * Center frequency: 75 Hz
   * Bandwidth: 37.5 Hz
-  * Symbol rate: R = 37.5 Hz
+  * Symbol rate: R = 37.5 sym/s
   * Distance: 3250 km
-  * Tx/Rx/water depth: 652 m/900-1600 m/x
+  * Tx/Rx depth: 652 m/900-1600 m
+  * Water depth: approximately 4000 m at the source and 5300 m at the receiver
   * Mobility: mobile
-  * Receiving array: 20-element vertical array, 35 m spacing, 900-1600 m depth
+  * Receiving array: autonomous vertical line array, 20 elements, 35 m spacing, spanning 900-1600 m depth
 * Parameters:
   * Sampling rate in delay: 2R
   * Total delay coverage: up to 7 seconds

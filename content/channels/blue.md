@@ -12,10 +12,10 @@ description: >
   * Date recorded: June 2010
   * Center frequency: 13 kHz
   * Bandwidth: 5 kHz
-  * Symbol rate: R = 10<sup>7</sup>/2048 Hz (approximately 4.9 kHz)
-  * Distance: 3 km - 7 km
+  * Symbol rate: R = 10<sup>7</sup>/2048 sym/s (approximately 4.9 ksym/s)
+  * Distance: 3-7 km
   * Tx/Rx/water depth: 30-60 m/50 m/100 m
-  * Mobility: varying, up to 1.5 m/s
+  * Mobility: mobile (relative speed up to 1.5 m/s)
   * Receiving array: vertical, 12 elements, 12 cm spacing (numbered top to bottom)
 * Parameters:
   * Sampling rate in delay: 2R

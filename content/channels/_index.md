@@ -12,11 +12,11 @@ cascade:
   - type: "docs"
 ---
 
-The channels contained in this library come from various experiments. The experiments differ by geographical location, transmission distance, water depth, transmitter/receiver mobility, acoustic bandwidth, and the size of the recording array. The channels are color-labeled, and a detailed description of relevant parameters is given below for each. To download the channels, click here:
+The channels contained in this library come from various experiments. The experiments differ by geographical location, transmission distance, water depth, transmitter/receiver mobility, acoustic bandwidth, and the size of the recording array. The channels are color-labeled, and a detailed description of relevant parameters is given below for each. The channels are available for download from Zenodo:
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21287414.svg)](https://doi.org/10.5281/zenodo.21287414) ([https://doi.org/10.5281/zenodo.21287414](https://doi.org/10.5281/zenodo.21287414))
 
-Each channel is estimated from the experimental data and stored in a matrix ${\bf C}$ of complex-baseband impulse responses evolving over time. If a recording array is available, there is one such matrix for each array element. Each row of this matrix represents an instantaneous channel response as a function of delay. Different rows correspond to different, equi-spaced instants in time. Any motion-induced delay drifting is suppressed in the channel matrix to enable compression for efficient storage. A separate vector $\theta$ is provided which contains the uncompressed time-varying channel phase that is directly related to the delay. To fully reconstruct the channel, the matrix ${\bf C}$ needs to be uncompressed, and the phase/delay needs to be imparted to re-introduce phase shifting and delay drifting. Details of this process, along with the ready-to-use code, are given in the [User’s Guide](/docs).
+Each channel is estimated from the experimental data and stored as a tensor of complex-baseband impulse responses evolving over time, with dimensions [delay, receiver, time]. If a recording array is available, the tensor holds one matrix $\mathbf{C}$ for each array element. Each column of this matrix represents an instantaneous channel response as a function of delay. Successive columns correspond to different, equi-spaced instants in time. Any motion-induced delay drift is suppressed in the channel matrix to enable compression for efficient storage. A separate vector $\varphi$, stored as `phi_hat`, is provided that contains the uncompressed time-varying channel phase, which is directly related to the delay drift. To fully reconstruct the channel, the matrix $\mathbf{C}$ needs to be uncompressed, and the phase/delay needs to be imparted to re-introduce the phase shift and the delay drift. Details of this process, along with the ready-to-use code, are given in the [User's Guide](/docs). The stored variable names, and the alternative convention in which only the phase is tracked (`theta_hat`) and the delay drift is left in the taps, are documented in the [channel file format specifications](/docs/file_specifications).
 
 
 <style>
@@ -165,7 +165,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td><a href="brown" style="color: #8C564B">Brown</a></td>
     <td>Pacific</td>
     <td>Nov. 1994</td>
-    <td>652/900-1600/x</td>
+    <td>652/900-1600/4000, 5300</td>
     <td>Mobile</td>
     <td>3250</td>
     <td>0.075</td>
@@ -175,6 +175,7 @@ Each channel is estimated from the experimental data and stored in a matrix ${\b
     <td>35</td>
   </tr>
 </tbody></table>
+<p style="font-size: 13px; margin-top: 8px;">Column key: d<sub>T</sub>, d<sub>R</sub>, and d<sub>w</sub> are the transmitter depth, the receiver depth, and the water depth; d is the transmission distance; f<sub>c</sub> is the center frequency; R is the symbol rate; M is the number of array elements; &#8467; is the element spacing. Where two values are listed for d<sub>w</sub>, they are the water depths at the transmitter and at the receiver. An "x" marks a value that was not recorded.</p>
 <p style="font-size: 13px; margin-top: 8px;">For the <a href="green" style="color: #77AC30">Green</a> channel, M denotes the number of time-diversity channels formed from repeated transmissions on a single hydrophone, and &#8467; denotes the inter-transmission interval.</p>
 
 ![](map.png)

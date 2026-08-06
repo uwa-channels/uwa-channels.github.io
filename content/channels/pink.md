@@ -12,11 +12,12 @@ description: >
   * Date recorded: July 2022
   * Center frequency: 6 kHz
   * Bandwidth: 4 kHz
-  * Symbol rate: R = 4 kHz
+  * Symbol rate: R = 4 ksym/s
   * Distance: 14 km
-  * Tx/Rx/water depth: 176 m/146 m/x. The data contain down-slope, up-slope and flat. The water depth in the flat scenario is 200 m.
+  * Tx/Rx depth: 176 m/146 m
+  * Water depth: varying; the data cover down-slope, up-slope, and flat bathymetry, with a water depth of 200 m in the flat case
   * Mobility: moored
-  * Receiving array: vertical, up to 24 elements. There are six hydrophone groups. Within each group, the inter-element spacing is 0.9 m. The distance between groups is 1.8 m. 
+  * Receiving array: vertical, up to 24 elements in six hydrophone groups. Within each group, the inter-element spacing is 0.9 m; the distance between groups is 1.8 m.
 * Parameters:
   * Sampling rate in delay: 2R
   * Total delay coverage: up to 210 ms

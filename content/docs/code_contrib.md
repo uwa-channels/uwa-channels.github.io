@@ -8,9 +8,7 @@ cascade:
   - type: "docs"
 ---
 
-## Contributing to **UWA-Channels** (MATLAB, Python & Julia)
-
-First off — thank you for considering a contribution! Bug reports, feature requests, documentation improvements, and code changes are all welcome.
+Thank you for considering a contribution to **UWA-Channels**. Bug reports, feature requests, documentation improvements, and code changes are all welcome.
 
 This guide explains how to contribute effectively to the two companion repositories hosted at [https://github.com/uwa-channels](https://github.com/uwa-channels):
 
@@ -19,9 +17,9 @@ This guide explains how to contribute effectively to the two companion repositor
 | [**uwa-channels/matlab**](https://github.com/uwa-channels/matlab) | MATLAB (R2021a+) | `main`      | `src/`, `tests/`, `examples/`      |
 | [**uwa-channels/python**](https://github.com/uwa-channels/python) | Python (≥ 3.10)  | `main`      | `src/uwa_channels/`, `tests/`, `examples/` |
 
-The library's `Julia` support is hosted separately, under the [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl) package maintained by the Acoustic Research Laboratory. Please refer to that repository's own contribution guidelines for `Julia`-specific bug reports and pull requests.
+The library's Julia support is hosted separately, in the [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl) package maintained by the Acoustic Research Laboratory. Please refer to that repository's own contribution guidelines for Julia-specific bug reports and pull requests.
 
-## Getting Started
+## Getting started
 
 ### Prerequisites
 
@@ -52,7 +50,7 @@ The library's `Julia` support is hosted separately, under the [`UnderwaterAcoust
   ```
 
 
-  **Python repository** — create a virtual environment and install dependencies:
+  **Python repository**: create a virtual environment and install dependencies:
 
   ```bash
   git clone https://github.com/uwa-channels/python.git
@@ -80,20 +78,20 @@ The library's `Julia` support is hosted separately, under the [`UnderwaterAcoust
   ```
 
   
-### Code of Conduct
+### Code of conduct
 
 We expect all contributors to be **professional, respectful, and constructive**. By participating, you agree to uphold these standards.
 
-## Bug Reports, Feature Requests, & Discussions
+## Bug reports, feature requests, and discussions
 
-### Bug Reports
+### Bug reports
 
-- Search existing issues and pull requests—your bug may already be reported or fixed.
+- Search existing issues and pull requests; your bug may already be reported or fixed.
 - Provide a *minimal, reproducible example* (MATLAB `.m` file or live script, or a Python snippet), along with:
   - Package versions (`uwa_channels.__version__` or MATLAB `ver`)
   - OS and MATLAB/Python version, if relevant
 
-### Feature Requests
+### Feature requests
 
 Describe both the *motivation* and the *proposed change*. Sketch a possible API or workflow if applicable.
 
@@ -101,7 +99,7 @@ Describe both the *motivation* and the *proposed change*. Sketch a possible API 
 
 General Q&A, design ideas, and roadmap conversations belong in [**GitHub Discussions**](https://github.com/orgs/uwa-channels/discussions), not in Issues.
 
-### Issue Labels
+### Issue labels
 
 | Label                            | Meaning                |
 | -------------------------------- | ---------------------- |
@@ -111,13 +109,13 @@ General Q&A, design ideas, and roadmap conversations belong in [**GitHub Discuss
 
 Issues planned for release are tracked with a GitHub milestone rather than a label.
 
-## Workflow for Code & Documentation Changes
+## Workflow for code and documentation changes
 
 1. **Fork** the repository and clone your fork.
 2. **Create a branch** from `main`, named like `topic-short-description` (lowercase, hyphen-separated).
 3. **Develop locally**:
-   - **MATLAB** — run `runtests('tests')` and address Code Analyzer (MLint) warnings.
-   - **Python** — run `PYTHONPATH=src pytest` frequently.
+   - **MATLAB**: run `runtests('tests')` and address Code Analyzer (MLint) warnings.
+   - **Python**: run `PYTHONPATH=src pytest` frequently.
 4. **Write tests** for new features or bug fixes.
 5. **Document** your changes:
    - Use NumPy-style docstrings in Python functions and classes.
@@ -126,7 +124,7 @@ Issues planned for release are tracked with a GitHub milestone rather than a lab
 7. **Open a pull request (PR)** against `main`. Mark it as "Draft" if it's not yet ready for review. Reference any related issues.
 8. Address reviewer feedback. Once all checks pass and approvals are received, a maintainer will merge.
 
-## Commit Message Style
+## Commit message style
 
 We follow a simplified version of [Conventional Commits](https://www.conventionalcommits.org/):
 
@@ -138,7 +136,7 @@ We follow a simplified version of [Conventional Commits](https://www.conventiona
 
 - **type** ∈ {`feat`, `fix`, `docs`, `test`, `perf`, `refactor`, `style`, `chore`, `revert`}
 - **scope** identifies the module or subsystem (e.g., `io`, `replay`, `noisegen`)
-- Use imperative mood for the summary (e.g., “add support…” not “added”)
+- Use imperative mood for the summary (e.g., "add support for..." not "added support for...")
 - Limit the summary to ≤ 50 characters; wrap the body at 72 characters
 - If the change is breaking, begin the body with `BREAKING CHANGE:`
 
@@ -149,9 +147,11 @@ feat(replay): add resampling support for replay channels
 fix(io): handle empty .mat files (issue #42)
 ```
 
-## Coding Standards
+## Coding standards
 
-### MATLAB, follow the [MATLAB Style Guide](https://github.com/eeberhard/matlab_style_guide):
+### MATLAB
+
+Follow the [MATLAB Style Guide](https://github.com/eeberhard/matlab_style_guide):
 
 - 4-space indentation; `snake_case` for functions, `PascalCase` for classes
 - Each function/class in its own `.m` file
@@ -163,27 +163,27 @@ fix(io): handle empty .mat files (issue #42)
 
 - Formatting is enforced via **Black** and **Ruff** (Ruff handles import sorting, so a separate isort pass is unnecessary)
 - Static analysis via **Flake8**, **Ruff**, **mypy**, and **Bandit**
-- Use NumPy-style doc strings with LaTeX equations where helpful
+- Use NumPy-style docstrings with LaTeX equations where helpful
 - Keep functions short, prefer clarity to cleverness, and avoid premature optimization
 
 
-## Testing & Continuous Integration
+## Testing and continuous integration
 
 | Repository | Local Test Command      | CI Matrix                |
 | ---------- | ----------------------- | ------------------------ |
-| Python     | `PYTHONPATH=src pytest` | Python 3.10 – 3.12       |
 | MATLAB     | `runtests('tests')`     | MATLAB R2021a and latest |
+| Python     | `PYTHONPATH=src pytest` | Python 3.10–3.12         |
 
 **All CI checks must pass before a pull request is merged.**
 
-## Release Process (Python only)
+## Release process (Python only)
 
 Maintainers tag releases using `git tag -s vX.Y.Z` following [Semantic Versioning (SemVer)](https://semver.org/).
 
 Merged PRs are reflected in `CHANGELOG.md`, with entries auto-generated from commit messages.
 
-## Acknowledgments
+## Acknowledgements
 
-This guide was inspired by the excellent [`UnderwaterAcoustics.jl` contributing guide](https://github.com/org-arl/UnderwaterAcoustics.jl/blob/master/CONTRIBUTING.md), as well as the contribution guidelines from `NumPy`, `SciPy`, and `MATLAB Style Guide`.
+This guide was inspired by the excellent [`UnderwaterAcoustics.jl` contributing guide](https://github.com/org-arl/UnderwaterAcoustics.jl/blob/master/CONTRIBUTING.md), as well as the contribution guidelines of NumPy and SciPy, and the MATLAB Style Guide.
 
-*Happy hacking — may your channels be peaceful and your SNR high!*
+*Happy hacking: may your channels be peaceful and your SNR high!*

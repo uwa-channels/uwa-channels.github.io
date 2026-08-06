@@ -8,14 +8,12 @@ cascade:
   - type: "docs"
 ---
 
-# UWA-Channels MAT File Format Specification
-
 The `uwa-channels`-compatible `.mat` files **must** be saved with the following flags:
 
-* `-v7.3` to support large variables and `HDF5` file format.
-* `-nocompression` to accelerate loading speed.
+* `-v7.3` to support large variables and the `HDF5` file format.
+* `-nocompression` to speed up loading.
 
-## Required Fields
+## Required fields
 
 Each `.mat` file must include the following variables:
 
@@ -44,13 +42,13 @@ A structure with the following scalar fields:
 * **Type**: Numeric scalar.
 * **Description**: Dataset format version number (currently `1.0`).
 
-## Phase / Delay Tracking Fields
+## Phase/delay tracking fields (optional)
 
 `phi_hat`, `theta_hat`, and `f_resamp` may coexist; the replay engine applies them according to the following precedence:
 
 * If none of the three is present, no Doppler correction is applied.
-* Otherwise, `phi_hat` takes precedence over `theta_hat`: if `phi_hat` is present, it is used and `theta_hat` (if also present) is ignored; if only `theta_hat` is present, it is used instead.
-* `f_resamp`, if present, is applied independently of `phi_hat`/`theta_hat`, regardless of which (if either) of them is present.
+* `phi_hat` takes precedence over `theta_hat`: if `phi_hat` is present, it is used and `theta_hat` is ignored; if only `theta_hat` is present, it is used instead.
+* `f_resamp` (see [Optional fields](#optional-fields)) is applied independently of the two phase/delay fields, whether or not either of them is present.
 
 ### `phi_hat` (delay tracking)
 
@@ -72,17 +70,17 @@ The unpacking procedure reinserts both the phase (via multiplication by $e^{j\ha
 
 $$v(t) = \sum_n d(n)\, h(t, t - nT)\, e^{j\hat\theta(t)} + z(t)$$
 
-where $d(n)$ is the data symbol, $h(t, \tau)$ is the time-varying impulse response with drifting taps, $T$ is the symbol duration, and $\hat\theta(t)$ is the tracked phase.
+where $d(n)$ is the data symbol, $h(t, \tau)$ is the time-varying impulse response with drifting taps, $T$ is the symbol duration, $\hat\theta(t)$ is the tracked phase, and $z(t)$ is the additive noise.
 
 ### Duration constraint
 
-The time dimension of `theta_hat` or `phi_hat` and the third dimension of `h_hat` must span the same duration:
+The time dimension of `theta_hat` or `phi_hat` and the third dimension of `h_hat` must span the same duration. The check is written below for `theta_hat`; the same applies to `phi_hat`:
 
 ```
 size(theta_hat, 2) / params.fs_delay == size(h_hat, 3) / params.fs_time
 ```
 
-## Optional Fields
+## Optional fields
 
 ### `f_resamp`
 
@@ -106,7 +104,7 @@ The `meta` structure is optional but strongly encouraged. The following fields a
 | `vertical` | logical | `true` if vertical array. |
 | `delay_tracking` | logical | `true` if delay tracking is enabled (`phi_hat` present). |
 | `limit` | scalar | Lower dB limit for plotting. |
-| `optim` | scalar | Optimizer used (1: LMS, 2: RLS, 3: SFTF). |
+| `optim` | scalar | Optimizer used: `1` LMS, `2` RLS, `3` SFTF. |
 | `mu` | scalar | LMS step size (when `optim == 1`). |
 | `lambda` | scalar | Forgetting factor (when `optim == 2` or `3`). |
 | `regularization` | scalar | Regularization factor (when `optim == 2` or `3`). |
@@ -117,21 +115,21 @@ The `meta` structure is optional but strongly encouraged. The following fields a
 
 Users are free to add additional fields to `meta` to capture experiment-specific metadata.
 
-## Noise File Format
+## Noise file format
 
 Each noise `.mat` file contains the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
 | `Fs` | scalar | Sampling rate at which noise statistics were measured [Hz]. |
-| `R` | scalar | Signal bandwidth [Hz]. |
-| `alpha` | scalar | Stability index of the SαS distribution (2 = Gaussian, < 2 = impulsive). |
-| `beta` | tensor `[M, M, L+1]` | Mixing coefficients for spatiotemporal noise coloring. |
+| `R` | scalar | Bandwidth of the recorded noise [Hz]. Not to be confused with the symbol rate $R$ used on the channel pages. |
+| `alpha` | scalar | Stability index of the symmetric α-stable (SαS) distribution: `2` Gaussian, `< 2` impulsive. |
+| `beta` | tensor `[M, M, L+1]` | Mixing coefficients for spatiotemporal noise coloring, where `M` is the number of array elements and `L` is the maximum lag (both defined below). |
 | `fc` | scalar | Center frequency [Hz]. |
 | `version` | scalar | Noise struct version number. |
 
 The noise generation function `noisegen` uses the mixing equation:
 
-$$\hat{n}_i(nT_s) = \sum_{j=0}^{M-1}\sum_{k=0}^{L}\beta_{ij}(kT_s)\,\eta_j(nT_s - kT_s)$$
+$$n_i(nT_s) = \sum_{j=0}^{M-1}\sum_{k=0}^{L}\beta_{ij}(kT_s)\,\eta_j(nT_s - kT_s)$$
 
-where $L$ is the maximum discrete time lag with non-negligible covariance (so $\beta_{ij}(kT_s)$ has $L+1$ taps, $k = 0, \ldots, L$), and $\eta_j \sim S\alpha S(0, 1, 0)$ are i.i.d. symmetric α-stable innovations. When `alpha = 2`, this reduces to Gaussian noise.
+where $T_s = 1/F_s$ is the sampling interval, $L$ is the maximum discrete time lag with non-negligible covariance (so $\beta_{ij}(kT_s)$ has $L+1$ taps, $k = 0, \ldots, L$), and $\eta_j \sim S\alpha S(0, 1, 0)$ are i.i.d. symmetric α-stable innovations with zero location, unit scale, and zero skew. When $\alpha = 2$, this reduces to Gaussian noise.

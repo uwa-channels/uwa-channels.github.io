@@ -12,11 +12,12 @@ description: >
   * Date recorded: November 2024
   * Center frequency: 6 kHz
   * Bandwidth: 4.5 kHz
-  * Symbol rate: R = 4.5 kHz
+  * Symbol rate: R = 4.5 ksym/s
   * Distance: 270 m
   * Tx/Rx/water depth: 20 m/43 m/60 m
   * Mobility: moored
-  * Receiving array: none
+  * Receiving array: none (single hydrophone)
+  * Time diversity: 64 channels formed from transmissions repeated every 10 minutes
 * Parameters:
   * Sampling rate in delay: 2R
   * Total delay coverage: up to 400 ms
