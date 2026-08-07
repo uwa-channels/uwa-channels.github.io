@@ -71,7 +71,7 @@ Each channel is estimated from the experimental data and stored as a tensor of c
   <tr>
     <td rowspan="4"><a href="yellow" style="color: #EDB120">Yellow</a></td>
     <td rowspan="4">Hawaii</td>
-    <td rowspan="4">Jun. 2011</td>
+    <td rowspan="4">Jul. 2011</td>
     <td rowspan="2">50/50/100</td>
     <td rowspan="4">Moored</td>
     <td>3</td>

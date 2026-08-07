@@ -9,7 +9,7 @@ description: >
 
 * Experiment:
   * Location: 22.1N, 159.8W
-  * Date recorded: June 2011
+  * Date recorded: July 2011
   * Center frequency: f<sub>c</sub> = 13 kHz
   * Bandwidth: B = 6.25 kHz
   * Symbol rate: R = 6.25 ksym/s
