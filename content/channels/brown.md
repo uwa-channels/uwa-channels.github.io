@@ -10,16 +10,16 @@ description: >
 * Experiment:
   * Location: eastern North Pacific, from off San Diego, California, to east of Hawaii
   * Date recorded: November 1994
-  * Center frequency: 75 Hz
-  * Bandwidth: 37.5 Hz
+  * Center frequency: f<sub>c</sub> = 75 Hz
+  * Bandwidth: B = 37.5 Hz
   * Symbol rate: R = 37.5 sym/s
-  * Distance: 3250 km
-  * Tx/Rx depth: 652 m/900-1600 m
-  * Water depth: approximately 4000 m at the source and 5300 m at the receiver
+  * Distance: d = 3250 km
+  * Tx/Rx depth: d<sub>T</sub>/d<sub>R</sub> = 652 m/900-1600 m
+  * Water depth d<sub>w</sub>: approximately 4000 m at the source and 5300 m at the receiver
   * Mobility: mobile
-  * Receiving array: autonomous vertical line array, 20 elements, 35 m spacing, spanning 900-1600 m depth
+  * Receiving array: autonomous vertical line array, M = 20 elements, &#8467; = 35 m spacing, spanning 900-1600 m depth
 * Parameters:
-  * Sampling rate in delay: 2R
+  * Sampling rate in delay: f<sub>s</sub> = 2R
   * Total delay coverage: up to 7 seconds
   * Sampling rate in time: R/10 for the channel response, 2R for the phase/delay
   * Total time coverage: 13 minutes

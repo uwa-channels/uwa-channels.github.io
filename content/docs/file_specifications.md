@@ -22,10 +22,10 @@ Each `.mat` file must include the following variables:
 * **Type**: Multi-dimensional complex tensor.
 * **Dimensions**: `[delay, receiver, time]`
 * **Units**:
-  * Delay axis: sampled at `params.fs_delay` [Hz]
+  * Delay axis: sampled at `params.fs_delay` [Hz], denoted $f_s = 1/T_s$
   * Time axis: sampled at `params.fs_time` [Hz]
   * Amplitude: complex baseband impulse response (unitless)
-* **Description**: The estimated time-varying channel impulse response (TVIR).
+* **Description**: The estimated time-varying channel impulse response (TVIR) as a function of delay $\tau$ and time $t$. When delay tracking is used, this is the drift-free response $\hat{\underline{h}}(\tau, t)$; otherwise it is the drifting response $\hat{h}(\tau, t)$. For a given receiver and time index $n$, the slice along the delay axis is the channel vector $\hat{\underline{\mathbf{h}}}[n]$, or $\hat{\mathbf{h}}[n]$ in the drifting case.
 
 ### `params`
 
@@ -33,9 +33,9 @@ A structure with the following scalar fields:
 
 | Field | Type | Unit | Description |
 |-------|------|------|-------------|
-| `fs_delay` | scalar | Hz | Sampling rate along the delay axis. |
+| `fs_delay` | scalar | Hz | Sampling rate $f_s$ along the delay axis. |
 | `fs_time` | scalar | Hz | Sampling rate along the time axis. |
-| `fc` | scalar | Hz | Center frequency of the signal used during channel estimation. |
+| `fc` | scalar | Hz | Center frequency $f_c$ of the signal used during channel estimation. |
 
 ### `version`
 
@@ -55,22 +55,26 @@ A structure with the following scalar fields:
 * **Type**: Numeric matrix, size `[receiver, time]`
 * **Units**: Radians
 * **Sampling rate**: `params.fs_delay`
-* **Description**: Time-varying phase that encodes *both* phase rotation and delay drift. In this mode, `h_hat` is *static* (drift-free). The delay drift is recovered from `phi_hat` as:
+* **Description**: The phase estimate $\hat\varphi(nT_s)$, a time-varying phase that encodes *both* phase rotation and delay drift. In this mode, `h_hat` holds the drift-free response $\hat{\underline{h}}(\tau, t)$. Let $\Delta\tau$ denote the delay drift common to all propagation paths. It is related to the phase by
 
-$$\Delta\tau(t) = \frac{\hat\varphi(t)}{2\pi f_c}$$
+$$\hat\varphi(nT_s) = -2\pi f_c\, \Delta\tau(nT_s)$$
 
-The unpacking procedure reinserts both the phase (via multiplication by $e^{j\hat\varphi(t)}$) and the delay drift (via interpolation).
+Unpacking first reinserts the phase, multiplying the drift-free response by $e^{j\hat\varphi(nT_s)}$ to obtain the signal $\bar y_{\text{r}}(nT_s)$. It then reinserts the delay drift by evaluating that signal at shifted instants,
+
+$$\bar v_{\text{r}}(nT_s) = \mathcal{I}\left[\bar y_{\text{r}}\left(nT_s + \frac{\hat\varphi(nT_s)}{2\pi f_c}\right)\right]$$
+
+where $\mathcal{I}[\cdot]$ denotes interpolation, implemented here as spline interpolation.
 
 ### `theta_hat` (phase tracking only)
 
 * **Type**: Numeric matrix, size `[receiver, time]`
 * **Units**: Radians
 * **Sampling rate**: `params.fs_delay`
-* **Description**: Time-varying phase correction. In this mode, `h_hat` contains the *drifting* impulse response (delay drift is embedded in the taps). Only the phase is tracked separately. The baseband received signal is modeled as:
+* **Description**: The phase estimate $\hat\theta(nT_s)$, a time-varying phase correction. In this mode, `h_hat` contains the *drifting* impulse response $\hat{h}(\tau, t)$ (delay drift is embedded in the taps). Only the phase is tracked separately. The baseband received signal is modeled as:
 
-$$v(t) = \sum_n d(n)\, h(t, t - nT)\, e^{j\hat\theta(t)} + z(t)$$
+$$v(t) = \sum_n d(n)\, h(t - nT, t)\, e^{j\theta(t)} + w(t)$$
 
-where $d(n)$ is the data symbol, $h(t, \tau)$ is the time-varying impulse response with drifting taps, $T$ is the symbol duration, $\hat\theta(t)$ is the tracked phase, and $z(t)$ is the additive noise.
+where $d(n)$ are the transmitted data symbols, $h(\tau, t)$ is the time-varying impulse response at delay $\tau$ and time $t$ with drifting taps, $T$ is the symbol interval, $\theta(t)$ is the channel phase, and $w(t)$ is the additive complex baseband noise.
 
 ### Duration constraint
 
@@ -95,21 +99,21 @@ The `meta` structure is optional but strongly encouraged. The following fields a
 | Field | Type | Description |
 |-------|------|-------------|
 | `description` | string | Free-text description of the experiment. |
-| `nsd` | scalar | Samples per symbol in the delay domain. |
+| `nsd` | scalar | Samples per symbol $N_s$ in the delay domain. |
 | `nst` | scalar | Samples per symbol in the time domain. |
 | `K_1` | scalar | Anti-causal filter length [symbols]. |
 | `K_2` | scalar | Causal filter length [symbols]. |
-| `fc` | scalar | Center frequency [Hz]. |
-| `element_spacing` | scalar | Array element spacing [m]. |
+| `fc` | scalar | Center frequency $f_c$ [Hz]. |
+| `element_spacing` | scalar | Array element spacing $\ell$ [m]. |
 | `vertical` | logical | `true` if vertical array. |
 | `delay_tracking` | logical | `true` if delay tracking is enabled (`phi_hat` present). |
 | `limit` | scalar | Lower dB limit for plotting. |
 | `optim` | scalar | Optimizer used: `1` LMS, `2` RLS, `3` SFTF. |
-| `mu` | scalar | LMS step size (when `optim == 1`). |
-| `lambda` | scalar | Forgetting factor (when `optim == 2` or `3`). |
+| `mu` | scalar | LMS step size $\mu$ (when `optim == 1`). |
+| `lambda` | scalar | Forgetting factor $\lambda$ (when `optim == 2` or `3`). |
 | `regularization` | scalar | Regularization factor (when `optim == 2` or `3`). |
-| `Kf_1` | scalar | PLL loop filter coefficient 1. |
-| `Kf_2` | scalar | PLL loop filter coefficient 2. |
+| `Kf_1` | scalar | PLL loop filter coefficient $K_{f_1}$. |
+| `Kf_2` | scalar | PLL loop filter coefficient $K_{f_2}$. |
 | `nslr` | scalar | Delay tracking rate (when `delay_tracking == true`). |
 | `codename` | string | Short identifier for the channel (e.g., `"blue_1"`). |
 
@@ -121,15 +125,15 @@ Each noise `.mat` file contains the following fields:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `Fs` | scalar | Sampling rate at which noise statistics were measured [Hz]. |
-| `R` | scalar | Bandwidth of the recorded noise [Hz]. Not to be confused with the symbol rate $R$ used on the channel pages. |
-| `alpha` | scalar | Stability index of the symmetric α-stable (SαS) distribution: `2` Gaussian, `< 2` impulsive. |
-| `beta` | tensor `[M, M, L+1]` | Mixing coefficients for spatiotemporal noise coloring, where `M` is the number of array elements and `L` is the maximum lag (both defined below). |
-| `fc` | scalar | Center frequency [Hz]. |
+| `Fs` | scalar | Sampling rate $f_s$ at which noise statistics were measured [Hz]. |
+| `R` | scalar | Bandwidth $B$ of the recorded noise [Hz]. Despite the field name, this is not the symbol rate $R$ used on the channel pages. |
+| `alpha` | scalar | Characteristic exponent $\alpha$ of the symmetric $\alpha$-stable distribution: `2` Gaussian, `< 2` impulsive. |
+| `beta` | tensor `[M, M, L+1]` | Mixing coefficients $\beta_{ij}(kT_s)$ for spatiotemporal noise coloring, where $M$ is the number of array elements and $L$ is the maximum lag (both defined below). |
+| `fc` | scalar | Center frequency $f_c$ [Hz]. |
 | `version` | scalar | Noise struct version number. |
 
 The noise generation function `noisegen` uses the mixing equation:
 
-$$n_i(nT_s) = \sum_{j=0}^{M-1}\sum_{k=0}^{L}\beta_{ij}(kT_s)\,\eta_j(nT_s - kT_s)$$
+$$\hat{n}_i(nT_s) = \sum_{j=0}^{M-1}\sum_{k=0}^{L}\beta_{ij}(kT_s)\,\eta_j(nT_s - kT_s)$$
 
-where $T_s = 1/F_s$ is the sampling interval, $L$ is the maximum discrete time lag with non-negligible covariance (so $\beta_{ij}(kT_s)$ has $L+1$ taps, $k = 0, \ldots, L$), and $\eta_j \sim S\alpha S(0, 1, 0)$ are i.i.d. symmetric α-stable innovations with zero location, unit scale, and zero skew. When $\alpha = 2$, this reduces to Gaussian noise.
+Here $\hat{n}_i$ is the synthetically generated noise on hydrophone $i$, with the hydrophone indices running as $i, j = 0, \ldots, M-1$. The sampling interval is $T_s = 1/f_s$, the sampling rate $f_s$ being stored in the `Fs` field, and $L$ is the maximum discrete time lag with non-negligible covariance, so that $\beta_{ij}(kT_s)$ has $L+1$ taps, $k = 0, \ldots, L$. The innovations $\eta_j(nT_s) \sim \mathcal{S}_\alpha(0, 1/\sqrt{2})$ are i.i.d. symmetric $\alpha$-stable variates with zero location and scale $1/\sqrt{2}$; this scale ensures that the distribution reduces to the standard Gaussian $\mathcal{N}(0, 1)$ when $\alpha = 2$.

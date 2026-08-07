@@ -11,12 +11,12 @@ cascade:
   - type: "docs"
 ---
 
-Along with each channel, you will find the noise model corresponding to it. The noise models are based on the statistics derived from the corresponding experimental recordings. The noise is modeled as non-white Gaussian for all the channels except the Red channel, whose impulsive noise is modeled by a symmetric $\alpha$-stable (sub-Gaussian) distribution. The power spectral density of the Gaussian noise estimated from the recordings is included in the models, as is the spatial correlation across the array elements.
+Along with each channel, you will find the noise model corresponding to it. The noise models are based on the statistics derived from the corresponding experimental recordings. The noise is modeled as colored Gaussian for all the channels except the Red channel, whose impulsive noise is modeled by an $\alpha$-stable sub-Gaussian ($\alpha$SG) random process. Each model is specified by two quantities estimated from the recordings: a characteristic exponent $\alpha$, which equals 2 in the Gaussian case, and a set of mixing coefficients $\beta_{ij}(kT_s)$. Together, the coefficients capture the power spectral density of the noise and its spatial correlation across the array elements. Synthetic noise samples $\hat{n}_i(nT_s)$ are obtained by filtering i.i.d. innovations through these coefficients, as described in the [noise file format specifications](/docs/file_specifications#noise-file-format).
 
 The library also contains a generic noise model, which represents the Gaussian component of the ambient noise. This noise decays log-linearly with frequency (nominally 17 dB per decade) and is assumed to be uncorrelated in space. The power of the noise within a given bandwidth can be adjusted by the user.
 
 
-| Color                                                | Channel(s)                          | Noise Source(s)                        |
+| Codename                                             | Channel(s)                          | Noise Source(s)                        |
 |-------------------------------------------------------|--------------------------------------|-----------------------------------------|
 | <span style="color: #0072BD">Blue</span>              | `blue_1` ... `blue_20`              | `blue_noise`                            |
 | <span style="color: #D95319">Red</span>               | `red_1` ... `red_4`                 | `red_noise`                             |

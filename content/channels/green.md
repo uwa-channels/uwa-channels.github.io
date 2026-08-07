@@ -10,16 +10,16 @@ description: >
 * Experiment:
   * Location: 60N, 5.3E
   * Date recorded: November 2024
-  * Center frequency: 6 kHz
-  * Bandwidth: 4.5 kHz
+  * Center frequency: f<sub>c</sub> = 6 kHz
+  * Bandwidth: B = 4.5 kHz
   * Symbol rate: R = 4.5 ksym/s
-  * Distance: 270 m
-  * Tx/Rx/water depth: 20 m/43 m/60 m
+  * Distance: d = 270 m
+  * Tx/Rx/water depth: d<sub>T</sub>/d<sub>R</sub>/d<sub>w</sub> = 20 m/43 m/60 m
   * Mobility: moored
   * Receiving array: none (single hydrophone)
-  * Time diversity: 64 channels formed from transmissions repeated every 10 minutes
+  * Time diversity: M = 64 channels formed from transmissions repeated every 10 minutes
 * Parameters:
-  * Sampling rate in delay: 2R
+  * Sampling rate in delay: f<sub>s</sub> = 2R
   * Total delay coverage: up to 400 ms
   * Sampling rate in time: R/1000 for the channel response, 2R for the phase/delay
   * Total time coverage: approximately 55 seconds

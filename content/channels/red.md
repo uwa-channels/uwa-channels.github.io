@@ -10,15 +10,15 @@ description: >
 * Experiment:
   * Location: Singapore
   * Date recorded: November 2024
-  * Center frequency: 25 kHz
-  * Bandwidth: 9.6 kHz
+  * Center frequency: f<sub>c</sub> = 25 kHz
+  * Bandwidth: B = 9.6 kHz
   * Symbol rate: R = 9.6 ksym/s
-  * Distance: 100-400 m
-  * Tx/Rx/water depth: 6 m/4.6 m/8-20 m
+  * Distance: d = 100-400 m
+  * Tx/Rx/water depth: d<sub>T</sub>/d<sub>R</sub>/d<sub>w</sub> = 6 m/4.6 m/8-20 m
   * Mobility: drifting
-  * Receiving array: vertical, 3 elements, 0.8 m spacing (numbered top to bottom)
+  * Receiving array: vertical, M = 3 elements, &#8467; = 0.8 m spacing (numbered top to bottom)
 * Parameters:
-  * Sampling rate in delay: 2R
+  * Sampling rate in delay: f<sub>s</sub> = 2R
   * Total delay coverage: up to 40 ms
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
   * Total time coverage: 50 seconds
