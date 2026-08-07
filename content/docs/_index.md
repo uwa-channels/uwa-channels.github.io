@@ -8,13 +8,46 @@ description: >
   Instructions for downloading the channel library, replaying a signal through a channel, adding site-specific noise, and visualizing a decompressed channel.
 ---
 
-The channels stored in this library can be used in two ways: a channel can be (1) applied directly to a user-generated signal, or (2) decompressed for visualization. Ready-to-use code for performing these functions is available on [GitHub](https://github.com/uwa-channels). You can also download the MATLAB package [here](https://github.com/uwa-channels/matlab/archive/refs/heads/main.zip). To install the Python package,
+The channels stored in this library can be used in two ways: a channel can be (1) applied directly to a user-generated signal, or (2) decompressed for visualization. Ready-to-use code for performing these functions is available on [GitHub](https://github.com/uwa-channels).
+
+## Installation
+
+{{< tabpane >}}
+{{< tab header="Install the package:" disabled=true />}}
+{{< tab header="MATLAB/Octave" lang="matlab" >}}
+matlab.addons.install(websave([tempname '.mltbx'], 'https://github.com/uwa-channels/matlab/releases/latest/download/uwa-channels.mltbx'))
+{{< /tab >}}
+{{< tab header="Python" lang="python" >}}
+pip install uwa-channels
+{{< /tab >}}
+{{< /tabpane >}}
+
+The MATLAB command downloads the latest release and installs it as an add-on, so `replay`, `noisegen`, and `unpack` are on your path in every session afterwards. Running it again later upgrades the toolbox in place. To remove it, run `matlab.addons.uninstall('uwa-channels')`, or use **Home > Add-Ons > Manage Add-Ons**.
+
+### Installing from a clone, and under Octave
+
+If you want to read or modify the source, or if you are running Octave (which cannot read `.mltbx` files), add the repository folders to the search path instead:
 
 ```bash
-pip install uwa-channels
+git clone https://github.com/uwa-channels/matlab.git
+cd matlab
 ```
 
+Then, from that folder, in MATLAB or Octave:
+
+```matlab
+install
+```
+
+This adds `src` and `examples` to the search path and saves the path for later sessions, so edits to `src` take effect immediately. Avoid combining the two routes: if the packaged add-on is also installed, both copies sit on the path and the winner depends on path order.
+
+### Requirements
+
+The MATLAB package requires R2021a or later with the [Signal Processing Toolbox](https://www.mathworks.com/products/signal.html). Under Octave, it requires version 9.0 or later with the [`signal`](https://gnu-octave.github.io/packages/signal/) and [`statistics`](https://gnu-octave.github.io/packages/statistics/) packages.
+
 Julia support is provided by the [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl) package, maintained separately. See that package's documentation for installation and usage instructions.
+
+Once a package is installed, download the channel MAT-files from [Zenodo](https://doi.org/10.5281/zenodo.21287414) and place them where MATLAB, Octave, or Python can find them. The channel files are distributed separately from the code because of their size.
 
 ## Applying a channel to an arbitrary signal
 

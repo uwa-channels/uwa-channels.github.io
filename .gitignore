@@ -2,5 +2,11 @@ public/
 resources/
 node_modules/
 
+# Created by the local preview setup in README.md. The deploy workflow
+# fetches its own copies, so these are local build artifacts, not sources.
+themes/github.com/
+package.json
+package-lock.json
+
 .DS_Store
 .hugo_build.lock
