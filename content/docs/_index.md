@@ -85,7 +85,7 @@ A simple example of this process is given in [`MATLAB`](https://github.com/uwa-c
 
 ## Visualizing a channel
 
-To visualize a channel as a collection of impulse responses evolving over time, you will need to decompress the channel impulse responses via `unpack`. This will produce the decompressed impulse response $\hat{h}(\tau, t)$, which is larger than the stored original and contains all the physical effects of delay drift. The output is a $K \times M \times N_t$ array, where $K$ is the number of delay taps, $M$ is the number of array elements, and $N_t$ is the number of time snapshots. This array can be generated at an arbitrary sampling rate in time, provided that rate does not exceed the sampling rate in delay.
+To visualize a channel as a collection of impulse responses evolving over time, you will need to decompress the channel impulse responses via `unpack`. This will produce the decompressed impulse response $\hat{h}(\tau, t)$, which is larger than the stored original and contains all the physical effects of delay drift. The output is a $K \times M \times T$ array, where $K$ is the number of delay taps, $M$ is the number of array elements, and $T$ is the number of time snapshots. This array can be generated at an arbitrary sampling rate in time, provided that rate does not exceed the sampling rate in delay.
 
 A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/matlab/blob/main/examples/example_unpack.m) and [`Python`](https://github.com/uwa-channels/python/blob/main/examples/example_unpack.py). Before running the example code, please read the corresponding `README` file.
 
