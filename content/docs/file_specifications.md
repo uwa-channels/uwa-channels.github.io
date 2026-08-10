@@ -57,13 +57,13 @@ A structure with the following scalar fields:
 * **Sampling rate**: `params.fs_delay`
 * **Description**: The phase estimate $\hat\varphi(nT_s)$, a time-varying phase that encodes *both* phase rotation and delay drift. In this mode, `h_hat` holds the drift-free response $\hat{\underline{h}}(\tau, t)$. Let $\Delta\tau$ denote the delay drift common to all propagation paths. It is related to the phase by
 
-$$\hat\varphi(nT_s) = -2\pi f_c\, \Delta\tau(nT_s)$$
+  $$\hat\varphi(nT_s) = -2\pi f_c\, \Delta\tau(nT_s)$$
 
-Unpacking first reinserts the phase, multiplying the drift-free response by $e^{j\hat\varphi(nT_s)}$ to obtain the signal $\bar y_{\text{r}}(nT_s)$. It then reinserts the delay drift by evaluating that signal at shifted instants,
+  Unpacking first reinserts the phase, multiplying the drift-free response by $e^{j\hat\varphi(nT_s)}$ to obtain the signal $\bar y_{\text{r}}(nT_s)$. It then reinserts the delay drift by evaluating that signal at shifted instants,
 
-$$\bar v_{\text{r}}(nT_s) = \mathcal{I}\left[\bar y_{\text{r}}\left(nT_s + \frac{\hat\varphi(nT_s)}{2\pi f_c}\right)\right]$$
+  $$\bar v_{\text{r}}(nT_s) = \mathcal{I}\left[\bar y_{\text{r}}\left(nT_s + \frac{\hat\varphi(nT_s)}{2\pi f_c}\right)\right]$$
 
-where $\mathcal{I}[\cdot]$ denotes interpolation, implemented here as spline interpolation.
+  where $\mathcal{I}[\cdot]$ denotes interpolation, implemented here as spline interpolation.
 
 ### `theta_hat` (phase tracking only)
 
@@ -72,9 +72,9 @@ where $\mathcal{I}[\cdot]$ denotes interpolation, implemented here as spline int
 * **Sampling rate**: `params.fs_delay`
 * **Description**: The phase estimate $\hat\theta(nT_s)$, a time-varying phase correction. In this mode, `h_hat` contains the *drifting* impulse response $\hat{h}(\tau, t)$ (delay drift is embedded in the taps). Only the phase is tracked separately. The baseband received signal is modeled as:
 
-$$v(t) = \sum_n d(n)\, h(t - nT, t)\, e^{j\theta(t)} + w(t)$$
+  $$v(t) = \sum_n d(n)\, h(t - nT, t)\, e^{j\theta(t)} + w(t)$$
 
-where $d(n)$ are the transmitted data symbols, $h(\tau, t)$ is the time-varying impulse response at delay $\tau$ and time $t$ with drifting taps, $T$ is the symbol interval, $\theta(t)$ is the channel phase, and $w(t)$ is the additive complex baseband noise.
+  where $d(n)$ are the transmitted data symbols, $h(\tau, t)$ is the time-varying impulse response at delay $\tau$ and time $t$ with drifting taps, $T$ is the symbol interval, $\theta(t)$ is the channel phase, and $w(t)$ is the additive complex baseband noise.
 
 ### Duration constraint
 
