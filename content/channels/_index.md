@@ -20,14 +20,24 @@ Each channel is estimated from the experimental data and stored as a tensor of c
 
 
 <style>
-  th {
-    font-size: 14px;
+  /* Docsy makes content tables `display: block` and caps them at 80% width on
+     large screens; both are overridden here so the table fills the content
+     column, with the wrapper keeping it scrollable on narrow screens. */
+  .channel-table-wrap {
+    overflow-x: auto;
   }
-  td {
+  .td-content table.channel-table {
+    display: table;
+    width: 100%;
+    max-width: none;
+  }
+  .channel-table th,
+  .channel-table td {
     font-size: 14px;
   }
 </style>
-<table><thead>
+<div class="channel-table-wrap">
+<table class="channel-table"><thead>
   <tr>
     <th>Codename</th>
     <th>Location</th>
@@ -175,6 +185,7 @@ Each channel is estimated from the experimental data and stored as a tensor of c
     <td>35</td>
   </tr>
 </tbody></table>
+</div>
 <p style="font-size: 13px; margin-top: 8px;">Column key: d<sub>T</sub>, d<sub>R</sub>, and d<sub>w</sub> are the transmitter depth, the receiver depth, and the water depth; d is the transmitter-receiver distance; f<sub>c</sub> is the center frequency; R is the symbol rate of the transmitted probe signal; M is the number of array elements; &#8467; is the inter-element spacing. Where two values are listed for d<sub>w</sub>, they are the water depths at the transmitter and at the receiver. An "x" marks a value that was not recorded.</p>
 <p style="font-size: 13px; margin-top: 8px;">For the <a href="green" style="color: #77AC30">Green</a> channel, M denotes the number of time-diversity channels formed from repeated transmissions on a single hydrophone, and &#8467; denotes the inter-transmission interval.</p>
 
