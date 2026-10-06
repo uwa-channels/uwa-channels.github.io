@@ -1,4 +1,4 @@
-Navigate to [https://uwa-channels.github.io](https://uwa-channels.github.io) for the documentation.
+Navigate to [https://uwa-channels.github.io](https://uwa-channels.github.io) for the documentation. The library is described in [arXiv:2609.03207](https://arxiv.org/abs/2609.03207); please cite it if you use the channels, the noise models, or the code.
 
 ## Previewing the site locally
 

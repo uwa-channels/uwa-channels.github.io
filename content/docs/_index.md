@@ -89,3 +89,19 @@ To visualize a channel as a collection of impulse responses evolving over time, 
 
 A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/matlab/blob/main/examples/example_unpack.m) and [`Python`](https://github.com/uwa-channels/python/blob/main/examples/example_unpack.py). Before running the example code, please read the corresponding `README` file.
 
+## Citing the library
+
+If you use the channels, the noise models, or the code in your work, please cite the paper that describes the library, [arXiv:2609.03207](https://arxiv.org/abs/2609.03207):
+
+```bibtex
+@misc{li2026underwater,
+  title         = {Underwater Acoustic Channel Library},
+  author        = {Li, Zhengnan and Chitre, Mandar and Cuji, Diego A. and Preisig, James and Singer, Andrew C. and Stojanovic, Milica and van Walree, Paul},
+  year          = {2026},
+  eprint        = {2609.03207},
+  archivePrefix = {arXiv},
+  primaryClass  = {eess.SP},
+  doi           = {10.48550/arXiv.2609.03207},
+  url           = {https://arxiv.org/abs/2609.03207}
+}
+```
