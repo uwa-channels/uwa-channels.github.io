@@ -1,0 +1,7 @@
+{{/* Returns the permalink of a page's Markdown output, or its HTML permalink
+     when it has none. */ -}}
+{{ $url := .Permalink -}}
+{{ with .OutputFormats.Get "markdown" -}}
+  {{ $url = .Permalink -}}
+{{ end -}}
+{{ return $url -}}

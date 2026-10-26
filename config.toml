@@ -53,8 +53,15 @@ weight = 1
       noClasses = "false"
 
 
+[outputFormats]
+  [outputFormats.LLMSFULL]
+  baseName = "llms-full"
+  isPlainText = true
+  mediaType = "text/plain"
+  notAlternative = true
+
 [outputs]
-home = ["HTML", "markdown", "LLMS"]
+home = ["HTML", "markdown", "LLMS", "LLMSFULL"]
 page = ["HTML", "markdown"]
 section = ["HTML", "print", "markdown"]
 

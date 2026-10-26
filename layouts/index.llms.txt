@@ -1,0 +1,46 @@
+{{/* Overrides themes/docsy/layouts/index.llms.txt to list every page, the
+     paper, the data and the code, not just the main menu. */ -}}
+
+# {{ .Site.Title -}}
+
+{{ with .Description | strings.TrimSpace }}
+
+> {{ replace . "\n" "\n> " -}}
+
+{{ end }}
+
+The library is described in the paper [Underwater Acoustic Channel Library](https://arxiv.org/abs/2609.03207) (arXiv:2609.03207).  The channel and noise `.mat` files are on Zenodo, [doi:10.5281/zenodo.21287414](https://doi.org/10.5281/zenodo.21287414).  The toolboxes that read them are available for MATLAB/Octave and Python.  Every page below is linked to its Markdown version.
+
+## Site index
+
+- [Home page]( {{- partial "md-url.html" .Site.Home -}} )
+{{ range .Site.Menus.main -}}
+  {{ with .Page -}}
+    - [{{ .LinkTitle }}]( {{- partial "md-url.html" . -}} ){{ with .Description | strings.TrimSpace | replaceRE `\s+` " " }}: {{ . }}{{ end }} {{- "\n" -}}
+  {{ end -}}
+{{ end -}}
+{{ range slice "channels" "docs" -}}
+  {{ with site.GetPage . -}}
+    {{ "\n" -}}
+    ## {{ .Title }}
+    {{- "\n\n" -}}
+    {{ range .RegularPages.ByWeight -}}
+      - [{{ .Title | strings.TrimSpace }}]( {{- partial "md-url.html" . -}} ){{ with .Description | strings.TrimSpace | replaceRE `\s+` " " }}: {{ . }}{{ end }} {{- "\n" -}}
+    {{ end -}}
+  {{ end -}}
+{{ end }}
+## Paper and data
+
+- [Underwater Acoustic Channel Library](https://arxiv.org/abs/2609.03207): The paper describing the library, arXiv:2609.03207.  Cite it if you use the channels, the noise models, or the code.
+- [Underwater Acoustic Channel Repository](https://doi.org/10.5281/zenodo.21287414): The channel impulse responses and noise statistics on Zenodo, version 1.0, CC BY 4.0.  [doi:10.5281/zenodo.21287413](https://doi.org/10.5281/zenodo.21287413) always resolves to the newest version.
+
+## Code
+
+- [MATLAB/Octave toolbox](https://github.com/uwa-channels/matlab): `replay`, `noisegen`, and `unpack`, MIT license.
+- [Python package](https://github.com/uwa-channels/python): the same functions, plus `load_channel` and `load_noise`.  Install with `pip install uwa-channels`.  MIT license.
+- [Channel estimation](https://github.com/uwa-channels/estimate): MATLAB/Octave scripts that estimate a channel from a recording, in the file format above, and plot it.
+- [Calibration](https://github.com/uwa-channels/calibrations): runs the MATLAB and Python toolboxes side by side on the released files and reports where they agree.
+
+## Optional
+
+- [llms-full.txt]( {{- "llms-full.txt" | absURL -}} ): All of the pages above in one file.

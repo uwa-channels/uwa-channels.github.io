@@ -1,0 +1,33 @@
+{{/* Every page's Markdown body in one file, in the order llms.txt lists
+     them. */ -}}
+
+# {{ .Site.Title }}
+
+{{ with .Description | strings.TrimSpace -}}
+> {{ replace . "\n" "\n> " }}
+{{ end }}
+Paper: https://arxiv.org/abs/2609.03207
+Data: https://doi.org/10.5281/zenodo.21287414
+Index: {{ "llms.txt" | absURL }}
+{{ $pages := slice -}}
+{{ range .Site.Menus.main -}}
+  {{ with .Page -}}
+    {{ $pages = $pages | append . -}}
+  {{ end -}}
+{{ end -}}
+{{ range slice "channels" "docs" -}}
+  {{ with site.GetPage . -}}
+    {{ $pages = $pages | append .RegularPages.ByWeight -}}
+  {{ end -}}
+{{ end -}}
+{{ range $pages }}
+---
+
+# {{ .Title | strings.TrimSpace }}
+
+Source: {{ partial "md-url.html" . }}
+{{ with .Description | strings.TrimSpace }}
+> {{ replace . "\n" "\n> " }}
+{{ end }}
+{{ .RenderShortcodes | strings.TrimSpace }}
+{{ end -}}
