@@ -44,7 +44,7 @@ The MATLAB and Python implementations must behave the same: [**uwa-channels/cali
   example_replay
   ```
 
-  To run all tests from the repository root (they use `matlab.unittest`, so they need MATLAB with the Signal Processing Toolbox and do not run in Octave):
+  To run all tests from the repository root (they use `matlab.unittest`, so they need MATLAB with the Signal Processing Toolbox):
 
   ```bash
   matlab -batch "addpath('src'); assertSuccess(runtests('tests'))"
@@ -148,7 +148,7 @@ Follow the [MATLAB Style Guide](https://github.com/eeberhard/matlab_style_guide)
 
 - Two-space indentation; `snake_case` for functions, `PascalCase` for classes
 - Each function/class in its own `.m` file
-- Keep `src/` working on MATLAB R2021a and in Octave: validate inputs with `assert` in a `validate_inputs` subfunction rather than with `arguments` blocks
+- Keep `src/` working on MATLAB R2021a: validate inputs with `assert` in a `validate_inputs` subfunction rather than with `arguments` blocks
 - Add unit tests as flat files directly under `tests/` using MATLAB Unit Test
 - Vectorize where possible; comment non-obvious logic
 

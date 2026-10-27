@@ -29,16 +29,16 @@ Pkg.add("MAT")
 
 The MATLAB command downloads the latest release and installs it as an add-on, so `replay`, `noisegen`, and `unpack` are on your path in every session afterwards. Running it again later upgrades the toolbox in place. To remove it, run `matlab.addons.uninstall('uwa-channels')`, or use **Home > Add-Ons > Manage Add-Ons**.
 
-### Installing from a clone, and under Octave
+### Installing from a clone
 
-If you want to read or modify the source, or if you are running Octave (which cannot read `.mltbx` files), add the repository folders to the search path instead:
+If you want to read or modify the source, add the repository folders to the search path instead:
 
 ```bash
 git clone https://github.com/uwa-channels/matlab.git
 cd matlab
 ```
 
-Then, from that folder, in MATLAB or Octave:
+Then, from that folder, in MATLAB:
 
 ```matlab
 install
@@ -48,13 +48,13 @@ This adds `src` and `examples` to the search path and saves the path for later s
 
 ### Requirements
 
-The MATLAB package requires R2021a or later with the [Signal Processing Toolbox](https://www.mathworks.com/products/signal.html). Under Octave, it requires version 9.0 or later with the [`signal`](https://gnu-octave.github.io/packages/signal/) and [`statistics`](https://gnu-octave.github.io/packages/statistics/) packages.
+The MATLAB package requires R2021a or later with the [Signal Processing Toolbox](https://www.mathworks.com/products/signal.html). Octave is not supported.
 
 The Python package requires Python 3.10 or later; `pip` installs its dependencies (NumPy, SciPy, Matplotlib, and h5py).
 
 Julia support is provided by the [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl) package, maintained separately by the Acoustic Research Laboratory, with the [`MAT`](https://github.com/JuliaIO/MAT.jl) package to read the files. It requires Julia 1.9 or later. The released version (v0.8.1) cannot apply `phi_hat` or `f_resamp`, which most channels use, so install the development version from GitHub as shown above until the next release. See the [replay guide](https://org-arl.github.io/UnderwaterAcoustics.jl/replay.html) of that package for more detail.
 
-Once a package is installed, download the channel MAT-files from [Zenodo](https://doi.org/10.5281/zenodo.21287414) and place them where MATLAB, Octave, or Python can find them. The channel files are distributed separately from the code because of their size. In Julia, a name such as `uacr://blue_1` instead of a file path downloads that file from Zenodo and caches it.
+Once a package is installed, download the channel MAT-files from [Zenodo](https://doi.org/10.5281/zenodo.21287414) and place them where MATLAB or Python can find them. The channel files are distributed separately from the code because of their size. In Julia, a name such as `uacr://blue_1` instead of a file path downloads that file from Zenodo and caches it.
 
 ## Applying a channel to an arbitrary signal
 
@@ -65,7 +65,7 @@ Once a package is installed, download the channel MAT-files from [Zenodo](https:
 
 {{< tabpane >}}
 {{< tab header="Replay and generate noise" disabled=true />}}
-{{< tab header="MATLAB/Octave" lang="matlab" >}}
+{{< tab header="MATLAB" lang="matlab" >}}
 channel = load('blue_1.mat');
 noise = load('blue_noise.mat');
 array_index = [1, 2, 3];
