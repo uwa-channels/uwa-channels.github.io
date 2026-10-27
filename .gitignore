@@ -3,8 +3,7 @@ resources/
 node_modules/
 
 # Created by the local preview setup in README.md. The deploy workflow
-# fetches its own copies, so these are local build artifacts, not sources.
-themes/github.com/
+# installs its own copies, so these are local build artifacts, not sources.
 package.json
 package-lock.json
 

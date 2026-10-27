@@ -1,6 +1,6 @@
 baseURL = "https://uwa-channels.github.io"
 title = "Underwater Acoustic Channel Library"
-theme = ["docsy"]
+theme = ["docsy/theme"]
 
 enableRobotsTXT = false
 enableGitInfo = false
@@ -17,13 +17,16 @@ blog = "/:section/:year/:month/:day/:slug/"
 
 [imaging]
 resampleFilter = "CatmullRom"
-quality = 75
 anchor = "smart"
+[imaging.jpeg]
+quality = 75
+[imaging.webp]
+quality = 75
 
 [languages]
 [languages.en]
 title = "Underwater Acoustic Channel Library"
-languageName ="English"
+label = "English"
 weight = 1
 
 [menu]

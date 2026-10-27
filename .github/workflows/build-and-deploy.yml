@@ -12,15 +12,13 @@ on:
 
 env:
   # hugomods/hugo (the previous image) tops out at 0.154.5, which predates
-  # the Hugo template APIs Docsy 0.15.0's llms.txt output depends on. Install
-  # Hugo directly instead so we can track a current release.
-  HUGO_VERSION: "0.164.0"
-  # Docsy's go.mod declares these as Hugo Module (indirect) dependencies, but
-  # this site vendors Docsy as a git submodule rather than via Hugo Modules,
-  # so they must be fetched explicitly. Keep these in sync with
-  # themes/docsy/go.mod whenever the Docsy submodule is bumped.
-  FONT_AWESOME_VERSION: "6.7.2"
-  BOOTSTRAP_VERSION: "v5.3.8"
+  # the Hugo template APIs Docsy's llms.txt output depends on. Install Hugo
+  # directly instead so we can track a current release.
+  HUGO_VERSION: "0.168.0"
+  # Docsy compiles its SCSS with Dart Sass, which Hugo looks up as `sass` on
+  # PATH. Keep this in sync with sass-embedded in themes/docsy/package.json
+  # whenever the Docsy submodule is bumped.
+  SASS_EMBEDDED_VERSION: "1.105.0"
 
 jobs:
   build:
@@ -38,13 +36,20 @@ jobs:
         sudo mv hugo /usr/local/bin/hugo
         hugo version
 
-    - name: Vendor Docsy's theme dependencies (Font Awesome, Bootstrap)
-      run: |
-        git clone --depth 1 --branch "$FONT_AWESOME_VERSION" https://github.com/FortAwesome/Font-Awesome.git themes/github.com/FortAwesome/Font-Awesome
-        git clone --depth 1 --branch "$BOOTSTRAP_VERSION" https://github.com/twbs/bootstrap.git themes/github.com/twbs/bootstrap
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 24
 
-    - name: Install dependencies
-      run: npm install postcss postcss-cli autoprefixer
+    # Docsy's theme dependencies (Bootstrap, Font Awesome) come from npm and
+    # land in themes/docsy/theme/node_modules, which the theme mounts.
+    - name: Install Docsy's theme dependencies
+      run: (cd themes/docsy && npm run install:theme-deps)
+
+    - name: Install Dart Sass
+      run: |
+        npm install --no-save --no-package-lock "sass-embedded@${SASS_EMBEDDED_VERSION}"
+        echo "$PWD/node_modules/.bin" >> "$GITHUB_PATH"
 
     - name: Build
       run: hugo --minify --baseURL "https://uwa-channels.github.io"
