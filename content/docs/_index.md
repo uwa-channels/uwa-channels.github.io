@@ -90,7 +90,7 @@ r = transmit(channel, input; fs)
 {{< /tab >}}
 {{< /tabpane >}}
 
-The input is a real passband signal sampled at `fs`. It must be shorter than the channel, and the output is longer than the input by about the length of the impulse response. `replay` starts at a random point in the channel on each call; pass a fifth argument, `start`, to choose the starting sample (at `params.fs_delay`) and make the output repeatable. The output of `replay` is not normalized, so its power follows that of the channel.
+The input is a real passband signal sampled at `fs`. It must be shorter than the channel, and the output is longer than the input by about the length of the impulse response, plus, for channels with `phi_hat`, the largest delay the drift reaches during the replay. `replay` starts at a random point in the channel on each call; pass a fifth argument, `start`, to choose the starting sample (at `params.fs_delay`) and make the output repeatable. The output of `replay` is not normalized, so its power follows that of the channel.
 
 In Python, `load_channel` and `load_noise` read both the released `-v7.3` files and MAT v5 files, and their output can be passed to `replay`, `noisegen`, and `unpack`. In MATLAB, the built-in `load` reads the files directly.
 
