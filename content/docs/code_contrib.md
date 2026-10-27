@@ -146,7 +146,7 @@ Read MAT v5 files, and fix the beta axis order from h5py
 
 Follow the [MATLAB Style Guide](https://github.com/eeberhard/matlab_style_guide):
 
-- Two-space indentation; `snake_case` for functions, `PascalCase` for classes
+- Four-space indentation, as MATLAB's Smart Indent applies it; `snake_case` for functions, `PascalCase` for classes
 - Each function/class in its own `.m` file
 - Keep `src/` working on MATLAB R2021a: validate inputs with `assert` in a `validate_inputs` subfunction rather than with `arguments` blocks
 - Add unit tests as flat files directly under `tests/` using MATLAB Unit Test
