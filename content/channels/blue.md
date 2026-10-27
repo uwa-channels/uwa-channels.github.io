@@ -11,7 +11,7 @@ description: >
   * Location: 40.2N, 70.5W
   * Date recorded: June 2010
   * Center frequency: f<sub>c</sub> = 13 kHz
-  * Bandwidth: B = 5 kHz
+  * Bandwidth: B = 5 kHz (10.5-15.5 kHz)
   * Symbol rate: R = 10<sup>7</sup>/2048 sym/s (approximately 4.9 ksym/s)
   * Distance: d = 3-7 km
   * Tx/Rx/water depth: d<sub>T</sub>/d<sub>R</sub>/d<sub>w</sub> = 30-60 m/50 m/100 m
@@ -19,6 +19,6 @@ description: >
   * Receiving array: vertical, M = 12 elements, &#8467; = 12 cm spacing (numbered top to bottom)
 * Parameters:
   * Sampling rate in delay: f<sub>s</sub> = 2R
-  * Total delay coverage: up to 30 ms
+  * Total delay coverage: up to 33 ms
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
-  * Total time coverage: 1 minute
+  * Total time coverage: 52 seconds

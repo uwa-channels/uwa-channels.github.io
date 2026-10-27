@@ -20,9 +20,9 @@ description: >
   * Receiving array: vertical, M = 24 elements at most, in six hydrophone groups. Within each group, the inter-element spacing is &#8467; = 0.9 m; the distance between groups is 1.8 m.
 * Parameters:
   * Sampling rate in delay: f<sub>s</sub> = 2R
-  * Total delay coverage: up to 210 ms
+  * Total delay coverage: up to 200 ms
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
-  * Total time coverage: 55 seconds
+  * Total time coverage: 57 seconds
 
 > [!PRIMARY] Acknowledgement
 >

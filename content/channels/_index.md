@@ -44,8 +44,8 @@ Each channel is estimated from the experimental data and stored as a tensor of c
     <th>Codename</th>
     <th>Location</th>
     <th>Date</th>
-    <th>d<sub>T</sub>/d<sub>R</sub>/d<sub>w</sub> [m]</th>
     <th>Mobility</th>
+    <th>d<sub>T</sub>/d<sub>R</sub>/d<sub>w</sub> [m]</th>
     <th>d [km]</th>
     <th>f<sub>c</sub> [kHz]</th>
     <th>R [ksym/s]</th>
@@ -55,11 +55,11 @@ Each channel is estimated from the experimental data and stored as a tensor of c
   </tr></thead>
 <tbody>
   <tr>
-    <td><a href="blue" style="color: #0072BD">Blue</a></td>
+    <td><a href="blue" class="channel-blue">Blue</a></td>
     <td>North Atlantic</td>
     <td>Jun. 2010</td>
-    <td>30-60/50/100</td>
     <td>Mobile</td>
+    <td>30-60/50/100</td>
     <td>3-7</td>
     <td>13</td>
     <td>10<sup>4</sup>/2048</td>
@@ -71,8 +71,8 @@ Each channel is estimated from the experimental data and stored as a tensor of c
     <td><a href="red" style="color: #D95319">Red</a></td>
     <td>Singapore</td>
     <td>Nov. 2024</td>
-    <td>6/4.6/8-20</td>
     <td>Drifting</td>
+    <td>6/4.6/8-20</td>
     <td>0.1-0.4</td>
     <td>25</td>
     <td>9.6</td>
@@ -84,8 +84,8 @@ Each channel is estimated from the experimental data and stored as a tensor of c
     <td rowspan="4"><a href="yellow" style="color: #EDB120">Yellow</a></td>
     <td rowspan="4">Hawaii</td>
     <td rowspan="4">Jul. 2011</td>
-    <td rowspan="2">50/50/100</td>
     <td rowspan="4">Moored</td>
+    <td rowspan="2">50/50/100</td>
     <td>3</td>
     <td rowspan="4">13</td>
     <td rowspan="4">6.25</td>
@@ -110,11 +110,11 @@ Each channel is estimated from the experimental data and stored as a tensor of c
     <td>3.75</td>
   </tr>
   <tr>
-    <td rowspan="3"><a href="purple" style="color: #7E2F8E">Purple</a></td>
+    <td rowspan="3"><a href="purple" class="channel-purple">Purple</a></td>
     <td rowspan="3">North Atlantic</td>
     <td rowspan="3">Oct. 2008</td>
-    <td rowspan="3">11/10/15</td>
     <td rowspan="3">Moored</td>
+    <td rowspan="3">11/10/15</td>
     <td>0.06</td>
     <td rowspan="3">12.5</td>
     <td rowspan="3">10<sup>4</sup>/1536</td>
@@ -138,21 +138,21 @@ Each channel is estimated from the experimental data and stored as a tensor of c
     <td><a href="green" style="color: #77AC30">Green</a></td>
     <td>Norway</td>
     <td>Nov. 2024</td>
-    <td>20/43/60</td>
     <td>Moored</td>
+    <td>20/43/60</td>
     <td>0.27</td>
     <td>6</td>
     <td>4.5</td>
     <td>Time</td>
     <td>64</td>
-    <td>10 min</td>
+    <td>-</td>
   </tr>
   <tr>
-    <td><a href="black" style="color: #000000">Black</a></td>
+    <td><a href="black" class="channel-black">Black</a></td>
     <td>Mariana Trench</td>
     <td>Oct. 2024</td>
-    <td>8718/6/8720</td>
     <td>Moored</td>
+    <td>8718/6/8720</td>
     <td>8.72</td>
     <td>18</td>
     <td>12.5</td>
@@ -164,8 +164,8 @@ Each channel is estimated from the experimental data and stored as a tensor of c
     <td><a href="pink" style="color: #E377C2">Pink</a></td>
     <td>Japan</td>
     <td>Jul. 2022</td>
-    <td>176/146/x</td>
     <td>Moored</td>
+    <td>176/146/x</td>
     <td>14</td>
     <td>6</td>
     <td>4</td>
@@ -174,11 +174,11 @@ Each channel is estimated from the experimental data and stored as a tensor of c
     <td>0.9-1.8</td>
   </tr>
   <tr>
-    <td><a href="brown" style="color: #8C564B">Brown</a></td>
+    <td><a href="brown" class="channel-brown">Brown</a></td>
     <td>Pacific</td>
     <td>Nov. 1994</td>
-    <td>652/900-1600/4000, 5300</td>
     <td>Mobile</td>
+    <td>652/900-1600/x</td>
     <td>3250</td>
     <td>0.075</td>
     <td>0.0375</td>
@@ -188,7 +188,8 @@ Each channel is estimated from the experimental data and stored as a tensor of c
   </tr>
 </tbody></table>
 </div>
-<p style="font-size: 13px; margin-top: 8px;">Column key: d<sub>T</sub>, d<sub>R</sub>, and d<sub>w</sub> are the transmitter depth, the receiver depth, and the water depth; d is the transmitter-receiver distance; f<sub>c</sub> is the center frequency; R is the symbol rate of the transmitted probe signal; M is the number of array elements; &#8467; is the inter-element spacing. Where two values are listed for d<sub>w</sub>, they are the water depths at the transmitter and at the receiver. An "x" marks a value that was not recorded.</p>
-<p style="font-size: 13px; margin-top: 8px;">For the <a href="green" style="color: #77AC30">Green</a> channel, M denotes the number of time-diversity channels formed from repeated transmissions on a single hydrophone, and &#8467; denotes the inter-transmission interval.</p>
+<p style="font-size: 13px; margin-top: 8px;">Column key: d<sub>T</sub>, d<sub>R</sub>, and d<sub>w</sub> are the transmitter depth, the receiver depth, and the water depth; d is the transmitter-receiver distance; f<sub>c</sub> is the center frequency; R is the symbol rate of the transmitted probe signal; M is the number of array elements; &#8467; is the inter-element spacing. An "x" marks a value that varies across scenarios: for <a href="pink" style="color: #E377C2">Pink</a>, the water depth differs between the flat, down-slope, and up-slope runs, and for <a href="brown" class="channel-brown">Brown</a>, it changes along the path, from about 4000 m at the source to about 5300 m at the receiver.</p>
+<p style="font-size: 13px; margin-top: 8px;">For the <a href="green" style="color: #77AC30">Green</a> channel, M denotes the number of time-diversity channels formed from repeated transmissions on a single hydrophone, with an inter-transmission interval of 10 minutes.</p>
 
-![](map.png)
+<img class="map-light" src="map.png" alt="World map with colored markers at the experiment sites">
+<img class="map-dark" src="map-dark.png" alt="World map with colored markers at the experiment sites">

@@ -69,10 +69,6 @@ $colors: map-merge(
   text-align: justify;
 }
 
-> {
-    @extend .td-max-width-on-larger-screens;
-}
-
 body {
   .popover.offline-search-result {
       max-width: 460px;

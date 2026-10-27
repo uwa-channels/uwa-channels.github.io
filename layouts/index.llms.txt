@@ -9,7 +9,7 @@
 
 {{ end }}
 
-The library is described in the paper [Underwater Acoustic Channel Library](https://arxiv.org/abs/2609.03207) (arXiv:2609.03207).  The channel and noise `.mat` files are on Zenodo, [doi:10.5281/zenodo.21287414](https://doi.org/10.5281/zenodo.21287414).  The toolboxes that read them are available for MATLAB/Octave and Python.  Every page below is linked to its Markdown version.
+The library is described in the paper [Underwater Acoustic Channel Library](https://arxiv.org/abs/2609.03207) (arXiv:2609.03207).  The channel and noise `.mat` files are on Zenodo, [doi:10.5281/zenodo.21287414](https://doi.org/10.5281/zenodo.21287414).  The toolboxes that read them are available for MATLAB/Octave and Python, and Julia support is provided by UnderwaterAcoustics.jl.  Every page below is linked to its Markdown version.
 
 ## Site index
 
@@ -36,8 +36,9 @@ The library is described in the paper [Underwater Acoustic Channel Library](http
 
 ## Code
 
-- [MATLAB/Octave toolbox](https://github.com/uwa-channels/matlab): `replay`, `noisegen`, and `unpack`, MIT license.
-- [Python package](https://github.com/uwa-channels/python): the same functions, plus `load_channel` and `load_noise`.  Install with `pip install uwa-channels`.  MIT license.
+- [MATLAB/Octave toolbox](https://github.com/uwa-channels/matlab): `replay`, `noisegen`, and `unpack`; files load with the built-in `load`.  Install the add-on with `matlab.addons.install(websave([tempname '.mltbx'], 'https://github.com/uwa-channels/matlab/releases/latest/download/uwa-channels.mltbx'))`.  MIT license.
+- [Python package](https://github.com/uwa-channels/python): the same functions, plus `load_channel` and `load_noise`, which read `-v7.3` and MAT v5 files.  Install with `pip install uwa-channels`.  MIT license.
+- [UnderwaterAcoustics.jl](https://github.com/org-arl/UnderwaterAcoustics.jl): Julia support, maintained by the Acoustic Research Laboratory.  `BasebandReplayChannel` loads a channel (a path, or `uacr://<name>` to download from Zenodo) and `transmit` replays a signal through it; `ReplayNoise` and `PinkGaussianNoise` add the noise models ([pull request #95](https://github.com/org-arl/UnderwaterAcoustics.jl/pull/95), not yet merged).
 - [Channel estimation](https://github.com/uwa-channels/estimate): MATLAB/Octave scripts that estimate a channel from a recording, in the file format above, and plot it.
 - [Calibration](https://github.com/uwa-channels/calibrations): runs the MATLAB and Python toolboxes side by side on the released files and reports where they agree.
 

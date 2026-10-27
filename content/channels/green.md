@@ -22,7 +22,7 @@ description: >
   * Sampling rate in delay: f<sub>s</sub> = 2R
   * Total delay coverage: up to 400 ms
   * Sampling rate in time: R/1000 for the channel response, 2R for the phase/delay
-  * Total time coverage: approximately 55 seconds
+  * Total time coverage: 52 seconds
 
 > [!PRIMARY] Acknowledgement
 >

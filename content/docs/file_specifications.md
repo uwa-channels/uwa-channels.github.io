@@ -13,6 +13,8 @@ The `uwa-channels`-compatible `.mat` files **must** be saved with the following 
 * `-v7.3` to support large variables and the `HDF5` file format.
 * `-nocompression` to speed up loading.
 
+The Python loaders `load_channel` and `load_noise` also read MAT v5 files, but files you distribute should be saved with `-v7.3 -nocompression`.
+
 ## Required fields
 
 Each `.mat` file must include the following variables:
@@ -40,15 +42,17 @@ A structure with the following scalar fields:
 ### `version`
 
 * **Type**: Numeric scalar.
-* **Description**: Dataset format version number (currently `1.0`).
+* **Description**: Dataset format version number (currently `1.0`). `replay` rejects files with a version below `1.0`.
 
 ## Phase/delay tracking fields (optional)
 
-`phi_hat`, `theta_hat`, and `f_resamp` may coexist; the replay engine applies them according to the following precedence:
+`phi_hat`, `theta_hat`, and `f_resamp` may coexist; `replay` applies them according to the following precedence:
 
 * If none of the three is present, no Doppler correction is applied.
 * `phi_hat` takes precedence over `theta_hat`: if `phi_hat` is present, it is used and `theta_hat` is ignored; if only `theta_hat` is present, it is used instead.
 * `f_resamp` (see [Optional fields](#optional-fields)) is applied independently of the two phase/delay fields, whether or not either of them is present.
+
+`unpack` differs when both phase fields are present: it adds the phases of `theta_hat` and `phi_hat`, and takes the delay drift from `phi_hat` alone. Each released file carries only one of the two, so the difference matters only for files you create.
 
 ### `phi_hat` (delay tracking)
 
@@ -90,11 +94,11 @@ size(theta_hat, 2) / params.fs_delay == size(h_hat, 3) / params.fs_time
 
 * **Type**: Scalar (double precision)
 * **Units**: Unitless resampling factor
-* **Description**: A time-invariant resampling factor applied to the output signal. This is typically the inverse of a resampling operation applied to remove the nominal Doppler frequency offset before channel estimation. It is applied after the time-varying convolution.
+* **Description**: A time-invariant resampling factor applied to the output signal. This is typically the inverse of a resampling operation applied to remove the nominal Doppler frequency offset before channel estimation. `replay` applies it after the time-varying convolution, by resampling the output. `unpack` instead converts it into a linear phase ramp $(1/f_{\text{resamp}} - 1)\,2\pi f_c t$, which it reinserts as both a phase and a delay drift, in the same way as `phi_hat`.
 
 ### `meta`
 
-The `meta` structure is optional but strongly encouraged. The following fields are recognized by the toolbox:
+The `meta` structure is optional but strongly encouraged. The following fields are written by the [estimate](https://github.com/uwa-channels/estimate) scripts; `replay`, `noisegen`, and `unpack` do not read `meta`:
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -130,9 +134,9 @@ Each noise `.mat` file contains the following fields:
 | `alpha` | scalar | Characteristic exponent $\alpha$ of the symmetric $\alpha$-stable distribution: `2` Gaussian, `< 2` impulsive. |
 | `beta` | tensor `[M, M, L+1]` | Mixing coefficients $\beta_{ij}(kT_s)$ for spatiotemporal noise coloring, where $M$ is the number of array elements and $L$ is the maximum lag (both defined below). |
 | `fc` | scalar | Center frequency $f_c$ [Hz]. |
-| `version` | scalar | Noise struct version number. |
+| `version` | scalar | Noise struct version number. `noisegen` rejects files with a version below `1.0`. |
 
-The noise generation function `noisegen` uses the mixing equation:
+`noisegen` reads only `Fs`, `alpha`, `beta`, and `version`; it generates the noise at `Fs` and resamples it to the requested rate. `beta` is normalized so that the noise powers of the $M$ elements sum to $M$; each element keeps its measured power relative to the others. When $\alpha < 2$ the variance is undefined, and the pseudo-power $2c^2$, with $c$ the scale parameter, takes its place. The noise generation function `noisegen` uses the mixing equation:
 
 $$\hat{n}_i(nT_s) = \sum_{j=0}^{M-1}\sum_{k=0}^{L}\beta_{ij}(kT_s)\,\eta_j(nT_s + kT_s)$$
 

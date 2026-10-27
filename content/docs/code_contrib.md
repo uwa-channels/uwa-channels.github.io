@@ -14,10 +14,12 @@ This guide explains how to contribute effectively to the two companion repositor
 
 | Repository                                                        | Language         | Main Branch | Folder Layout                      |
 | ----------------------------------------------------------------- | ---------------- | ----------- | ---------------------------------- |
-| [**uwa-channels/matlab**](https://github.com/uwa-channels/matlab) | MATLAB (R2021a+) | `main`      | `src/`, `tests/`, `examples/`      |
+| [**uwa-channels/matlab**](https://github.com/uwa-channels/matlab) | MATLAB (R2021a+) | `main`      | `src/`, `tests/`, `examples/`, `packaging/` |
 | [**uwa-channels/python**](https://github.com/uwa-channels/python) | Python (≥ 3.10)  | `main`      | `src/uwa_channels/`, `tests/`, `examples/` |
 
 The library's Julia support is hosted separately, in the [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl) package maintained by the Acoustic Research Laboratory. Please refer to that repository's own contribution guidelines for Julia-specific bug reports and pull requests.
+
+The MATLAB and Python implementations must behave the same: [**uwa-channels/calibrations**](https://github.com/uwa-channels/calibrations) runs both every week on the released Zenodo files and compares their output. A change to the behavior of a function in one repository needs the same change in the other. Do not change argument order, index conventions (`array_index` is 1-based in MATLAB and 0-based in Python; `start`), or output length in one implementation only. The released `.mat` files are fixed, so code must read them as they are.
 
 ## Getting started
 
@@ -34,19 +36,18 @@ The library's Julia support is hosted separately, in the [`UnderwaterAcoustics.j
   git clone https://github.com/uwa-channels/matlab.git
   ```
 
-  To run example scripts:
+  To run example scripts, first download `blue_1.mat` and `blue_noise.mat` from [Zenodo](https://doi.org/10.5281/zenodo.21287414) into `examples/`, then:
 
   ```matlab
+  addpath('src')
   cd examples
   example_replay
   ```
 
-  To run tests:
+  To run all tests from the repository root (they use `matlab.unittest`, so they need MATLAB with the Signal Processing Toolbox and do not run in Octave):
 
-  ```matlab
-  cd tests
-  addpath('../src')
-  runtests('testReplay')
+  ```bash
+  matlab -batch "addpath('src'); assertSuccess(runtests('tests'))"
   ```
 
 
@@ -55,10 +56,10 @@ The library's Julia support is hosted separately, in the [`UnderwaterAcoustics.j
   ```bash
   git clone https://github.com/uwa-channels/python.git
   cd python
-  pip install numpy scipy matplotlib h5py pytest pre-commit
+  pip install -r requirements.txt pytest pre-commit
   ```
 
-  To run example scripts:
+  To run example scripts, with `blue_1.mat` and `blue_noise.mat` from Zenodo in the working folder:
 
   ```bash
   PYTHONPATH=src python examples/example_replay.py
@@ -68,6 +69,12 @@ The library's Julia support is hosted separately, in the [`UnderwaterAcoustics.j
 
   ```bash
   PYTHONPATH=src pytest
+  ```
+
+  The tests in `tests/test_zenodo.py` replay the released Zenodo files and are skipped by default. Run them with the command below; they download the files to `$UWA_CHANNELS_CACHE`, or to `~/.cache/uwa-channels`:
+
+  ```bash
+  PYTHONPATH=src pytest tests/test_zenodo.py --zenodo
   ```
 
   To initialize `pre-commit`:
@@ -88,7 +95,7 @@ We expect all contributors to be **professional, respectful, and constructive**.
 
 - Search existing issues and pull requests; your bug may already be reported or fixed.
 - Provide a *minimal, reproducible example* (MATLAB `.m` file or live script, or a Python snippet), along with:
-  - Package versions (`uwa_channels.__version__` or MATLAB `ver`)
+  - Package version: `pip show uwa-channels` in Python; in MATLAB, the `uwa-channels` row of `matlab.addons.installedAddons`, or the `VERSION` file in a clone
   - OS and MATLAB/Python version, if relevant
 
 ### Feature requests
@@ -114,37 +121,23 @@ Issues planned for release are tracked with a GitHub milestone rather than a lab
 1. **Fork** the repository and clone your fork.
 2. **Create a branch** from `main`, named like `topic-short-description` (lowercase, hyphen-separated).
 3. **Develop locally**:
-   - **MATLAB**: run `runtests('tests')` and address Code Analyzer (MLint) warnings.
+   - **MATLAB**: run `addpath('src'); runtests('tests')` from the repository root and address Code Analyzer warnings.
    - **Python**: run `PYTHONPATH=src pytest` frequently.
 4. **Write tests** for new features or bug fixes.
 5. **Document** your changes:
    - Use NumPy-style docstrings in Python functions and classes.
-   - Use MATLAB help text headers; add usage examples for public APIs.
+   - Start each MATLAB function with a help block (H1 line, call forms, inputs, outputs, an example, and a dated revision history), and add a line to the revision history when you change its behavior.
 6. **Commit** with clear messages, then push to your fork.
 7. **Open a pull request (PR)** against `main`. Mark it as "Draft" if it's not yet ready for review. Reference any related issues.
 8. Address reviewer feedback. Once all checks pass and approvals are received, a maintainer will merge.
 
 ## Commit message style
 
-We follow a simplified version of [Conventional Commits](https://www.conventionalcommits.org/):
+Write each commit message as one imperative sentence that says what changed and why, for example:
 
 ```text
-<type>(<scope>): <summary>
-
-<body>
-```
-
-- **type** ∈ {`feat`, `fix`, `docs`, `test`, `perf`, `refactor`, `style`, `chore`, `revert`}
-- **scope** identifies the module or subsystem (e.g., `io`, `replay`, `noisegen`)
-- Use imperative mood for the summary (e.g., "add support for..." not "added support for...")
-- Limit the summary to ≤ 50 characters; wrap the body at 72 characters
-- If the change is breaking, begin the body with `BREAKING CHANGE:`
-
-**Examples:**
-
-```text
-feat(replay): add resampling support for replay channels
-fix(io): handle empty .mat files (issue #42)
+Start the f_resamp phase ramp at zero, and test that it does
+Read MAT v5 files, and fix the beta axis order from h5py
 ```
 
 ## Coding standards
@@ -153,15 +146,15 @@ fix(io): handle empty .mat files (issue #42)
 
 Follow the [MATLAB Style Guide](https://github.com/eeberhard/matlab_style_guide):
 
-- 4-space indentation; `snake_case` for functions, `PascalCase` for classes
+- Two-space indentation; `snake_case` for functions, `PascalCase` for classes
 - Each function/class in its own `.m` file
-- Use `arguments` blocks for input validation where possible
+- Keep `src/` working on MATLAB R2021a and in Octave: validate inputs with `assert` in a `validate_inputs` subfunction rather than with `arguments` blocks
 - Add unit tests as flat files directly under `tests/` using MATLAB Unit Test
 - Vectorize where possible; comment non-obvious logic
 
 ### Python
 
-- Formatting is enforced via **Black** and **Ruff** (Ruff handles import sorting, so a separate isort pass is unnecessary)
+- Formatting is enforced via **Black** and **Ruff** at 88 columns (Ruff handles import sorting, so a separate isort pass is unnecessary)
 - Static analysis via **Flake8**, **Ruff**, **mypy**, and **Bandit**
 - Use NumPy-style docstrings with LaTeX equations where helpful
 - Keep functions short, prefer clarity to cleverness, and avoid premature optimization
@@ -169,18 +162,19 @@ Follow the [MATLAB Style Guide](https://github.com/eeberhard/matlab_style_guide)
 
 ## Testing and continuous integration
 
-| Repository | Local Test Command      | CI Matrix                |
-| ---------- | ----------------------- | ------------------------ |
-| MATLAB     | `runtests('tests')`     | MATLAB R2021a and latest |
-| Python     | `PYTHONPATH=src pytest` | Python 3.10–3.12         |
+| Repository | Local Test Command | CI Matrix |
+| ---------- | ------------------ | --------- |
+| MATLAB     | `matlab -batch "addpath('src'); assertSuccess(runtests('tests'))"` | MATLAB R2021a and latest |
+| Python     | `PYTHONPATH=src pytest` | Python 3.10–3.13; Zenodo tests on 3.13 |
 
 **All CI checks must pass before a pull request is merged.**
 
-## Release process (Python only)
+## Release process
 
-Maintainers tag releases using `git tag -s vX.Y.Z` following [Semantic Versioning (SemVer)](https://semver.org/).
+Both repositories follow [Semantic Versioning](https://semver.org/). Do not change the version in a pull request unless a maintainer asks for a release.
 
-Merged PRs are reflected in `CHANGELOG.md`, with entries auto-generated from commit messages.
+- **MATLAB**: bump `VERSION` and the `version` in `CITATION.cff` together, then push a tag `vX.Y.Z` that matches `VERSION`. The release workflow builds `uwa-channels.mltbx`, attaches it to a GitHub release, and checks that the one-line install works against it.
+- **Python**: bump `version` in `pyproject.toml` and in `CITATION.cff` together on `main`. CI then creates the tag `vX.Y.Z`, publishes a GitHub release with signed distributions, and uploads the package to TestPyPI and PyPI.
 
 ## Acknowledgements
 

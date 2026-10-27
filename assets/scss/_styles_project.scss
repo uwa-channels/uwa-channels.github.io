@@ -1,2 +1,51 @@
 @import 'td/code-dark';
 @import 'td/color-adjustments-dark';
+
+// Docsy caps prose, headings and lists at 80% of the column on large screens.
+// Let them span the full column, as the channel and noise tables do. Every
+// selector Docsy @extends onto this class picks up the override as well.
+.td-max-width-on-larger-screens {
+  @include media-breakpoint-up(lg) {
+    max-width: none;
+  }
+}
+
+// Show the channel map variant that matches the active color mode.
+.map-dark { display: none; }
+
+// Channel label colors whose paper values are too dark to read on the dark
+// theme; dark mode uses the same lifted values as map-dark.png.
+.channel-black { color: #000; }
+.channel-blue { color: #0072BD; }
+.channel-purple { color: #7E2F8E; }
+.channel-brown { color: #8C564B; }
+
+[data-bs-theme="dark"] {
+  .map-light { display: none; }
+  .map-dark { display: inline; }
+  .channel-black { color: #E9ECEF; }
+  .channel-blue { color: #3D9BE0; }
+  .channel-purple { color: #B565C6; }
+  .channel-brown { color: #B9897E; }
+}
+
+// Soft-wrap long lines in code blocks (e.g. the MATLAB install one-liner)
+// instead of scrolling them sideways. `anywhere` lets long URLs break too.
+// Left-align them, or the site-wide justify stretches the wrapped spaces.
+.td-content pre {
+  text-align: left;
+
+  > code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}
+
+// Docsy renders Markdown tables as blocks sized to their content, so they
+// can scroll sideways on phones. From md up, fill the column like the text.
+.td-content table:not(.td-initial) {
+  @include media-breakpoint-up(md) {
+    display: table;
+    width: 100%;
+  }
+}

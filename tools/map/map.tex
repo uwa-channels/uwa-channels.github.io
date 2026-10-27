@@ -1,0 +1,58 @@
+\documentclass[tikz,border=4pt]{standalone}
+\usetikzlibrary{shapes.geometric}
+\newif\ifdark
+\ifdefined\darkmode\darktrue\fi
+\definecolor{blue}{HTML}{0072BD}
+\definecolor{red}{HTML}{D95319}
+\definecolor{yellow}{HTML}{EDB120}
+\definecolor{purple}{HTML}{7E2F8E}
+\definecolor{green}{HTML}{77AC30}
+\definecolor{brown}{HTML}{8C564B}
+\definecolor{pink}{HTML}{E377C2}
+\ifdark
+  % Lift the darker markers so they stand out against the near-black page.
+  \definecolor{purple}{HTML}{B565C6}
+  \definecolor{brown}{HTML}{B9897E}
+  \definecolor{blue}{HTML}{3D9BE0}
+  \definecolor{black}{HTML}{E9ECEF}
+  \definecolor{fg}{HTML}{E9ECEF}
+  \def\basemap{blank_dark.pdf}
+\else
+  \definecolor{black}{HTML}{000000}
+  \definecolor{fg}{HTML}{000000}
+  \def\basemap{blank_light.pdf}
+\fi
+\newcommand{\lbl}[1]{\textcolor{#1}{\texttt{#1}}}
+\begin{document}
+\begin{tikzpicture}[every node/.style={text=fg}]
+    \node[anchor=south west, inner sep=0] at (0,0) {\includegraphics[width=516pt]{\basemap}};
+
+    \fill[purple] (5.3, 6.9) ++(-0.15, -0.15) rectangle ++(0.3, 0.3);
+    \node[right, font=\small] at (5.6, 6.8) {\lbl{purple}};
+
+    \draw[blue, line width=2.5pt] (5.4, 7) ++(-0.15, 0) -- ++(0.3, 0);
+    \draw[blue, line width=2.5pt] (5.4, 7) ++(0, -0.15) -- ++(0, 0.3);
+    \node[right, font=\small] at (5.6, 7.1) {\lbl{blue}};
+
+    \node[regular polygon, regular polygon sides=3, fill=yellow, draw=yellow, minimum size=14pt, inner sep=0pt] at (0.8, 5.7) {};
+    \node[right, font=\small] at (1.0, 5.7) {\lbl{yellow}};
+
+    \node[regular polygon, regular polygon sides=3, fill=pink, draw=pink, minimum size=14pt, inner sep=0pt, rotate=-90] at (15.2, 6.65) {};
+    \node[right, font=\small] at (15.4, 6.65) {\lbl{pink}};
+
+    \node[regular polygon, regular polygon sides=3, fill=green, draw=green, minimum size=14pt, inner sep=0pt, rotate=180] at (9, 8.2) {};
+    \node[above, font=\small] at (9, 8.3) {\lbl{green}};
+
+    \fill[red] (13.68, 4.75) circle (7pt);
+    \node[left, font=\small] at (13.5, 4.75) {\lbl{red}};
+
+    \node[star, star points=6, star point ratio=2, fill=black, draw=black, minimum size=12pt, inner sep=0pt] at (15.6, 5.35) {};
+    \node[right, font=\small] at (15.8, 5.35) {\lbl{black}};
+
+    \node[regular polygon, regular polygon sides=4, fill=brown, draw=brown, minimum size=12pt, inner sep=0pt, rotate=45] at (2.85, 6.55) {};
+    \node[above, font=\small] at (1.85, 6.35) {\lbl{brown} tx};
+
+    \node[regular polygon, regular polygon sides=4, fill=brown, draw=brown, minimum size=12pt, inner sep=0pt, rotate=45] at (0.8, 5.5) {};
+    \node[right, font=\small] at (1.0, 5.45) {\lbl{brown} rx};
+\end{tikzpicture}
+\end{document}

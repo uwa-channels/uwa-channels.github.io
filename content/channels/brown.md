@@ -20,9 +20,9 @@ description: >
   * Receiving array: autonomous vertical line array, M = 20 elements, &#8467; = 35 m spacing, spanning 900-1600 m depth
 * Parameters:
   * Sampling rate in delay: f<sub>s</sub> = 2R
-  * Total delay coverage: up to 7 seconds
+  * Total delay coverage: up to 6.7 seconds
   * Sampling rate in time: R/10 for the channel response, 2R for the phase/delay
-  * Total time coverage: 13 minutes
+  * Total time coverage: 13.6 minutes
 
 > [!PRIMARY] Acknowledgement
 >
