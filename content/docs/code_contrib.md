@@ -173,7 +173,7 @@ Follow the [MATLAB Style Guide](https://github.com/eeberhard/matlab_style_guide)
 
 Both repositories follow [Semantic Versioning](https://semver.org/). Do not change the version in a pull request unless a maintainer asks for a release.
 
-- **MATLAB**: bump `VERSION` and the `version` in `CITATION.cff` together, then push a tag `vX.Y.Z` that matches `VERSION`. The release workflow builds `uwa-channels.mltbx`, attaches it to a GitHub release, and checks that the one-line install works against it.
+- **MATLAB**: bump `VERSION` and the `version` in `CITATION.cff` together, then push a tag `vX.Y.Z` that matches `VERSION`. The release workflow builds `uwa-channels.mltbx` on the latest MATLAB, checks that it installs there and on R2021a, attaches it to a GitHub release, and checks that the one-line install works against it.
 - **Python**: bump `version` in `pyproject.toml` and in `CITATION.cff` together on `main`. CI then creates the tag `vX.Y.Z`, publishes a GitHub release with signed distributions, and uploads the package to TestPyPI and PyPI.
 
 ## Acknowledgements
