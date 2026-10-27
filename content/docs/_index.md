@@ -27,7 +27,7 @@ Pkg.add("MAT")
 {{< /tab >}}
 {{< /tabpane >}}
 
-The MATLAB command downloads the latest release and installs it as an add-on, so `replay`, `noisegen`, and `unpack` are on your path in every session afterwards. Running it again later upgrades the toolbox in place. To remove it, run `matlab.addons.uninstall('uwa-channels')`, or use **Home > Add-Ons > Manage Add-Ons**.
+The MATLAB command downloads the latest release and installs it as an add-on, so `replay`, `noisegen`, and `unpack` are on your path in every session afterwards. Running it again later upgrades the toolbox in place. To remove it, run `matlab.addons.uninstall('Underwater Acoustic Channel Toolbox')`, or use **Home > Add-Ons > Manage Add-Ons**.
 
 ### Installing from a clone
 

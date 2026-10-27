@@ -95,7 +95,7 @@ We expect all contributors to be **professional, respectful, and constructive**.
 
 - Search existing issues and pull requests; your bug may already be reported or fixed.
 - Provide a *minimal, reproducible example* (MATLAB `.m` file or live script, or a Python snippet), along with:
-  - Package version: `pip show uwa-channels` in Python; in MATLAB, the `uwa-channels` row of `matlab.addons.installedAddons`, or the `VERSION` file in a clone
+  - Package version: `pip show uwa-channels` in Python; in MATLAB, the `Underwater Acoustic Channel Toolbox` row of `matlab.addons.installedAddons`, or the `VERSION` file in a clone
   - OS and MATLAB/Python version, if relevant
 
 ### Feature requests
