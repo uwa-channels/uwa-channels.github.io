@@ -54,6 +54,9 @@ jobs:
     - name: Build
       run: hugo --minify --baseURL "https://uwa-channels.github.io"
 
+    - name: Check that the KaTeX stylesheet matches the math markup
+      run: python3 tools/check_katex_css.py public
+
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3.0.1
       with:

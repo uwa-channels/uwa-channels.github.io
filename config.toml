@@ -79,15 +79,18 @@ prism_syntax_highlighting = false
 description = "An open-access library of underwater acoustic channel impulse responses and noise models recorded during at-sea experiments, with a replay interface for simulating communication signals."
 images = ["featured-background.png"]
 
-# Docsy defaults the KaTeX stylesheet to unpkg's "latest", but the math HTML
-# is generated at build time by Hugo's own bundled KaTeX (0.16.22 in Hugo
-# 0.164.0). KaTeX 0.18.0 renamed the .underline/.overline/.hline/.rule
-# classes to .katex-underline etc., so "latest" CSS no longer matches the
-# generated markup and rules such as the vector underline in
-# \hat{\underline{h}} were not drawn at all. Pin the CSS to the version Hugo
-# generates against. Bump this together with the Hugo version in CI.
+# The math HTML is generated at build time by Hugo's own bundled KaTeX, and
+# the stylesheet Docsy fetches from unpkg must be the same version.  KaTeX
+# 0.18.0 renamed the .underline/.overline/.hline/.rule/.accent classes to
+# .katex-underline etc., so a stylesheet from one side of that change does
+# not style markup from the other, and rules such as the vector underline in
+# \hat{\underline{h}} are not drawn at all.  Hugo 0.164.0 bundled KaTeX
+# 0.16.22; Hugo 0.168.0, which CI now uses, bundles 0.18.4 (see
+# internal/warpc/js/package.json in the Hugo source).  Bump this together
+# with HUGO_VERSION in .github/workflows/build-and-deploy.yml;
+# tools/check_katex_css.py fails the build if they drift apart.
 [params.katex]
-version = "0.16.22"
+version = "0.18.4"
 
 [params.ui]
 sidebar_menu_compact = false
