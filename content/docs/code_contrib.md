@@ -157,8 +157,16 @@ Follow the [MATLAB Style Guide](https://github.com/eeberhard/matlab_style_guide)
 - Formatting is enforced via **Black** and **Ruff** at 88 columns (Ruff handles import sorting, so a separate isort pass is unnecessary)
 - Static analysis via **Flake8**, **Ruff**, **mypy**, and **Bandit**
 - Use NumPy-style docstrings with LaTeX equations where helpful
+- Check the inputs of a public function in a `validate_inputs` function before any work, with the same checks as its MATLAB counterpart, and raise `ValueError` for a bad input: `assert` is removed when Python runs with `-O`
 - Keep functions short, prefer clarity to cleverness, and avoid premature optimization
 
+
+### Equations in documentation
+
+The same formula needs different delimiters on GitHub and on this site.
+
+- In Markdown that GitHub renders, such as `CONTRIBUTING.md` in the MATLAB and Python repositories, write inline math as ``$`\hat\varphi(nT_s)`$`` and display math in a fenced ` ```math ` block. A bare `$...$` lets GitHub's Markdown run first, which turns `_` into emphasis and `\,` into a comma, and `<` inside math should be written `\lt`.
+- On this site, write `$...$` and `$$...$$`. Hugo renders them with its bundled KaTeX when it builds the site, and `params.katex.version` in `config.toml` must name that same KaTeX version, or rules such as the underline in $\hat{\underline{h}}$ are not drawn. The build checks this with `tools/check_katex_css.py`.
 
 ## Testing and continuous integration
 
