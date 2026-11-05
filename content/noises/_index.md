@@ -11,10 +11,15 @@ cascade:
   - type: "docs"
 ---
 
-Along with every channel except Brown, you will find the noise model corresponding to it. The noise models are based on the statistics derived from the corresponding experimental recordings. The noise is modeled as colored Gaussian for all the channels except the Red channel, whose impulsive noise is modeled by an $\alpha$-stable sub-Gaussian ($\alpha$SG) random process. Each model is specified by two quantities estimated from the recordings: a characteristic exponent $\alpha$, which equals 2 in the Gaussian case, and a set of mixing coefficients $\beta_{ij}(kT_s)$. Together, the coefficients capture the power spectral density of the noise and its spatial correlation across the array elements. Synthetic noise samples $\hat{n}_i(nT_s)$ are obtained by filtering i.i.d. innovations through these coefficients, as described in the [noise file format specifications](/docs/file_specifications#noise-file-format).
+Every channel except Brown has a noise model fitted to recordings from the same experiment. Most models describe colored Gaussian noise. Red captures impulsive noise using an $\alpha$-stable sub-Gaussian ($\alpha$SG) process.
 
-The library also contains a generic noise model, which represents the Gaussian component of the ambient noise. This noise decays log-linearly with frequency (nominally 17 dB per decade) and is assumed to be uncorrelated in space. The power of the noise within a given bandwidth can be adjusted by the user. Generate it with `noisegen(size(y), fs)` in MATLAB, `noisegen(y.shape, fs)` in Python, or `PinkGaussianNoise(σ)` in Julia; see the [User's Guide](/docs#applying-a-channel-to-an-arbitrary-signal).
+Each model contains a characteristic exponent $\alpha$ and mixing coefficients $\beta_{ij}(kT_s)$. The exponent is 2 for Gaussian noise. The coefficients describe the noise spectrum and the spatial correlation between array elements. To generate noise samples $\hat{n}_i(nT_s)$, `noisegen` filters independent, identically distributed innovations through these coefficients. The [noise file specifications](/docs/file_specifications#noise-file-format) give the equations and field definitions.
 
+A generic model is also available when you do not need noise from a particular site. It represents the Gaussian component of ambient noise, with a spectrum that falls by approximately 17 dB per decade and no spatial correlation. You can scale the generated noise to set its power within your signal bandwidth.
+
+Use `noisegen(size(y), fs)` in MATLAB or `noisegen(y.shape, fs)` in Python. For Julia, see the availability note for `PinkGaussianNoise(σ)` in the [User's Guide](/docs#applying-a-channel-to-an-arbitrary-signal).
+
+The table lists the noise file for each channel.
 
 | Codename                                             | Channel(s)                          | Noise Source(s)                        |
 |-------------------------------------------------------|--------------------------------------|-----------------------------------------|

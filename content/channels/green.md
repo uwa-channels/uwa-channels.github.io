@@ -7,7 +7,7 @@ description: >
   A 6 kHz single-hydrophone channel from a Norwegian fjord (Norway'24), providing time-diversity data from repeated transmissions over a 270 m range.
 ---
 
-* Experiment:
+* Experiment details:
   * Location: 60N, 5.3E
   * Date recorded: November 2024
   * Center frequency: f<sub>c</sub> = 6 kHz
@@ -18,12 +18,12 @@ description: >
   * Mobility: moored
   * Receiving array: none (single hydrophone)
   * Time diversity: M = 64 channels formed from transmissions repeated every 10 minutes
-* Parameters:
+* Channel data:
   * Sampling rate in delay: f<sub>s</sub> = 2R
-  * Total delay coverage: up to 400 ms
+  * Delay span: up to 400 ms
   * Sampling rate in time: R/1000 for the channel response, 2R for the phase/delay
-  * Total time coverage: 52 seconds
+  * Recording duration: 52 seconds
 
 > [!PRIMARY] Acknowledgement
 >
-> The Underwater Acoustic Channels Group gratefully acknowledges the contribution of the Green dataset from SFI Smart Ocean. For more information, please visit the [IEEE Dataport link](https://ieee-dataport.org/open-access/sfi-smart-ocean-dataset-underwater-acoustic-communications).
+> We thank SFI Smart Ocean for contributing the Green dataset. The original dataset is available on [IEEE DataPort](https://ieee-dataport.org/open-access/sfi-smart-ocean-dataset-underwater-acoustic-communications).

@@ -7,7 +7,7 @@ description: >
   A vertical, 18 kHz channel recorded over the Mariana Trench in October 2024, linking a near-surface planar array to a transmitter 8718 m below.
 ---
 
-* Experiment:
+* Experiment details:
   * Location: Mariana Trench
   * Date recorded: October 2024
   * Center frequency: f<sub>c</sub> = 18 kHz
@@ -17,12 +17,12 @@ description: >
   * Tx/Rx/water depth: d<sub>T</sub>/d<sub>R</sub>/d<sub>w</sub> = 8718 m/6 m/8720 m
   * Mobility: moored
   * Receiving array: planar, M = 8 elements arranged at the vertices of two concentric squares (outer square side 264 mm, inner square side 88 mm, so that &#8467; &ge; 88 mm)
-* Parameters:
+* Channel data:
   * Sampling rate in delay: f<sub>s</sub> = 2R
-  * Total delay coverage: up to 7 ms
+  * Delay span: up to 7 ms
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
-  * Total time coverage: 37 seconds
+  * Recording duration: 37 seconds
 
 > [!PRIMARY] Acknowledgement
 >
-> The Underwater Acoustic Channels Group gratefully acknowledges the Japan Agency for Marine-Earth Science and Technology (JAMSTEC) for their efforts in providing the data.
+> We thank the Japan Agency for Marine-Earth Science and Technology (JAMSTEC) for providing these data.

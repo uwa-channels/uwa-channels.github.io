@@ -1,6 +1,6 @@
 ---
-title: "Channel file format specifications"
-linkTitle: "Channel file format specifications"
+title: "Channel and noise file formats"
+linkTitle: "Channel and noise file formats"
 weight: 1
 description: >
   Specification of the required and optional fields in the channel and noise .mat files, including the impulse response, phase/delay tracking, and metadata formats.
@@ -8,7 +8,7 @@ cascade:
   - type: "docs"
 ---
 
-The `uwa-channels`-compatible `.mat` files **must** be saved with the following flags:
+Save channel and noise `.mat` files with these flags:
 
 * `-v7.3` to support large variables and the `HDF5` file format.
 * `-nocompression` to speed up loading.
@@ -17,7 +17,7 @@ The Python loaders `load_channel` and `load_noise` also read MAT v5 files, but f
 
 ## Required fields
 
-Each `.mat` file must include the following variables:
+Each channel `.mat` file must include these variables:
 
 ### `h_hat`
 
@@ -52,7 +52,7 @@ A structure with the following scalar fields:
 * `phi_hat` takes precedence over `theta_hat`: if `phi_hat` is present, it is used and `theta_hat` is ignored; if only `theta_hat` is present, it is used instead.
 * `f_resamp` (see [Optional fields](#optional-fields)) is applied independently of the two phase/delay fields, whether or not either of them is present.
 
-The estimation scripts save their one tracked phase as `phi_hat` with delay tracking and as `theta_hat` without, so a file normally carries only one of the two; `phi_hat` is the whole phase, which is why it wins.
+The estimation scripts normally save just one phase field: `phi_hat` when delay tracking is enabled, or `theta_hat` otherwise. The `phi_hat` field describes both phase rotation and delay drift, so it takes precedence when both fields are present.
 
 ### `phi_hat` (delay tracking)
 
@@ -69,7 +69,7 @@ The estimation scripts save their one tracked phase as `phi_hat` with delay trac
 
   where $\mathcal{I}[\cdot]$ denotes interpolation, implemented here as spline interpolation.
 
-  `phi_hat` accumulates over the whole record, so its absolute value can reach hundreds of samples of delay. `replay` therefore reinserts it relative to the starting sample, $\hat\varphi(nT_s) - \hat\varphi(n_0T_s)$ for a replay that starts at sample $n_0$: the output starts aligned with the input wherever in the channel the replay starts, and it is padded by the largest delay the drift reaches within the replay.
+  The delay represented by `phi_hat` accumulates over the recording and can reach hundreds of samples. For a replay starting at sample $n_0$, `replay` restores the phase relative to that starting point: $\hat\varphi(nT_s) - \hat\varphi(n_0T_s)$. This aligns the start of the output with the input. The output is padded to accommodate the largest delay drift reached during replay.
 
 ### `theta_hat` (phase tracking only)
 
@@ -84,7 +84,7 @@ The estimation scripts save their one tracked phase as `phi_hat` with delay trac
 
 ### Duration constraint
 
-The time dimension of `theta_hat` or `phi_hat` and the third dimension of `h_hat` must span the same duration. The check is written below for `theta_hat`; the same applies to `phi_hat`:
+The phase field (`theta_hat` or `phi_hat`) must cover the same duration as `h_hat`. For `theta_hat`, this requires:
 
 ```
 size(theta_hat, 2) / params.fs_delay == size(h_hat, 3) / params.fs_time
@@ -96,7 +96,11 @@ size(theta_hat, 2) / params.fs_delay == size(h_hat, 3) / params.fs_time
 
 * **Type**: Scalar, or vector of size `[receiver, 1]` or `[1, receiver]` (double precision)
 * **Units**: Unitless resampling factor
-* **Description**: A time-invariant resampling factor applied to the output signal. A scalar applies to every receiver; a vector holds one factor per receiver, in the order of the receiver dimension of `h_hat`, and is indexed by `array_index` like the receiver dimension of `phi_hat`. `replay` resamples each output column by its own factor and zero-pads the shorter columns to the longest. This is typically the inverse of a resampling operation applied to remove the nominal Doppler frequency offset before channel estimation. `replay` applies it after the time-varying convolution, by resampling the output. `unpack` instead converts it into a linear phase ramp $(1/f_{\text{resamp}} - 1)\,2\pi f_c t$, which it reinserts as both a phase and a delay drift, in the same way as `phi_hat`.
+* **Description**: A constant resampling factor, typically the inverse of the factor used to remove the nominal Doppler frequency offset before channel estimation.
+
+A scalar applies to every receiver. A vector supplies one factor per receiver, ordered as in `h_hat`. The `array_index` argument selects the corresponding factors, just as it selects receivers in `phi_hat`.
+
+After the time-varying convolution, `replay` resamples each output column using its factor, then zero-pads the shorter columns to match the longest. For reconstruction, `unpack` converts the factor into a linear phase ramp $(1/f_{\text{resamp}} - 1)\,2\pi f_c t$. It restores this ramp as phase rotation and delay drift using the same procedure as for `phi_hat`.
 
 ### `meta`
 
@@ -123,7 +127,7 @@ The `meta` structure is optional but strongly encouraged. The following fields a
 | `nslr` | scalar | Delay tracking rate (when `delay_tracking == true`). |
 | `codename` | string | Short identifier for the channel (e.g., `"blue_1"`). |
 
-Users are free to add additional fields to `meta` to capture experiment-specific metadata.
+You can add fields to `meta` for other experiment details.
 
 ## Noise file format
 
@@ -138,8 +142,16 @@ Each noise `.mat` file contains the following fields:
 | `fc` | scalar | Center frequency $f_c$ [Hz]. |
 | `version` | scalar | Noise struct version number. `noisegen` rejects files with a version below `1.0`. |
 
-`noisegen` reads only `Fs`, `alpha`, `beta`, and `version`; it generates the noise at `Fs` and resamples it to the requested rate. `beta` is normalized over the whole array: the expected noise powers of all $M$ elements sum to $M$, and each element keeps its measured power relative to the others. The noise generated for a subset of elements (`array_index`) therefore need not sum to the size of the subset. When $\alpha < 2$ the variance is undefined, and the pseudo-power $2c^2$, with $c$ the scale parameter, takes its place. The noise generation function `noisegen` uses the mixing equation:
+`noisegen` reads `Fs`, `alpha`, `beta`, and `version`. It generates noise at `Fs`, then resamples it to the requested rate.
+
+The coefficients in `beta` are normalized across the full array: the expected noise powers of all $M$ elements sum to $M$, and each element keeps its measured power relative to the others. When `array_index` selects a subset, the sum of the selected elements' noise powers need not equal the number selected. When $\alpha < 2$ the variance is undefined, and the pseudo-power $2c^2$, with $c$ the scale parameter, takes its place.
+
+`noisegen` uses the mixing equation:
 
 $$\hat{n}_i(nT_s) = \sum_{j=0}^{M-1}\sum_{k=0}^{L}\beta_{ij}(kT_s)\,\eta_j(nT_s + kT_s)$$
 
-Here $\hat{n}_i$ is the synthetically generated noise on hydrophone $i$, with the hydrophone indices running as $i, j = 0, \ldots, M-1$. The sampling interval is $T_s = 1/f_s$, the sampling rate $f_s$ being stored in the `Fs` field, and $L$ is the maximum discrete time lag with non-negligible covariance, so that $\beta_{ij}(kT_s)$ has $L+1$ taps, $k = 0, \ldots, L$. The innovations $\eta_j(nT_s) \sim \mathcal{S}_\alpha(0, 1/\sqrt{2})$ are i.i.d. symmetric $\alpha$-stable variates with zero location and scale $1/\sqrt{2}$; this scale ensures that the distribution reduces to the standard Gaussian $\mathcal{N}(0, 1)$ when $\alpha = 2$. The sum runs forward in time, $\eta_j(nT_s + kT_s)$, which is the convention under which `beta` is estimated by [NoiseModels.jl](https://github.com/org-arl/NoiseModels.jl). For an array, mixing backward instead, $\eta_j(nT_s - kT_s)$, reverses the time direction of the correlation between elements while leaving the zero-lag covariance unchanged.
+Here $\hat{n}_i$ is the synthetically generated noise on hydrophone $i$, with the hydrophone indices running as $i, j = 0, \ldots, M-1$. The sampling interval is $T_s = 1/f_s$, where `Fs` stores $f_s$. The maximum discrete lag with non-negligible covariance is $L$, so $\beta_{ij}(kT_s)$ has $L+1$ taps, $k = 0, \ldots, L$.
+
+The innovations $\eta_j(nT_s) \sim \mathcal{S}_\alpha(0, 1/\sqrt{2})$ are i.i.d. symmetric $\alpha$-stable variates with zero location and scale $1/\sqrt{2}$; this scale ensures that the distribution reduces to the standard Gaussian $\mathcal{N}(0, 1)$ when $\alpha = 2$.
+
+The sum runs forward in time, $\eta_j(nT_s + kT_s)$, which is the convention under which `beta` is estimated by [NoiseModels.jl](https://github.com/org-arl/NoiseModels.jl). For an array, mixing backward instead, $\eta_j(nT_s - kT_s)$, reverses the time direction of the correlation between elements while leaving the zero-lag covariance unchanged.

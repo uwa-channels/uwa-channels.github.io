@@ -8,9 +8,9 @@ cascade:
   - type: "docs"
 ---
 
-Thank you for considering a contribution to **UWA-Channels**. Bug reports, feature requests, documentation improvements, and code changes are all welcome.
+You can contribute by reporting a bug, suggesting a feature, improving the documentation, or changing the code.
 
-This guide explains how to contribute effectively to the two companion repositories hosted at [https://github.com/uwa-channels](https://github.com/uwa-channels):
+This guide covers the MATLAB and Python repositories in the [uwa-channels organization](https://github.com/uwa-channels):
 
 | Repository                                                        | Language         | Main Branch | Folder Layout                      |
 | ----------------------------------------------------------------- | ---------------- | ----------- | ---------------------------------- |
@@ -19,7 +19,9 @@ This guide explains how to contribute effectively to the two companion repositor
 
 The library's Julia support is hosted separately, in the [`UnderwaterAcoustics.jl`](https://github.com/org-arl/UnderwaterAcoustics.jl) package maintained by the Acoustic Research Laboratory. Please refer to that repository's own contribution guidelines for Julia-specific bug reports and pull requests.
 
-The MATLAB and Python implementations must behave the same: [**uwa-channels/calibrations**](https://github.com/uwa-channels/calibrations) runs both every week on the released Zenodo files and compares their output. A change to the behavior of a function in one repository needs the same change in the other. Do not change argument order, index conventions (`array_index` is 1-based in MATLAB and 0-based in Python; `start`), or output length in one implementation only. The released `.mat` files are fixed, so code must read them as they are.
+The MATLAB and Python implementations must produce consistent results. The [calibration suite](https://github.com/uwa-channels/calibrations) checks this weekly by running both implementations on the released Zenodo files.
+
+If you change a function's behavior, make the corresponding change in both repositories. Keep argument order, output length, and indexing conventions consistent with each API. In particular, `array_index` starts at 1 in MATLAB and at 0 in Python; preserve the existing convention for `start` as well. The released `.mat` files are fixed, so changes must remain compatible with them.
 
 ## Getting started
 
@@ -84,10 +86,10 @@ The MATLAB and Python implementations must behave the same: [**uwa-channels/cali
   pre-commit run --all-files
   ```
 
-  
+
 ### Code of conduct
 
-We expect all contributors to be **professional, respectful, and constructive**. By participating, you agree to uphold these standards.
+Treat other contributors respectfully and keep feedback constructive.
 
 ## Bug reports, feature requests, and discussions
 
@@ -100,11 +102,11 @@ We expect all contributors to be **professional, respectful, and constructive**.
 
 ### Feature requests
 
-Describe both the *motivation* and the *proposed change*. Sketch a possible API or workflow if applicable.
+Explain what you want to do, why it matters, and how the proposed change would help. Include an example API or workflow if useful.
 
 ### Discussions
 
-General Q&A, design ideas, and roadmap conversations belong in [**GitHub Discussions**](https://github.com/orgs/uwa-channels/discussions), not in Issues.
+Use [GitHub Discussions](https://github.com/orgs/uwa-channels/discussions) for questions, design ideas, and future plans.
 
 ### Issue labels
 
@@ -133,7 +135,7 @@ Issues planned for release are tracked with a GitHub milestone rather than a lab
 
 ## Commit message style
 
-Write each commit message as one imperative sentence that says what changed and why, for example:
+Start each commit message with a verb and describe the change. For example:
 
 ```text
 Start the f_resamp phase ramp at zero, and test that it does
@@ -157,7 +159,7 @@ Follow the [MATLAB Style Guide](https://github.com/eeberhard/matlab_style_guide)
 - Formatting is enforced via **Black** and **Ruff** at 88 columns (Ruff handles import sorting, so a separate isort pass is unnecessary)
 - Static analysis via **Flake8**, **Ruff**, **mypy**, and **Bandit**
 - Use NumPy-style docstrings with LaTeX equations where helpful
-- Check the inputs of a public function in a `validate_inputs` function before any work, with the same checks as its MATLAB counterpart, and raise `ValueError` for a bad input: `assert` is removed when Python runs with `-O`
+- Validate public function inputs with `validate_inputs` before processing. Match the checks in the MATLAB implementation and raise `ValueError` for invalid inputs. Do not use `assert` for validation; Python removes it when run with `-O`.
 - Keep functions short, prefer clarity to cleverness, and avoid premature optimization
 
 
@@ -186,6 +188,4 @@ Both repositories follow [Semantic Versioning](https://semver.org/). Do not chan
 
 ## Acknowledgements
 
-This guide was inspired by the excellent [`UnderwaterAcoustics.jl` contributing guide](https://github.com/org-arl/UnderwaterAcoustics.jl/blob/master/CONTRIBUTING.md), as well as the contribution guidelines of NumPy and SciPy, and the MATLAB Style Guide.
-
-*Happy hacking: may your channels be peaceful and your SNR high!*
+This guide draws on the [`UnderwaterAcoustics.jl` contributing guide](https://github.com/org-arl/UnderwaterAcoustics.jl/blob/master/CONTRIBUTING.md), as well as the contribution guidelines of NumPy and SciPy, and the MATLAB Style Guide.

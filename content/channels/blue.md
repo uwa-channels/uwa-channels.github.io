@@ -7,7 +7,7 @@ description: >
   A 13 kHz mobile channel from the North Atlantic (MACE'10), recorded over a 3-7 km range with a moving transmitter and a 12-element vertical array.
 ---
 
-* Experiment:
+* Experiment details:
   * Location: 40.2N, 70.5W
   * Date recorded: June 2010
   * Center frequency: f<sub>c</sub> = 13 kHz
@@ -17,8 +17,8 @@ description: >
   * Tx/Rx/water depth: d<sub>T</sub>/d<sub>R</sub>/d<sub>w</sub> = 30-60 m/50 m/100 m
   * Mobility: mobile (relative speed up to 1.5 m/s)
   * Receiving array: vertical, M = 12 elements, &#8467; = 12 cm spacing (numbered top to bottom)
-* Parameters:
+* Channel data:
   * Sampling rate in delay: f<sub>s</sub> = 2R
-  * Total delay coverage: up to 33 ms
+  * Delay span: up to 33 ms
   * Sampling rate in time: R/100 for the channel response, 2R for the phase/delay
-  * Total time coverage: 52 seconds
+  * Recording duration: 52 seconds

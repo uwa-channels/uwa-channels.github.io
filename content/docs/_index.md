@@ -8,7 +8,7 @@ description: >
   Instructions for downloading the channel library, replaying a signal through a channel, adding site-specific noise, and visualizing a decompressed channel.
 ---
 
-The channels stored in this library can be used in two ways: a channel can be (1) applied directly to a user-generated signal, or (2) decompressed for visualization. Ready-to-use code for performing these functions is available on [GitHub](https://github.com/uwa-channels).
+Use the library to pass a signal through a measured underwater channel or to plot how the channel changes over time. The code is available on [GitHub](https://github.com/uwa-channels).
 
 ## Installation
 
@@ -27,9 +27,9 @@ Pkg.add("MAT")
 {{< /tab >}}
 {{< /tabpane >}}
 
-The MATLAB command downloads the latest release and installs it as an add-on, so `replay`, `noisegen`, and `unpack` are on your path in every session afterwards. Running it again later upgrades the toolbox in place. To remove it, run `matlab.addons.uninstall('Underwater Acoustic Channel Toolbox')`, or use **Home > Add-Ons > Manage Add-Ons**.
+The MATLAB command installs the latest release as an add-on. The functions `replay`, `noisegen`, and `unpack` will then be available in every session. Run the command again to update the toolbox. To remove it, run `matlab.addons.uninstall('Underwater Acoustic Channel Toolbox')`, or use **Home > Add-Ons > Manage Add-Ons**.
 
-### Installing from a clone
+### Installing the MATLAB source
 
 If you want to read or modify the source, add the repository folders to the search path instead:
 
@@ -38,13 +38,13 @@ git clone https://github.com/uwa-channels/matlab.git
 cd matlab
 ```
 
-Then, from that folder, in MATLAB:
+In MATLAB, open the cloned folder and run:
 
 ```matlab
 install
 ```
 
-This adds `src` and `examples` to the search path and saves the path for later sessions, so edits to `src` take effect immediately. Avoid combining the two routes: if the packaged add-on is also installed, both copies sit on the path and the winner depends on path order.
+This adds `src` and `examples` to the search path and saves it for future sessions. Changes to `src` take effect immediately. If you previously installed the packaged add-on, remove it before using the source installation. Otherwise, MATLAB may run a different copy from the one you are editing.
 
 ### Requirements
 
@@ -58,10 +58,13 @@ Once a package is installed, download the channel MAT-files from [Zenodo](https:
 
 ## Applying a channel to an arbitrary signal
 
-* To pass a signal of your choice through a channel, generate the desired signal in passband, respecting the bandwidth and sampling-rate limits of the chosen channel (see the [Channels](/channels) tab).
-* Run `replay` on the signal.
-* Scale the output of `noisegen` and add it to the output of `replay` to obtain the desired signal-to-noise ratio. That is, form $r_{\text{out}}(t) = \bar{r}_{\text{out}}(t) + \sigma_n \hat{n}(t)$, where $\bar{r}_{\text{out}}(t)$ is the noiseless replay output, $\hat{n}(t)$ is the generated noise, and $\sigma_n$ is the noise level that sets the SNR. The noise model is normalized over the whole array: the expected noise powers of all $M$ elements in the noise file sum to $M$, and each element keeps its measured power relative to the others, so elements with lower noise give a higher SNR. $\sigma_n^2$ is then the noise power per element, averaged over all $M$ elements. A subset selected with `array_index` keeps the powers of its elements, so its sum is not, in general, the number of selected elements. For the impulsive Red noise, the pseudo-power $2c^2$, with $c$ the scale parameter, takes the place of the power. In the example below, $\sigma_n$ is `0.05`.
-* Pass the same `array_index` to `replay` and `noisegen`, so that the noise matches the selected elements. Indices are 1-based in MATLAB and Julia, and 0-based in Python.
+1. Generate a real passband signal within the chosen channel's bandwidth and sampling-rate limits. These limits are listed on the [Channels](/channels) pages.
+2. Pass the signal through the channel with `replay`.
+3. Generate noise with `noisegen`, scale it to the desired level, and add it to the replay output.
+
+Use the same `array_index` for `replay` and `noisegen` so that the signal and noise correspond to the same array elements. Indices start at 1 in MATLAB and Julia, and at 0 in Python.
+
+The example uses the first three elements of the Blue array and a noise scale of `0.05`.
 
 {{< tabpane >}}
 {{< tab header="Replay and generate noise" disabled=true />}}
@@ -90,7 +93,13 @@ r = transmit(channel, input; fs)
 {{< /tab >}}
 {{< /tabpane >}}
 
-The input is a real passband signal sampled at `fs`. It must be shorter than the channel, and the output is longer than the input by about the length of the impulse response, plus, for channels with `phi_hat`, the largest delay the drift reaches during the replay. `replay` starts at a random point in the channel on each call; pass a fifth argument, `start`, to choose the starting sample (at `params.fs_delay`) and make the output repeatable. The output of `replay` is not normalized, so its power follows that of the channel.
+### Replay duration and starting point
+
+The input is a real passband signal sampled at `fs` and must be shorter than the channel recording. The output extends beyond the input by approximately the impulse-response duration. Channels with `phi_hat` also need room for the largest delay drift reached during replay.
+
+Each call to `replay` starts at a random point in the recording. To choose that point, pass `start` as the fifth argument. It specifies the starting sample at `params.fs_delay` and makes the replay repeatable. The output is not normalized: its power depends on the channel.
+
+### Loading files and using Julia
 
 In Python, `load_channel` and `load_noise` read both the released `-v7.3` files and MAT v5 files, and their output can be passed to `replay`, `noisegen`, and `unpack`. In MATLAB, the built-in `load` reads the files directly.
 
@@ -98,17 +107,41 @@ In Julia, `transmit` adds the noise itself, scaled by `σ`, so it returns $r_{\t
 
 For a channel without a site-specific noise model, such as Brown, call `noisegen(size(y), fs)` in MATLAB or `noisegen(y.shape, fs)` in Python to generate the [generic noise](/noises), which is spatially uncorrelated with unit power on every element; in Julia, use `PinkGaussianNoise(σ)`, also added by that pull request.
 
-A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/matlab/blob/main/examples/example_replay.m) and [`Python`](https://github.com/uwa-channels/python/blob/main/examples/example_replay.py). Before running the example code, please read the corresponding `README` file; the examples expect `blue_1.mat` and `blue_noise.mat` from Zenodo in the working folder.
+### Noise level
 
-> [!WARNING] Important note
+The received signal is
+
+$$r_{\text{out}}(t) = \bar{r}_{\text{out}}(t) + \sigma_n \hat{n}(t),$$
+
+where $\bar{r}_{\text{out}}(t)$ is the noiseless replay output and $\hat{n}(t)$ is the generated noise. Adjust $\sigma_n$ to set the signal-to-noise ratio. In the example, $\sigma_n = 0.05$.
+
+Noise is normalized across the full array. The expected powers of all $M$ elements sum to $M$, while their measured relative powers are preserved. Thus $\sigma_n^2$ is the average noise power per element, and quieter elements have a higher SNR. Selecting a subset with `array_index` preserves each element's power; the powers of the selected elements need not sum to the number selected. For Red's impulsive noise, pseudo-power $2c^2$ replaces power, where $c$ is the scale parameter.
+
+### Complete examples
+
+The [MATLAB example](https://github.com/uwa-channels/matlab/blob/main/examples/example_replay.m) and [Python example](https://github.com/uwa-channels/python/blob/main/examples/example_replay.py) show the full process. Follow the repository's `README` before running them, and put `blue_1.mat` and `blue_noise.mat` from Zenodo in the working folder.
+
+> [!WARNING] Signal bandwidth
 >
-> The channels are specified for a certain acoustic bandwidth that was used during the experiment. When working with a channel, note that only that bandwidth is captured. If you are designing a signal to pass through a channel, the bandwidth of your signal must fit within the stated limit. Note that you do **not** need to decompress the channel first to replay the signal.
+> Each channel captures only the acoustic bandwidth used in its experiment. Your signal must fit within that bandwidth. You can call `replay` directly on the stored channel; decompression is not required.
 
 ## Visualizing a channel
 
-To visualize a channel as a collection of impulse responses evolving over time, you will need to decompress the channel impulse responses via `unpack`. This will produce the decompressed impulse response $\hat{h}(\tau, t)$, which is larger than the stored original and contains all the physical effects of delay drift. The call is `unpack(fs_time, array_index, channel)`, and the output is a $K \times M \times T$ array, where $K$ is the number of delay taps, $M$ is the number of elements selected by `array_index`, and $T$ is the number of time snapshots. The delay axis is zero-padded by 10% of the stored length on each side, so $K$ is larger than the first dimension of `h_hat`; the optional arguments `buffer_left` and `buffer_right` set the padding. This array can be generated at an arbitrary sampling rate in time, provided that rate does not exceed the sampling rate in delay. Like `replay`, `unpack` checks its inputs before it starts: it stops with an error if the channel version is below 1.0, if `fs_time` is not a positive number, if `array_index` is empty, repeats an element, or names one the channel does not have, if a buffer is negative, or if `f_resamp` does not hold one positive factor or one per element.
+Use `unpack` to reconstruct the impulse response $\hat{h}(\tau, t)$, including delay drift, for plotting:
 
-A simple example of this process is given in [`MATLAB`](https://github.com/uwa-channels/matlab/blob/main/examples/example_unpack.m) and [`Python`](https://github.com/uwa-channels/python/blob/main/examples/example_unpack.py). Before running the example code, please read the corresponding `README` file. In Julia, `plot(channel)` (with `using Plots`) shows the impulse response of the first element, and `plot(channel, i)` that of element `i`; UnderwaterAcoustics.jl has no `unpack`.
+```text
+unpack(fs_time, array_index, channel)
+```
+
+The result is a $K \times M \times T$ array: $K$ delay taps, $M$ selected array elements, and $T$ time snapshots. Choose the time sampling rate with `fs_time`; it must be positive and no greater than the delay sampling rate.
+
+By default, `unpack` adds zero padding equal to 10% of the stored delay length on each side. The reconstructed array is therefore larger than `h_hat`. Use `buffer_left` and `buffer_right` to change the padding.
+
+`unpack` checks the inputs before reconstruction. It requires channel version 1.0 or later, a nonempty selection of distinct, valid array elements, and nonnegative padding. If `f_resamp` is present, it must contain one positive factor for the whole array or one per element.
+
+See the [MATLAB example](https://github.com/uwa-channels/matlab/blob/main/examples/example_unpack.m) or [Python example](https://github.com/uwa-channels/python/blob/main/examples/example_unpack.py), and follow the setup instructions in the repository's `README`.
+
+In Julia, load `Plots` and use `plot(channel)` for the first element or `plot(channel, i)` for element `i`. UnderwaterAcoustics.jl does not provide `unpack`.
 
 ## Citing the library
 

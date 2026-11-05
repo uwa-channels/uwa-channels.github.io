@@ -12,14 +12,17 @@ cascade:
   - type: "docs"
 ---
 
-The channels contained in this library come from various experiments. The experiments differ by geographical location, transmission distance, water depth, transmitter/receiver mobility, acoustic bandwidth, and the size of the recording array. The channels are color-labeled, and a detailed description of relevant parameters is given below for each. The channels are available for download from Zenodo:
+The library contains channels from eight experiments, each identified by a color. They cover different locations, water depths, transmission distances, bandwidths, array sizes, and degrees of motion. Select a color in the table for the experiment details, or download the channel files from Zenodo:
 
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21287414-1682D4?logo=zenodo&logoColor=white)](https://doi.org/10.5281/zenodo.21287414) ([https://doi.org/10.5281/zenodo.21287414](https://doi.org/10.5281/zenodo.21287414))
 
 The experiments, the channel estimation procedure, and the noise models are described in the accompanying paper, [arXiv:2609.03207](https://arxiv.org/abs/2609.03207).
 
-Each channel is estimated from the experimental data and stored as a tensor of complex-baseband impulse responses evolving over time, with dimensions [delay, receiver, time]. If a recording array is available, the tensor holds one matrix for each array element. Each column of this matrix is an instantaneous channel response as a function of delay, that is, the channel vector $\hat{\underline{\mathbf{h}}}[n]$ at time index $n$. Successive columns correspond to different, equi-spaced instants in time. Any motion-induced delay drift is suppressed in the channel matrix, leaving the drift-free response $\hat{\underline{h}}(\tau, t)$, which compresses efficiently for storage. A separate vector, the phase estimate $\hat{\varphi}(nT_s)$ stored as `phi_hat`, is provided that contains the uncompressed time-varying channel phase, which is directly related to the delay drift. Here $T_s$ is the sampling interval along the delay axis. To fully reconstruct the channel, the stored matrix needs to be decompressed, and the phase/delay needs to be imparted to re-introduce the phase shift and the delay drift. Details of this process, along with the ready-to-use code, are given in the [User's Guide](/docs). The stored variable names, and the alternative convention in which only the phase $\hat{\theta}(nT_s)$ is tracked (`theta_hat`) and the delay drift is left in the taps, are documented in the [channel file format specifications](/docs/file_specifications).
+Each channel is stored as a three-dimensional array of complex baseband impulse responses, with dimensions [delay, receiver, time]. For each receiver, the data form a matrix whose columns describe the impulse response at equally spaced times. A column is the channel vector $\hat{\underline{\mathbf{h}}}[n]$ at time index $n$.
 
+When delay tracking is used, motion-induced delay drift is removed before storage. The resulting response, $\hat{\underline{h}}(\tau, t)$, compresses efficiently. The channel phase $\hat{\varphi}(nT_s)$ is stored separately in `phi_hat` and describes both phase rotation and delay drift. Here $T_s$ is the sampling interval along the delay axis. The replay and unpacking code restores these effects when you use the channel.
+
+The [User's Guide](/docs) explains how to replay a signal or reconstruct a channel for plotting. See the [file format specifications](/docs/file_specifications) for the stored fields and the alternative `theta_hat` convention, which tracks phase separately but leaves delay drift in the impulse response.
 
 <style>
   /* Docsy makes content tables `display: block` and caps them at 80% width on

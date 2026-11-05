@@ -7,7 +7,7 @@ description: >
   A 75 Hz trans-Pacific channel from the 1994 ATOC project, spanning 3250 km between a deep-water source off San Diego and a 20-element vertical receiving array east of Hawaii.
 ---
 
-* Experiment:
+* Experiment details:
   * Location: eastern North Pacific, from off San Diego, California, to east of Hawaii
   * Date recorded: November 1994
   * Center frequency: f<sub>c</sub> = 75 Hz
@@ -18,12 +18,12 @@ description: >
   * Water depth d<sub>w</sub>: approximately 4000 m at the source and 5300 m at the receiver
   * Mobility: mobile
   * Receiving array: autonomous vertical line array, M = 20 elements, &#8467; = 35 m spacing, spanning 900-1600 m depth
-* Parameters:
+* Channel data:
   * Sampling rate in delay: f<sub>s</sub> = 2R
-  * Total delay coverage: up to 6.7 seconds
+  * Delay span: up to 6.7 seconds
   * Sampling rate in time: R/10 for the channel response, 2R for the phase/delay
-  * Total time coverage: 13.6 minutes
+  * Recording duration: 13.6 minutes
 
 > [!PRIMARY] Acknowledgement
 >
-> The Underwater Acoustic Channels Group gratefully acknowledges the Acoustic Engineering Test (AET) team for providing the data. The data were collected as part of the AET of the Acoustic Thermometry of Ocean Climate (ATOC) project. For more information, please refer to Worcester et al., "A test of basin-scale acoustic tomography using a large aperture vertical array at 3250-km range in the eastern North Pacific Ocean," J. Acoust. Soc. Am. 105, 3185–3201 (1999).
+> We thank the Acoustic Engineering Test (AET) team for providing these data, collected for the Acoustic Thermometry of Ocean Climate (ATOC) project. The experiment is described in Worcester et al., "A test of basin-scale acoustic tomography using a large aperture vertical array at 3250-km range in the eastern North Pacific Ocean," J. Acoust. Soc. Am. 105, 3185–3201 (1999).
