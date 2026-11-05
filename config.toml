@@ -31,7 +31,7 @@ weight = 1
 
 [menu]
   [[menu.main]]
-  name = "GitHub"
+  name = "Github"
   weight = 1000
   post = " <i class='fab fa-github pr-2'></i>"
   url = "https://github.com/uwa-channels/"
@@ -76,7 +76,7 @@ version = "1.0"
 github_repo = "https://github.com/uwa-channels/uwa-channels.github.io"
 offlineSearch = true
 prism_syntax_highlighting = false
-description = "Underwater acoustic channels measured at sea, with ambient noise models and code for testing communication signals."
+description = "An open-access library of underwater acoustic channel impulse responses and noise models recorded during at-sea experiments, with a replay interface for simulating communication signals."
 images = ["featured-background.png"]
 
 # The math HTML is generated at build time by Hugo's own bundled KaTeX, and
