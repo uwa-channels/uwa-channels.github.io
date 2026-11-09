@@ -28,6 +28,17 @@ Each channel `.mat` file must include these variables:
   * Time axis: sampled at `params.fs_time` [Hz]
   * Amplitude: complex baseband impulse response (unitless)
 * **Description**: The estimated time-varying channel impulse response (TVIR) as a function of delay $\tau$ and time $t$. When delay tracking is used, this is the drift-free response $\hat{\underline{h}}(\tau, t)$; otherwise it is the drifting response $\hat{h}(\tau, t)$. For a given receiver and time index $n$, the slice along the delay axis is the channel vector $\hat{\underline{\mathbf{h}}}[n]$, or $\hat{\mathbf{h}}[n]$ in the drifting case.
+* **Normalization**: Let $\hat h_m[l, n]$ be tap $l$ of receiver $m$ at time index $n$, with $N_\tau$ taps, $M$ receivers, and $N_t$ time samples. Averaged over time, the energy summed over all taps and receivers must equal $M/2$:
+
+  $$\frac{1}{N_t}\sum_{n=0}^{N_t-1}\sum_{m=0}^{M-1}\sum_{l=0}^{N_\tau-1}\left|\hat h_m[l, n]\right|^2 = \frac{M}{2}$$
+
+  The average energy per receiver is therefore $1/2$. The energy is normalized over the whole array, so each receiver keeps its measured energy relative to the others and the energy of a single receiver generally differs from $1/2$. `replay` does not rescale its output, so the output power is set by `h_hat` alone. When `array_index` selects a subset, the receivers keep their energies, and the energy of the subset need not equal half the number selected. In MATLAB, check the normalization with
+
+  ```matlab
+  sum(abs(h_hat).^2, 'all') / size(h_hat, 3)   % must equal size(h_hat, 2) / 2
+  ```
+
+  In Python, `h5py` reports the axes of `h_hat` in reverse order, `[time, receiver, delay]`.
 
 ### `params`
 
@@ -144,7 +155,11 @@ Each noise `.mat` file contains the following fields:
 
 `noisegen` reads `Fs`, `alpha`, `beta`, and `version`. It generates noise at `Fs`, then resamples it to the requested rate.
 
-The coefficients in `beta` are normalized across the full array: the expected noise powers of all $M$ elements sum to $M$, and each element keeps its measured power relative to the others. When `array_index` selects a subset, the sum of the selected elements' noise powers need not equal the number selected. When $\alpha < 2$ the variance is undefined, and the pseudo-power $2c^2$, with $c$ the scale parameter, takes its place.
+The coefficients in `beta` are normalized across the full array: the expected noise powers of all $M$ elements sum to $M$, and each element keeps its measured power relative to the others. When `array_index` selects a subset, the sum of the selected elements' noise powers need not equal the number selected. When $\alpha < 2$ the variance is undefined, and the pseudo-power $2c^2$, with $c$ the scale parameter, takes its place. With the innovations defined below, the expected (pseudo-)power of element $i$ is
+
+$$P_i = \left(\sum_{j=0}^{M-1}\sum_{k=0}^{L}\left|\beta_{ij}(kT_s)\right|^{\alpha}\right)^{2/\alpha}, \qquad \sum_{i=0}^{M-1} P_i = M$$
+
+For $\alpha = 2$, $P_i$ is the sum of the squared coefficients. `noisegen` does not rescale the mixed noise, so with all $M$ elements selected its average power per element is $1$, before any resampling.
 
 `noisegen` uses the mixing equation:
 
