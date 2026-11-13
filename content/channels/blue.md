@@ -7,6 +7,8 @@ description: >
   A 13 kHz mobile channel from the North Atlantic (MACE'10), recorded over a 3-7 km range with a moving transmitter and a 12-element vertical array.
 ---
 
+{{< channel-explorer site="blue" >}}
+
 * Experiment details:
   * Location: 40.2N, 70.5W
   * Date recorded: June 2010

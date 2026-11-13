@@ -7,6 +7,8 @@ description: >
   A 12.5 kHz shallow-water channel from the SPACE'08 experiment off Martha's Vineyard, with cross and vertical receiving arrays at ranges from 60 m to 1 km.
 ---
 
+{{< channel-explorer site="purple" >}}
+
 * Experiment details:
   * Location: 41.2N, 70.3W
   * Date recorded: October 2008

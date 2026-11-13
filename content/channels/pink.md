@@ -7,6 +7,8 @@ description: >
   A 6 kHz, 14 km channel recorded off Kochi Prefecture, Japan in 2022, covering flat, up-slope, and down-slope bathymetry with a 24-element vertical array.
 ---
 
+{{< channel-explorer site="pink" >}}
+
 * Experiment details:
   * Location: Off the coast of Kochi Prefecture
   * Date recorded: July 2022

@@ -7,6 +7,8 @@ description: >
   A 6 kHz single-hydrophone channel from a Norwegian fjord (Norway'24), providing time-diversity data from repeated transmissions over a 270 m range.
 ---
 
+{{< channel-explorer site="green" >}}
+
 * Experiment details:
   * Location: 60N, 5.3E
   * Date recorded: November 2024

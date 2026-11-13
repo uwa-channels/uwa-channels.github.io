@@ -7,6 +7,8 @@ description: >
   A 13 kHz channel from the KAM'11 experiment off Kauai, Hawaii, recorded over 3 and 7 km ranges using four vertical receiving arrays.
 ---
 
+{{< channel-explorer site="yellow" >}}
+
 * Experiment details:
   * Location: 22.1N, 159.8W
   * Date recorded: July 2011

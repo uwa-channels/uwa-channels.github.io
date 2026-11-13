@@ -194,5 +194,23 @@ The [User's Guide](/docs) explains how to replay a signal or reconstruct a chann
 <p style="font-size: 13px; margin-top: 8px;">Column key: d<sub>T</sub>, d<sub>R</sub>, and d<sub>w</sub> are the transmitter depth, the receiver depth, and the water depth; d is the transmitter-receiver distance; f<sub>c</sub> is the center frequency; R is the symbol rate of the transmitted probe signal; M is the number of array elements; &#8467; is the inter-element spacing. An "x" marks a value that varies across scenarios: for <a href="pink" style="color: #E377C2">Pink</a>, the water depth differs between the flat, down-slope, and up-slope runs, and for <a href="brown" class="channel-brown">Brown</a>, it changes along the path, from about 4000 m at the source to about 5300 m at the receiver.</p>
 <p style="font-size: 13px; margin-top: 8px;">For the <a href="green" style="color: #77AC30">Green</a> channel, M denotes the number of time-diversity channels formed from repeated transmissions on a single hydrophone, with an inter-transmission interval of 10 minutes.</p>
 
+<!-- Each hotspot covers one marker and its label in map.png; without JavaScript it opens the channel page. -->
+<div class="channel-map">
 <img class="map-light" src="map.png" alt="World map with colored markers at the experiment sites">
 <img class="map-dark" src="map-dark.png" alt="World map with colored markers at the experiment sites">
+<a class="map-spot" href="blue/" data-explore="blue" style="left: 29.6%; top: 21.5%; width: 6.4%; height: 3.4%" aria-label="Blue: show its diorama below" title="Blue"></a>
+<a class="map-spot" href="purple/" data-explore="purple" style="left: 28.3%; top: 25.0%; width: 9.3%; height: 4.0%" aria-label="Purple: show its diorama below" title="Purple"></a>
+<a class="map-spot" href="yellow/" data-explore="yellow" style="left: 3.4%; top: 35.0%; width: 9.2%; height: 4.2%" aria-label="Yellow: show its diorama below" title="Yellow"></a>
+<a class="map-spot" href="brown/" data-explore="brown" style="left: 3.4%; top: 39.2%; width: 9.2%; height: 4.2%" aria-label="Brown: show its diorama below" title="Brown"></a>
+<a class="map-spot" href="brown/" data-explore="brown" style="left: 7.0%; top: 26.3%; width: 10.8%; height: 6.1%" aria-label="Brown: show its diorama below" title="Brown"></a>
+<a class="map-spot" href="red/" data-explore="red" style="left: 70.3%; top: 45.0%; width: 6.5%; height: 6.6%" aria-label="Red: show its diorama below" title="Red"></a>
+<a class="map-spot" href="green/" data-explore="green" style="left: 47.0%; top: 6.6%; width: 5.2%; height: 8.7%" aria-label="Green: show its diorama below" title="Green"></a>
+<a class="map-spot" href="pink/" data-explore="pink" style="left: 82.1%; top: 25.2%; width: 6.9%; height: 6.1%" aria-label="Pink: show its diorama below" title="Pink"></a>
+<a class="map-spot" href="black/" data-explore="black" style="left: 84.3%; top: 39.3%; width: 6.9%; height: 5.4%" aria-label="Black: show its diorama below" title="Black"></a>
+</div>
+
+## Explore the experiments
+
+Select a site on the map, or one of the color chips, to see a diorama of that experiment with its setup. The dioramas are schematic: each is scaled to fit, and the scale is stated under it.
+
+{{< channel-explorer >}}

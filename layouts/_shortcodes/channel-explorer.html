@@ -1,0 +1,40 @@
+{{- /*
+  Interactive 3D explorer of the experiments, served from static/explorer/.
+  Those pages are built in the research_presentation repository by
+  anatomy/talk/library3d/build.mjs with --site <this repo>/static/explorer.
+  {{< channel-explorer >}}             world map and all eight dioramas
+  {{< channel-explorer site="blue" >}} the Blue diorama only
+*/ -}}
+{{- $site := .Get "site" | default "" -}}
+{{- $file := cond (ne $site "") (printf "channel-%s.html" $site) "channel-library.html" -}}
+{{- $h := cond (ne $site "") 760 1180 -}}
+<div class="channel-explorer">
+  <iframe src="{{ printf "explorer/%s" $file | relURL }}" title="{{ if $site }}{{ $site | title }} experiment diorama{{ else }}Interactive map of the experiments{{ end }}" loading="lazy" style="height: {{ $h }}px"></iframe>
+</div>
+<script>
+(() => {
+  if (window.uwaExplorerWired) return;
+  window.uwaExplorerWired = true;
+  const frames = () => [...document.querySelectorAll('.channel-explorer iframe')];
+  const theme = () => (document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'dark' : 'light');
+  const send = () => frames().forEach((f) => f.contentWindow && f.contentWindow.postMessage({ theme: theme() }, '*'));
+  // Frames may load before or after this runs, so listen in the capture phase for any of them.
+  document.addEventListener('load', (e) => { if (e.target.matches && e.target.matches('.channel-explorer iframe')) send(); }, true);
+  send();
+  new MutationObserver(send).observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+  // Markers on the static map (content/channels/_index.md) pick a diorama in the explorer below it.
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest && e.target.closest('[data-explore]');
+    const f = frames().find((x) => /channel-library\.html$/.test(x.src));
+    if (!a || !f) return;
+    e.preventDefault();
+    f.contentWindow.postMessage({ select: a.dataset.explore }, '*');
+    f.closest('.channel-explorer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  addEventListener('message', (e) => {
+    if (!e.data || !e.data.uwaExplorer) return;
+    const f = frames().find((x) => x.contentWindow === e.source);
+    if (f) f.style.height = e.data.height + 'px';
+  });
+})();
+</script>

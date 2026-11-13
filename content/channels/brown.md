@@ -7,6 +7,8 @@ description: >
   A 75 Hz trans-Pacific channel from the 1994 ATOC project, spanning 3250 km between a deep-water source off San Diego and a 20-element vertical receiving array east of Hawaii.
 ---
 
+{{< channel-explorer site="brown" >}}
+
 * Experiment details:
   * Location: eastern North Pacific, from off San Diego, California, to east of Hawaii
   * Date recorded: November 1994

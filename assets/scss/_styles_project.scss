@@ -49,3 +49,36 @@
     width: 100%;
   }
 }
+
+// Interactive experiment explorer (layouts/_shortcodes/channel-explorer.html).
+.channel-explorer {
+  margin: 1rem 0 1.5rem;
+
+  iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+  }
+}
+
+// Clickable markers on the static channel map; each spot covers a marker and its label.
+.channel-map {
+  position: relative;
+  line-height: 0; // no gap under the inline image, so the spots line up with it
+
+  img {
+    width: 100%;
+  }
+
+  .map-spot {
+    position: absolute;
+    border-radius: 6px;
+    outline: 2px solid transparent;
+
+    &:hover,
+    &:focus-visible {
+      outline-color: var(--bs-primary);
+      background: rgba(var(--bs-primary-rgb), 0.08);
+    }
+  }
+}
