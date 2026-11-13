@@ -211,6 +211,6 @@ The [User's Guide](/docs) explains how to replay a signal or reconstruct a chann
 
 ## Explore the experiments
 
-Select a site on the map, or one of the color chips, to see a diorama of that experiment with its setup. The dioramas are schematic: each is scaled to fit, and the scale is stated under it.
+Select a site on the map, or one of the color chips, to see a diorama of that experiment with its setup.
 
 {{< channel-explorer >}}
